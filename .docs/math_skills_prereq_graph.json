@@ -1,0 +1,1607 @@
+{
+  "skills": [
+    {
+      "id": "S001",
+      "name": "Count to 10 with one-to-one correspondence"
+    },
+    {
+      "id": "S002",
+      "name": "Recognize numerals 0\u20139"
+    },
+    {
+      "id": "S003",
+      "name": "Write numerals 0\u20139"
+    },
+    {
+      "id": "S004",
+      "name": "Understand zero as a number and placeholder"
+    },
+    {
+      "id": "S005",
+      "name": "Identify even/odd within 0\u201310"
+    },
+    {
+      "id": "S006",
+      "name": "Count backward from 10"
+    },
+    {
+      "id": "S007",
+      "name": "Compose teens as 10 + n"
+    },
+    {
+      "id": "S008",
+      "name": "Compose two-digit numbers from tens and ones"
+    },
+    {
+      "id": "S009",
+      "name": "Read and write numbers to 100"
+    },
+    {
+      "id": "S010",
+      "name": "Compare numbers to 100 (>, <, =)"
+    },
+    {
+      "id": "S011",
+      "name": "Skip-count by 2s, 5s, 10s"
+    },
+    {
+      "id": "S012",
+      "name": "Read and write numbers to 1,000"
+    },
+    {
+      "id": "S013",
+      "name": "Compare numbers to 1,000"
+    },
+    {
+      "id": "S014",
+      "name": "Use and interpret a basic number line"
+    },
+    {
+      "id": "S015",
+      "name": "Understand place value: ones, tens, hundreds"
+    },
+    {
+      "id": "S016",
+      "name": "Round to nearest ten"
+    },
+    {
+      "id": "S017",
+      "name": "Round to nearest hundred"
+    },
+    {
+      "id": "S018",
+      "name": "Estimate quantities/answers (whole numbers)"
+    },
+    {
+      "id": "S019",
+      "name": "Recognize and extend simple numeric patterns"
+    },
+    {
+      "id": "S020",
+      "name": "Translate between quantity models and symbols"
+    },
+    {
+      "id": "S021",
+      "name": "Add within 10 (no regrouping)"
+    },
+    {
+      "id": "S022",
+      "name": "Subtract within 10 (no regrouping)"
+    },
+    {
+      "id": "S023",
+      "name": "Use make-10 decomposition strategies"
+    },
+    {
+      "id": "S024",
+      "name": "Relate addition & subtraction (inverse)"
+    },
+    {
+      "id": "S025",
+      "name": "Understand multiplication as repeated addition"
+    },
+    {
+      "id": "S026",
+      "name": "Model arrays / area for multiplication"
+    },
+    {
+      "id": "S027",
+      "name": "Understand division as equal sharing/grouping"
+    },
+    {
+      "id": "S028",
+      "name": "Relate multiplication & division (inverse)"
+    },
+    {
+      "id": "S029",
+      "name": "Commutative property of addition"
+    },
+    {
+      "id": "S030",
+      "name": "Identity property of addition"
+    },
+    {
+      "id": "S031",
+      "name": "Column addition without regrouping"
+    },
+    {
+      "id": "S032",
+      "name": "Column addition with one regroup"
+    },
+    {
+      "id": "S033",
+      "name": "Column addition with multiple regroups"
+    },
+    {
+      "id": "S034",
+      "name": "Estimate sums (whole numbers)"
+    },
+    {
+      "id": "S035",
+      "name": "Solve addition word problems"
+    },
+    {
+      "id": "S036",
+      "name": "Column subtraction without regrouping"
+    },
+    {
+      "id": "S037",
+      "name": "Column subtraction with regrouping (borrowing)"
+    },
+    {
+      "id": "S038",
+      "name": "Subtract across zeros"
+    },
+    {
+      "id": "S039",
+      "name": "Estimate differences (whole numbers)"
+    },
+    {
+      "id": "S040",
+      "name": "Solve addition/subtraction word problems"
+    },
+    {
+      "id": "S041",
+      "name": "Fluent recall of addition facts within 10"
+    },
+    {
+      "id": "S042",
+      "name": "Fluent recall of subtraction facts within 10"
+    },
+    {
+      "id": "S043",
+      "name": "Use doubles/near-doubles strategies"
+    },
+    {
+      "id": "S044",
+      "name": "Use make-10 & decomposition fluency strategies"
+    },
+    {
+      "id": "S045",
+      "name": "Fluent recall of multiplication facts (0\u201310)"
+    },
+    {
+      "id": "S046",
+      "name": "Commutative property of multiplication"
+    },
+    {
+      "id": "S047",
+      "name": "Associative property of multiplication"
+    },
+    {
+      "id": "S048",
+      "name": "Distributive property over addition"
+    },
+    {
+      "id": "S049",
+      "name": "Multiply by 10s/100s using place-value shifts"
+    },
+    {
+      "id": "S050",
+      "name": "Multi-digit \u00d7 1-digit (no regroup)"
+    },
+    {
+      "id": "S051",
+      "name": "Multi-digit \u00d7 1-digit (with regroup)"
+    },
+    {
+      "id": "S052",
+      "name": "Concept of partial products"
+    },
+    {
+      "id": "S053",
+      "name": "Column multiplication 2\u00d71 (algorithm)"
+    },
+    {
+      "id": "S054",
+      "name": "Column multiplication 2\u00d72 (algorithm)"
+    },
+    {
+      "id": "S055",
+      "name": "Handle internal zeros in multiplication"
+    },
+    {
+      "id": "S056",
+      "name": "Estimate products (whole numbers)"
+    },
+    {
+      "id": "S057",
+      "name": "Interpret and use remainders"
+    },
+    {
+      "id": "S058",
+      "name": "Multi-digit \u00f7 1-digit (with remainders)"
+    },
+    {
+      "id": "S059",
+      "name": "Multi-digit \u00f7 2-digit (partial quotients/standard)"
+    },
+    {
+      "id": "S060",
+      "name": "Standard long-division procedure"
+    },
+    {
+      "id": "S061",
+      "name": "Divisibility by 2,3,4,5,6,8,9,10"
+    },
+    {
+      "id": "S062",
+      "name": "Identify factors and multiples"
+    },
+    {
+      "id": "S063",
+      "name": "Classify prime vs. composite"
+    },
+    {
+      "id": "S064",
+      "name": "Prime factorization"
+    },
+    {
+      "id": "S065",
+      "name": "Greatest common factor (GCF)"
+    },
+    {
+      "id": "S066",
+      "name": "Least common multiple (LCM)"
+    },
+    {
+      "id": "S067",
+      "name": "Fluent recall of multiplication facts (latency target)"
+    },
+    {
+      "id": "S068",
+      "name": "Fluent recall of division facts (latency target)"
+    },
+    {
+      "id": "S202",
+      "name": "Estimate quotients (whole numbers)"
+    },
+    {
+      "id": "S069",
+      "name": "Identify unit fractions via partitioning"
+    },
+    {
+      "id": "S070",
+      "name": "Partition shapes into equal parts"
+    },
+    {
+      "id": "S071",
+      "name": "Place fractions on a number line"
+    },
+    {
+      "id": "S072",
+      "name": "Recognize and generate equivalent fractions"
+    },
+    {
+      "id": "S073",
+      "name": "Simplify fractions"
+    },
+    {
+      "id": "S074",
+      "name": "Compare fractions with like denominators"
+    },
+    {
+      "id": "S075",
+      "name": "Compare fractions with unlike denominators"
+    },
+    {
+      "id": "S076",
+      "name": "Find common denominators via LCM"
+    },
+    {
+      "id": "S077",
+      "name": "Add fractions with like denominators"
+    },
+    {
+      "id": "S078",
+      "name": "Add fractions with unlike denominators"
+    },
+    {
+      "id": "S079",
+      "name": "Subtract fractions with like denominators"
+    },
+    {
+      "id": "S080",
+      "name": "Subtract fractions with unlike denominators"
+    },
+    {
+      "id": "S081",
+      "name": "Multiply a fraction by a whole number"
+    },
+    {
+      "id": "S082",
+      "name": "Multiply fractions (including mixed numbers)"
+    },
+    {
+      "id": "S083",
+      "name": "Divide a fraction by a whole number"
+    },
+    {
+      "id": "S084",
+      "name": "Divide a whole number by a fraction"
+    },
+    {
+      "id": "S085",
+      "name": "Divide a fraction by a fraction"
+    },
+    {
+      "id": "S086",
+      "name": "Convert between mixed numbers and improper fractions"
+    },
+    {
+      "id": "S087",
+      "name": "Estimate fraction sums/differences/products"
+    },
+    {
+      "id": "S088",
+      "name": "Solve fraction word problems"
+    },
+    {
+      "id": "S089",
+      "name": "Understand decimal place value to thousandths"
+    },
+    {
+      "id": "S090",
+      "name": "Convert between fractions and decimals"
+    },
+    {
+      "id": "S091",
+      "name": "Compare and order decimals"
+    },
+    {
+      "id": "S092",
+      "name": "Round decimals to given place"
+    },
+    {
+      "id": "S093",
+      "name": "Add decimals (aligning place value)"
+    },
+    {
+      "id": "S094",
+      "name": "Subtract decimals"
+    },
+    {
+      "id": "S095",
+      "name": "Multiply decimals by whole numbers"
+    },
+    {
+      "id": "S096",
+      "name": "Multiply decimals by decimals"
+    },
+    {
+      "id": "S097",
+      "name": "Divide decimals by whole numbers"
+    },
+    {
+      "id": "S098",
+      "name": "Divide by decimals (scaling place)"
+    },
+    {
+      "id": "S099",
+      "name": "Estimate decimal results"
+    },
+    {
+      "id": "S100",
+      "name": "Perform money operations (decimal currency)"
+    },
+    {
+      "id": "S101",
+      "name": "Apply decimals in measurement contexts"
+    },
+    {
+      "id": "S103",
+      "name": "Interpret percent as per-hundred rate"
+    },
+    {
+      "id": "S104",
+      "name": "Convert among percent, decimal, fraction"
+    },
+    {
+      "id": "S105",
+      "name": "Find a percent of a quantity"
+    },
+    {
+      "id": "S106",
+      "name": "Find the whole given part and percent"
+    },
+    {
+      "id": "S107",
+      "name": "Percent increase/decrease"
+    },
+    {
+      "id": "S108",
+      "name": "Simple interest (principal, rate, time)"
+    },
+    {
+      "id": "S109",
+      "name": "Understand ratios and equivalent ratios"
+    },
+    {
+      "id": "S110",
+      "name": "Compute unit rates"
+    },
+    {
+      "id": "S111",
+      "name": "Set up and solve proportions"
+    },
+    {
+      "id": "S112",
+      "name": "Use scale drawings and scale factors"
+    },
+    {
+      "id": "S113",
+      "name": "Solve basic mixture/alligation problems"
+    },
+    {
+      "id": "S114",
+      "name": "Solve speed\u2013time\u2013distance problems"
+    },
+    {
+      "id": "S115",
+      "name": "Distinguish point, line, segment, ray"
+    },
+    {
+      "id": "S116",
+      "name": "Classify polygons by number of sides"
+    },
+    {
+      "id": "S117",
+      "name": "Classify triangles by sides"
+    },
+    {
+      "id": "S118",
+      "name": "Classify triangles by angles"
+    },
+    {
+      "id": "S119",
+      "name": "Classify quadrilaterals (properties)"
+    },
+    {
+      "id": "S120",
+      "name": "Identify parts of a circle (r, d, chord, arc)"
+    },
+    {
+      "id": "S121",
+      "name": "Identify lines of symmetry"
+    },
+    {
+      "id": "S122",
+      "name": "Compose/decompose shapes (constructive reasoning)"
+    },
+    {
+      "id": "S123",
+      "name": "Identify angle types"
+    },
+    {
+      "id": "S124",
+      "name": "Measure angles with a protractor"
+    },
+    {
+      "id": "S125",
+      "name": "Use relationships: adjacent, vertical, complementary, supplementary"
+    },
+    {
+      "id": "S126",
+      "name": "Use angle sums in triangles/quadrilaterals"
+    },
+    {
+      "id": "S127",
+      "name": "Work with parallel lines and transversals"
+    },
+    {
+      "id": "S128",
+      "name": "Determine congruence via rigid motions"
+    },
+    {
+      "id": "S129",
+      "name": "Determine similarity & scale factor"
+    },
+    {
+      "id": "S130",
+      "name": "Establish area equivalence by dissection"
+    },
+    {
+      "id": "S131",
+      "name": "Area of rectangles and composite rectangles"
+    },
+    {
+      "id": "S132",
+      "name": "Area of triangles"
+    },
+    {
+      "id": "S133",
+      "name": "Area of parallelograms"
+    },
+    {
+      "id": "S134",
+      "name": "Area of trapezoids"
+    },
+    {
+      "id": "S135",
+      "name": "Area of regular polygons via apothem"
+    },
+    {
+      "id": "S136",
+      "name": "Composite area (decompose/compose)"
+    },
+    {
+      "id": "S137",
+      "name": "Identify and name 3D solids"
+    },
+    {
+      "id": "S138",
+      "name": "Surface area of prisms"
+    },
+    {
+      "id": "S139",
+      "name": "Surface area of cylinders"
+    },
+    {
+      "id": "S140",
+      "name": "Volume of right prisms & cylinders"
+    },
+    {
+      "id": "S141",
+      "name": "Use nets to analyze surface area"
+    },
+    {
+      "id": "S142",
+      "name": "Count unit cubes to determine volume"
+    },
+    {
+      "id": "S143",
+      "name": "Use additivity of volume"
+    },
+    {
+      "id": "S144",
+      "name": "Tell time to the minute on analog/digital clocks"
+    },
+    {
+      "id": "S145",
+      "name": "Solve elapsed time problems"
+    },
+    {
+      "id": "S146",
+      "name": "Identify coin/bill values and make change"
+    },
+    {
+      "id": "S147",
+      "name": "Solve money word problems"
+    },
+    {
+      "id": "S148",
+      "name": "Read and interpret bar charts, pictographs, line plots"
+    },
+    {
+      "id": "S149",
+      "name": "Create basic graphs from data"
+    },
+    {
+      "id": "S150",
+      "name": "Compute mean, median, mode, range"
+    },
+    {
+      "id": "S151",
+      "name": "Interpret data to answer questions"
+    },
+    {
+      "id": "S188",
+      "name": "Choose appropriate measurement units"
+    },
+    {
+      "id": "S189",
+      "name": "Measure length with a ruler (precision)"
+    },
+    {
+      "id": "S190",
+      "name": "Convert metric lengths (mm\u2013cm\u2013m\u2013km)"
+    },
+    {
+      "id": "S191",
+      "name": "Convert US customary lengths (in\u2013ft\u2013yd\u2013mi)"
+    },
+    {
+      "id": "S192",
+      "name": "Measure/convert mass/weight (g\u2013kg; oz\u2013lb)"
+    },
+    {
+      "id": "S193",
+      "name": "Measure/convert liquid volume (mL\u2013L; fl oz\u2013cup\u2013pt\u2013qt\u2013gal)"
+    },
+    {
+      "id": "S194",
+      "name": "Read temperatures (\u00b0F/\u00b0C) & convert between scales"
+    },
+    {
+      "id": "S197",
+      "name": "Use unit-rate conversion factors to convert measures"
+    },
+    {
+      "id": "S199",
+      "name": "Compute perimeter of polygons"
+    },
+    {
+      "id": "S152",
+      "name": "Read/write multi-digit numbers to millions"
+    },
+    {
+      "id": "S153",
+      "name": "Compare multi-digit numbers (up to millions)"
+    },
+    {
+      "id": "S154",
+      "name": "Round to thousands/ten-thousands/millions"
+    },
+    {
+      "id": "S155",
+      "name": "Express numbers in standard/expanded word form"
+    },
+    {
+      "id": "S156",
+      "name": "Recognize and generate square numbers"
+    },
+    {
+      "id": "S157",
+      "name": "Recognize and generate cube numbers"
+    },
+    {
+      "id": "S158",
+      "name": "Generate and analyze square/cube sequences"
+    },
+    {
+      "id": "S159",
+      "name": "Expand (a + b)\u00b2 conceptually (area model)"
+    },
+    {
+      "id": "S160",
+      "name": "Expand simple binomials/trinomials conceptually"
+    },
+    {
+      "id": "S161",
+      "name": "Use exponent notation"
+    },
+    {
+      "id": "S162",
+      "name": "Evaluate powers (including powers of 10)"
+    },
+    {
+      "id": "S163",
+      "name": "Apply order of operations including exponents"
+    },
+    {
+      "id": "S164",
+      "name": "Understand square root as inverse of squaring"
+    },
+    {
+      "id": "S165",
+      "name": "Compute square roots of perfect squares"
+    },
+    {
+      "id": "S166",
+      "name": "Estimate square roots of non-perfect squares"
+    },
+    {
+      "id": "S167",
+      "name": "Understand cube root as inverse of cubing"
+    },
+    {
+      "id": "S168",
+      "name": "Compute cube roots of perfect cubes"
+    },
+    {
+      "id": "S169",
+      "name": "Understand Pythagorean relationship"
+    },
+    {
+      "id": "S170",
+      "name": "Find missing leg/hypotenuse in right triangles"
+    },
+    {
+      "id": "S171",
+      "name": "Recognize common Pythagorean triples"
+    },
+    {
+      "id": "S172",
+      "name": "Use Pythagorean distance on a grid (optional extension)"
+    },
+    {
+      "id": "S173",
+      "name": "Evaluate numerical expressions"
+    },
+    {
+      "id": "S174",
+      "name": "Apply order of operations with parentheses"
+    },
+    {
+      "id": "S175",
+      "name": "Translate words \u2194 expressions"
+    },
+    {
+      "id": "S176",
+      "name": "Solve one-step equations (\u00b1)"
+    },
+    {
+      "id": "S177",
+      "name": "Solve one-step equations (\u00d7/\u00f7)"
+    },
+    {
+      "id": "S178",
+      "name": "Solve two-step equations"
+    },
+    {
+      "id": "S179",
+      "name": "Use distributive property within equations"
+    },
+    {
+      "id": "S181",
+      "name": "Locate integers on a number line"
+    },
+    {
+      "id": "S182",
+      "name": "Compare and order integers"
+    },
+    {
+      "id": "S183",
+      "name": "Add integers with signed rules"
+    },
+    {
+      "id": "S184",
+      "name": "Subtract integers with signed rules"
+    },
+    {
+      "id": "S185",
+      "name": "Multiply integers"
+    },
+    {
+      "id": "S186",
+      "name": "Divide integers"
+    },
+    {
+      "id": "S187",
+      "name": "Use absolute value"
+    },
+    {
+      "id": "S200",
+      "name": "Associative property of addition"
+    }
+  ],
+  "prerequisites": {
+    "S002": [
+      "S001"
+    ],
+    "S003": [
+      "S002"
+    ],
+    "S004": [
+      "S001",
+      "S002"
+    ],
+    "S005": [
+      "S001",
+      "S002"
+    ],
+    "S006": [
+      "S001"
+    ],
+    "S007": [
+      "S001",
+      "S002"
+    ],
+    "S008": [
+      "S007"
+    ],
+    "S009": [
+      "S003",
+      "S008"
+    ],
+    "S010": [
+      "S009",
+      "S011",
+      "S014"
+    ],
+    "S011": [
+      "S001",
+      "S009"
+    ],
+    "S012": [
+      "S009",
+      "S015"
+    ],
+    "S013": [
+      "S011",
+      "S012",
+      "S014"
+    ],
+    "S014": [
+      "S001",
+      "S002"
+    ],
+    "S015": [
+      "S008"
+    ],
+    "S016": [
+      "S009",
+      "S015"
+    ],
+    "S017": [
+      "S012",
+      "S015"
+    ],
+    "S018": [
+      "S015",
+      "S016"
+    ],
+    "S019": [
+      "S011",
+      "S014"
+    ],
+    "S020": [
+      "S002",
+      "S015"
+    ],
+    "S152": [
+      "S012",
+      "S015"
+    ],
+    "S153": [
+      "S014",
+      "S152"
+    ],
+    "S154": [
+      "S015",
+      "S152"
+    ],
+    "S155": [
+      "S152"
+    ],
+    "S021": [
+      "S001",
+      "S002",
+      "S020"
+    ],
+    "S022": [
+      "S021"
+    ],
+    "S023": [
+      "S021"
+    ],
+    "S024": [
+      "S021",
+      "S022"
+    ],
+    "S029": [
+      "S021"
+    ],
+    "S030": [
+      "S021"
+    ],
+    "S025": [
+      "S011",
+      "S021"
+    ],
+    "S026": [
+      "S025"
+    ],
+    "S027": [
+      "S025"
+    ],
+    "S028": [
+      "S025",
+      "S027"
+    ],
+    "S031": [
+      "S015",
+      "S021",
+      "S041"
+    ],
+    "S032": [
+      "S031",
+      "S041"
+    ],
+    "S033": [
+      "S032",
+      "S041"
+    ],
+    "S034": [
+      "S018",
+      "S031"
+    ],
+    "S035": [
+      "S021",
+      "S029",
+      "S030",
+      "S031",
+      "S034"
+    ],
+    "S036": [
+      "S015",
+      "S022",
+      "S042"
+    ],
+    "S037": [
+      "S036",
+      "S042"
+    ],
+    "S038": [
+      "S037"
+    ],
+    "S039": [
+      "S018",
+      "S036"
+    ],
+    "S040": [
+      "S034",
+      "S035",
+      "S036",
+      "S039"
+    ],
+    "S041": [
+      "S021"
+    ],
+    "S043": [
+      "S041"
+    ],
+    "S044": [
+      "S023",
+      "S041"
+    ],
+    "S042": [
+      "S022",
+      "S041"
+    ],
+    "S046": [
+      "S025"
+    ],
+    "S045": [
+      "S025",
+      "S026"
+    ],
+    "S047": [
+      "S045"
+    ],
+    "S048": [
+      "S021",
+      "S025"
+    ],
+    "S049": [
+      "S015",
+      "S045"
+    ],
+    "S050": [
+      "S015",
+      "S045"
+    ],
+    "S051": [
+      "S045",
+      "S050"
+    ],
+    "S052": [
+      "S025",
+      "S046",
+      "S047",
+      "S048",
+      "S049",
+      "S050"
+    ],
+    "S053": [
+      "S046",
+      "S047",
+      "S048",
+      "S051",
+      "S052"
+    ],
+    "S054": [
+      "S046",
+      "S047",
+      "S048",
+      "S053"
+    ],
+    "S055": [
+      "S049",
+      "S054"
+    ],
+    "S056": [
+      "S016",
+      "S017",
+      "S045",
+      "S049",
+      "S051"
+    ],
+    "S057": [
+      "S027"
+    ],
+    "S058": [
+      "S015",
+      "S045",
+      "S057",
+      "S061"
+    ],
+    "S060": [
+      "S058",
+      "S061"
+    ],
+    "S059": [
+      "S056",
+      "S058",
+      "S061",
+      "S062"
+    ],
+    "S061": [
+      "S011",
+      "S015",
+      "S045"
+    ],
+    "S062": [
+      "S011",
+      "S045"
+    ],
+    "S063": [
+      "S062"
+    ],
+    "S064": [
+      "S063"
+    ],
+    "S065": [
+      "S062",
+      "S064"
+    ],
+    "S066": [
+      "S062",
+      "S064"
+    ],
+    "S067": [
+      "S045"
+    ],
+    "S068": [
+      "S045",
+      "S067"
+    ],
+    "S202": [
+      "S016",
+      "S017",
+      "S058"
+    ],
+    "S070": [
+      "S115"
+    ],
+    "S069": [
+      "S070"
+    ],
+    "S071": [
+      "S014",
+      "S069"
+    ],
+    "S072": [
+      "S069",
+      "S070",
+      "S071"
+    ],
+    "S073": [
+      "S062",
+      "S072"
+    ],
+    "S074": [
+      "S069",
+      "S071"
+    ],
+    "S076": [
+      "S066"
+    ],
+    "S075": [
+      "S072",
+      "S074",
+      "S076"
+    ],
+    "S077": [
+      "S073",
+      "S074"
+    ],
+    "S079": [
+      "S073",
+      "S074"
+    ],
+    "S078": [
+      "S073",
+      "S076",
+      "S077"
+    ],
+    "S080": [
+      "S073",
+      "S076",
+      "S079"
+    ],
+    "S086": [
+      "S069",
+      "S072"
+    ],
+    "S081": [
+      "S025",
+      "S069"
+    ],
+    "S082": [
+      "S045",
+      "S062",
+      "S072",
+      "S073",
+      "S086"
+    ],
+    "S083": [
+      "S027",
+      "S069",
+      "S086"
+    ],
+    "S084": [
+      "S027",
+      "S072",
+      "S086"
+    ],
+    "S085": [
+      "S073",
+      "S082",
+      "S084"
+    ],
+    "S087": [
+      "S072",
+      "S074"
+    ],
+    "S088": [
+      "S077",
+      "S078",
+      "S079",
+      "S080",
+      "S081",
+      "S082",
+      "S083",
+      "S084",
+      "S085",
+      "S086"
+    ],
+    "S089": [
+      "S015"
+    ],
+    "S090": [
+      "S072",
+      "S086",
+      "S089"
+    ],
+    "S091": [
+      "S089"
+    ],
+    "S092": [
+      "S089"
+    ],
+    "S093": [
+      "S031",
+      "S041",
+      "S089",
+      "S091"
+    ],
+    "S094": [
+      "S036",
+      "S042",
+      "S089",
+      "S091"
+    ],
+    "S095": [
+      "S049",
+      "S050",
+      "S051",
+      "S089"
+    ],
+    "S096": [
+      "S051",
+      "S089",
+      "S095"
+    ],
+    "S097": [
+      "S058",
+      "S089"
+    ],
+    "S098": [
+      "S060",
+      "S089",
+      "S097"
+    ],
+    "S099": [
+      "S034",
+      "S039",
+      "S089",
+      "S092"
+    ],
+    "S100": [
+      "S093",
+      "S094",
+      "S097",
+      "S146"
+    ],
+    "S101": [
+      "S093",
+      "S094",
+      "S095",
+      "S097",
+      "S197"
+    ],
+    "S103": [
+      "S089"
+    ],
+    "S104": [
+      "S090",
+      "S103"
+    ],
+    "S105": [
+      "S095",
+      "S104"
+    ],
+    "S106": [
+      "S098",
+      "S105"
+    ],
+    "S107": [
+      "S093",
+      "S094",
+      "S098",
+      "S104",
+      "S105"
+    ],
+    "S108": [
+      "S093",
+      "S095",
+      "S105"
+    ],
+    "S109": [
+      "S009",
+      "S072"
+    ],
+    "S110": [
+      "S058",
+      "S097",
+      "S109"
+    ],
+    "S111": [
+      "S045",
+      "S093",
+      "S109",
+      "S110"
+    ],
+    "S112": [
+      "S111",
+      "S129"
+    ],
+    "S113": [
+      "S110",
+      "S111"
+    ],
+    "S114": [
+      "S110",
+      "S111"
+    ],
+    "S116": [
+      "S115"
+    ],
+    "S117": [
+      "S116"
+    ],
+    "S118": [
+      "S116",
+      "S123"
+    ],
+    "S119": [
+      "S116"
+    ],
+    "S120": [
+      "S115"
+    ],
+    "S121": [
+      "S116"
+    ],
+    "S122": [
+      "S116"
+    ],
+    "S123": [
+      "S115"
+    ],
+    "S124": [
+      "S123"
+    ],
+    "S125": [
+      "S124"
+    ],
+    "S126": [
+      "S118",
+      "S124"
+    ],
+    "S127": [
+      "S125"
+    ],
+    "S128": [
+      "S116"
+    ],
+    "S129": [
+      "S128"
+    ],
+    "S130": [
+      "S122"
+    ],
+    "S131": [
+      "S116",
+      "S188"
+    ],
+    "S132": [
+      "S131",
+      "S188"
+    ],
+    "S133": [
+      "S131",
+      "S188"
+    ],
+    "S134": [
+      "S131",
+      "S188"
+    ],
+    "S135": [
+      "S120",
+      "S131",
+      "S188"
+    ],
+    "S136": [
+      "S131",
+      "S132",
+      "S133",
+      "S134",
+      "S188"
+    ],
+    "S137": [
+      "S116"
+    ],
+    "S138": [
+      "S131",
+      "S137",
+      "S141",
+      "S188"
+    ],
+    "S139": [
+      "S120",
+      "S137",
+      "S141",
+      "S188"
+    ],
+    "S140": [
+      "S131",
+      "S137",
+      "S188"
+    ],
+    "S141": [
+      "S137"
+    ],
+    "S142": [
+      "S137"
+    ],
+    "S143": [
+      "S140"
+    ],
+    "S144": [
+      "S009",
+      "S011"
+    ],
+    "S145": [
+      "S031",
+      "S036",
+      "S144"
+    ],
+    "S146": [
+      "S009",
+      "S036"
+    ],
+    "S147": [
+      "S093",
+      "S094",
+      "S100",
+      "S146"
+    ],
+    "S148": [
+      "S009"
+    ],
+    "S149": [
+      "S148"
+    ],
+    "S150": [
+      "S031",
+      "S058",
+      "S093",
+      "S148"
+    ],
+    "S151": [
+      "S148",
+      "S149"
+    ],
+    "S189": [
+      "S009"
+    ],
+    "S190": [
+      "S031",
+      "S036",
+      "S189",
+      "S197"
+    ],
+    "S191": [
+      "S031",
+      "S036",
+      "S189",
+      "S197"
+    ],
+    "S192": [
+      "S009"
+    ],
+    "S193": [
+      "S009"
+    ],
+    "S194": [
+      "S009",
+      "S031",
+      "S093",
+      "S094"
+    ],
+    "S197": [
+      "S110"
+    ],
+    "S188": [
+      "S189",
+      "S192",
+      "S193"
+    ],
+    "S199": [
+      "S031",
+      "S116"
+    ],
+    "S156": [
+      "S045"
+    ],
+    "S157": [
+      "S156"
+    ],
+    "S158": [
+      "S156",
+      "S157"
+    ],
+    "S159": [
+      "S131",
+      "S156"
+    ],
+    "S160": [
+      "S159"
+    ],
+    "S161": [
+      "S156"
+    ],
+    "S162": [
+      "S045",
+      "S049",
+      "S161"
+    ],
+    "S163": [
+      "S161",
+      "S174"
+    ],
+    "S164": [
+      "S156"
+    ],
+    "S165": [
+      "S164"
+    ],
+    "S166": [
+      "S092",
+      "S165"
+    ],
+    "S167": [
+      "S157"
+    ],
+    "S168": [
+      "S167"
+    ],
+    "S169": [
+      "S091",
+      "S123",
+      "S132",
+      "S156"
+    ],
+    "S170": [
+      "S165",
+      "S169"
+    ],
+    "S171": [
+      "S170"
+    ],
+    "S172": [
+      "S170"
+    ],
+    "S173": [
+      "S031",
+      "S036",
+      "S093",
+      "S094"
+    ],
+    "S174": [
+      "S031",
+      "S036",
+      "S045",
+      "S093",
+      "S094",
+      "S173"
+    ],
+    "S175": [
+      "S173"
+    ],
+    "S176": [
+      "S173",
+      "S174",
+      "S181"
+    ],
+    "S177": [
+      "S045",
+      "S176",
+      "S181"
+    ],
+    "S178": [
+      "S176",
+      "S177",
+      "S181"
+    ],
+    "S179": [
+      "S048",
+      "S178",
+      "S181"
+    ],
+    "S181": [
+      "S014"
+    ],
+    "S182": [
+      "S181"
+    ],
+    "S183": [
+      "S021",
+      "S181"
+    ],
+    "S184": [
+      "S022",
+      "S183"
+    ],
+    "S185": [
+      "S045",
+      "S181"
+    ],
+    "S186": [
+      "S068",
+      "S185"
+    ],
+    "S187": [
+      "S181"
+    ],
+    "S001": [],
+    "S115": [],
+    "S200": []
+  },
+  "stats": {
+    "num_skills": 196,
+    "num_edges": 424
+  }
+}

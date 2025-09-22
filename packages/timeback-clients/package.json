@@ -1,0 +1,23 @@
+{
+	"name": "@monte/timeback-clients",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"scripts": {
+		"typecheck": "bun x tsc --noEmit",
+		"lint": "bun x biome check",
+		"fetch-specs": "bun run scripts/fetch-specs.ts",
+		"generate": "bun run scripts/generate.ts",
+		"test": "bun test"
+	},
+	"dependencies": {
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"openapi-zod-client": "^1.18.3",
+		"typescript": "^5",
+		"yaml": "^2.6.0"
+	}
+}

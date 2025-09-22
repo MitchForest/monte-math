@@ -1,0 +1,19 @@
+{
+	"name": "monte-math",
+	"version": "0.1.0",
+	"private": true,
+	"workspaces": ["apps/*", "packages/*"],
+	"scripts": {
+		"dev": "bun run --filter '*' dev",
+		"build": "bun run --filter '*' build",
+		"typecheck": "bun run --filter '*' typecheck",
+		"lint": "bun run --filter '*' lint",
+		"test": "bun run --filter '*' test",
+		"format": "biome format --write .",
+		"check": "biome check ."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"typescript": "^5"
+	}
+}

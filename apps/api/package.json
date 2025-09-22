@@ -1,0 +1,21 @@
+{
+	"name": "@monte/api",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "bun run --hot src/index.ts",
+		"build": "bun build src/index.ts --outdir dist --target bun",
+		"start": "bun run dist/index.js",
+		"typecheck": "bun x tsc --noEmit",
+		"lint": "bun x biome check",
+		"test": "bun test"
+	},
+	"dependencies": {
+		"hono": "^4.9.7"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"typescript": "^5"
+	}
+}

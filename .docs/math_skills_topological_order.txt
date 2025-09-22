@@ -1,0 +1,196 @@
+S001 - Count to 10 with one-to-one correspondence
+S115 - Distinguish point, line, segment, ray
+S200 - Associative property of addition
+S002 - Recognize numerals 0–9
+S006 - Count backward from 10
+S070 - Partition shapes into equal parts
+S116 - Classify polygons by number of sides
+S120 - Identify parts of a circle (r, d, chord, arc)
+S123 - Identify angle types
+S003 - Write numerals 0–9
+S004 - Understand zero as a number and placeholder
+S005 - Identify even/odd within 0–10
+S007 - Compose teens as 10 + n
+S014 - Use and interpret a basic number line
+S069 - Identify unit fractions via partitioning
+S117 - Classify triangles by sides
+S119 - Classify quadrilaterals (properties)
+S121 - Identify lines of symmetry
+S122 - Compose/decompose shapes (constructive reasoning)
+S128 - Determine congruence via rigid motions
+S137 - Identify and name 3D solids
+S118 - Classify triangles by angles
+S124 - Measure angles with a protractor
+S008 - Compose two-digit numbers from tens and ones
+S181 - Locate integers on a number line
+S071 - Place fractions on a number line
+S130 - Establish area equivalence by dissection
+S129 - Determine similarity & scale factor
+S141 - Use nets to analyze surface area
+S142 - Count unit cubes to determine volume
+S125 - Use relationships: adjacent, vertical, complementary, supplementary
+S126 - Use angle sums in triangles/quadrilaterals
+S009 - Read and write numbers to 100
+S015 - Understand place value: ones, tens, hundreds
+S182 - Compare and order integers
+S187 - Use absolute value
+S072 - Recognize and generate equivalent fractions
+S074 - Compare fractions with like denominators
+S127 - Work with parallel lines and transversals
+S011 - Skip-count by 2s, 5s, 10s
+S148 - Read and interpret bar charts, pictographs, line plots
+S189 - Measure length with a ruler (precision)
+S192 - Measure/convert mass/weight (g–kg; oz–lb)
+S193 - Measure/convert liquid volume (mL–L; fl oz–cup–pt–qt–gal)
+S012 - Read and write numbers to 1,000
+S016 - Round to nearest ten
+S020 - Translate between quantity models and symbols
+S089 - Understand decimal place value to thousandths
+S086 - Convert between mixed numbers and improper fractions
+S109 - Understand ratios and equivalent ratios
+S087 - Estimate fraction sums/differences/products
+S010 - Compare numbers to 100 (>, <, =)
+S019 - Recognize and extend simple numeric patterns
+S144 - Tell time to the minute on analog/digital clocks
+S149 - Create basic graphs from data
+S188 - Choose appropriate measurement units
+S013 - Compare numbers to 1,000
+S017 - Round to nearest hundred
+S152 - Read/write multi-digit numbers to millions
+S018 - Estimate quantities/answers (whole numbers)
+S021 - Add within 10 (no regrouping)
+S091 - Compare and order decimals
+S092 - Round decimals to given place
+S103 - Interpret percent as per-hundred rate
+S090 - Convert between fractions and decimals
+S151 - Interpret data to answer questions
+S131 - Area of rectangles and composite rectangles
+S139 - Surface area of cylinders
+S153 - Compare multi-digit numbers (up to millions)
+S154 - Round to thousands/ten-thousands/millions
+S155 - Express numbers in standard/expanded word form
+S022 - Subtract within 10 (no regrouping)
+S023 - Use make-10 decomposition strategies
+S029 - Commutative property of addition
+S030 - Identity property of addition
+S025 - Understand multiplication as repeated addition
+S041 - Fluent recall of addition facts within 10
+S183 - Add integers with signed rules
+S104 - Convert among percent, decimal, fraction
+S132 - Area of triangles
+S133 - Area of parallelograms
+S134 - Area of trapezoids
+S135 - Area of regular polygons via apothem
+S138 - Surface area of prisms
+S140 - Volume of right prisms & cylinders
+S024 - Relate addition & subtraction (inverse)
+S026 - Model arrays / area for multiplication
+S027 - Understand division as equal sharing/grouping
+S046 - Commutative property of multiplication
+S048 - Distributive property over addition
+S081 - Multiply a fraction by a whole number
+S031 - Column addition without regrouping
+S043 - Use doubles/near-doubles strategies
+S044 - Use make-10 & decomposition fluency strategies
+S042 - Fluent recall of subtraction facts within 10
+S184 - Subtract integers with signed rules
+S136 - Composite area (decompose/compose)
+S143 - Use additivity of volume
+S045 - Fluent recall of multiplication facts (0–10)
+S028 - Relate multiplication & division (inverse)
+S057 - Interpret and use remainders
+S083 - Divide a fraction by a whole number
+S084 - Divide a whole number by a fraction
+S032 - Column addition with one regroup
+S034 - Estimate sums (whole numbers)
+S093 - Add decimals (aligning place value)
+S199 - Compute perimeter of polygons
+S036 - Column subtraction without regrouping
+S047 - Associative property of multiplication
+S049 - Multiply by 10s/100s using place-value shifts
+S050 - Multi-digit × 1-digit (no regroup)
+S061 - Divisibility by 2,3,4,5,6,8,9,10
+S062 - Identify factors and multiples
+S067 - Fluent recall of multiplication facts (latency target)
+S156 - Recognize and generate square numbers
+S185 - Multiply integers
+S033 - Column addition with multiple regroups
+S035 - Solve addition word problems
+S037 - Column subtraction with regrouping (borrowing)
+S039 - Estimate differences (whole numbers)
+S094 - Subtract decimals
+S145 - Solve elapsed time problems
+S146 - Identify coin/bill values and make change
+S051 - Multi-digit × 1-digit (with regroup)
+S052 - Concept of partial products
+S058 - Multi-digit ÷ 1-digit (with remainders)
+S063 - Classify prime vs. composite
+S073 - Simplify fractions
+S068 - Fluent recall of division facts (latency target)
+S157 - Recognize and generate cube numbers
+S159 - Expand (a + b)² conceptually (area model)
+S161 - Use exponent notation
+S164 - Understand square root as inverse of squaring
+S169 - Understand Pythagorean relationship
+S038 - Subtract across zeros
+S040 - Solve addition/subtraction word problems
+S099 - Estimate decimal results
+S194 - Read temperatures (°F/°C) & convert between scales
+S173 - Evaluate numerical expressions
+S056 - Estimate products (whole numbers)
+S095 - Multiply decimals by whole numbers
+S053 - Column multiplication 2×1 (algorithm)
+S060 - Standard long-division procedure
+S202 - Estimate quotients (whole numbers)
+S097 - Divide decimals by whole numbers
+S150 - Compute mean, median, mode, range
+S064 - Prime factorization
+S077 - Add fractions with like denominators
+S079 - Subtract fractions with like denominators
+S082 - Multiply fractions (including mixed numbers)
+S186 - Divide integers
+S158 - Generate and analyze square/cube sequences
+S167 - Understand cube root as inverse of cubing
+S160 - Expand simple binomials/trinomials conceptually
+S162 - Evaluate powers (including powers of 10)
+S165 - Compute square roots of perfect squares
+S174 - Apply order of operations with parentheses
+S175 - Translate words ↔ expressions
+S059 - Multi-digit ÷ 2-digit (partial quotients/standard)
+S096 - Multiply decimals by decimals
+S105 - Find a percent of a quantity
+S054 - Column multiplication 2×2 (algorithm)
+S098 - Divide by decimals (scaling place)
+S100 - Perform money operations (decimal currency)
+S110 - Compute unit rates
+S065 - Greatest common factor (GCF)
+S066 - Least common multiple (LCM)
+S085 - Divide a fraction by a fraction
+S168 - Compute cube roots of perfect cubes
+S166 - Estimate square roots of non-perfect squares
+S170 - Find missing leg/hypotenuse in right triangles
+S163 - Apply order of operations including exponents
+S176 - Solve one-step equations (±)
+S108 - Simple interest (principal, rate, time)
+S055 - Handle internal zeros in multiplication
+S106 - Find the whole given part and percent
+S107 - Percent increase/decrease
+S147 - Solve money word problems
+S111 - Set up and solve proportions
+S197 - Use unit-rate conversion factors to convert measures
+S076 - Find common denominators via LCM
+S171 - Recognize common Pythagorean triples
+S172 - Use Pythagorean distance on a grid (optional extension)
+S177 - Solve one-step equations (×/÷)
+S112 - Use scale drawings and scale factors
+S113 - Solve basic mixture/alligation problems
+S114 - Solve speed–time–distance problems
+S101 - Apply decimals in measurement contexts
+S190 - Convert metric lengths (mm–cm–m–km)
+S191 - Convert US customary lengths (in–ft–yd–mi)
+S075 - Compare fractions with unlike denominators
+S078 - Add fractions with unlike denominators
+S080 - Subtract fractions with unlike denominators
+S178 - Solve two-step equations
+S088 - Solve fraction word problems
+S179 - Use distributive property within equations
