@@ -12,6 +12,111 @@ import {
   getLessonScript,
   saveLessonScript
 } from '../services/lessons'
+import {
+  beginOAuthFlow,
+  completeOAuthFlow,
+  issueJwtForSession,
+  loginWithPassword,
+  logout as logoutSession,
+  registerWithPassword
+} from '../services/auth'
+import { toUserProfile } from '../services/auth/profile'
+
+const authImplementation = implement(appContract.auth).router({
+  register: implement(appContract.auth.register).handler(async ({ input, context }) => {
+    const result = await registerWithPassword({
+      email: input.email,
+      password: input.password,
+      displayName: input.displayName
+    })
+
+    context?.setCookie?.(result.cookie)
+
+    return {
+      user: result.user,
+      session: result.session
+    }
+  }),
+  login: implement(appContract.auth.login).handler(async ({ input, context }) => {
+    const result = await loginWithPassword({
+      email: input.email,
+      password: input.password
+    })
+
+    context?.setCookie?.(result.cookie)
+
+    return {
+      user: result.user,
+      session: result.session
+    }
+  }),
+  logout: implement(appContract.auth.logout).handler(async ({ context }) => {
+    const session = context?.session
+    if (!session) {
+      throw new ORPCError('UNAUTHORIZED', { message: 'Session required' })
+    }
+
+    const cookie = await logoutSession(session.id)
+    context?.setCookie?.(cookie)
+
+    return { success: true as const }
+  }),
+  me: implement(appContract.auth.me).handler(async ({ context }) => {
+    const session = context?.session
+    const user = context?.user
+
+    if (!session || !user) {
+      throw new ORPCError('UNAUTHORIZED', { message: 'Session required' })
+    }
+
+    return {
+      user: toUserProfile(user),
+      session: {
+        id: session.id,
+        expiresAt: session.expires_at
+      }
+    }
+  }),
+  beginOAuth: implement(appContract.auth.beginOAuth).handler(async ({ input }) => {
+    const result = await beginOAuthFlow(input.provider)
+    return result
+  }),
+  completeOAuth: implement(appContract.auth.completeOAuth).handler(async ({ input, context }) => {
+    const result = await completeOAuthFlow(input.provider, {
+      code: input.code,
+      state: input.state,
+      redirectUri: input.redirectUri,
+      codeVerifier: input.codeVerifier
+    })
+
+    context?.setCookie?.(result.cookie)
+
+    return {
+      user: result.user,
+      session: result.session
+    }
+  }),
+  issueJwt: implement(appContract.auth.issueJwt).handler(async ({ input, context }) => {
+    const session = context?.session
+    const user = context?.user
+
+    if (!session || !user) {
+      throw new ORPCError('UNAUTHORIZED', { message: 'Session required' })
+    }
+
+    const result = await issueJwtForSession({
+      userId: user.id,
+      sessionId: session.id,
+      audience: input.audience,
+      expiresInSeconds: input.expiresInSeconds
+    })
+
+    return {
+      token: result.token,
+      expiresAt: result.expiresAt.toISOString()
+    }
+  })
+})
 
 const skillsImplementation = implement(appContract.skills).router({
   list: implement(appContract.skills.list).handler(async () => {
@@ -182,6 +287,7 @@ const xpImplementation = implement(appContract.xp).router({
 })
 
 export const appRouter = implement(appContract).router({
+  auth: authImplementation,
   skills: skillsImplementation,
   lessons: lessonsImplementation,
   engine: engineImplementation,

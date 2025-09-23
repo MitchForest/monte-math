@@ -17,13 +17,18 @@
     "@monte/shared": "workspace:*",
     "@orpc/openapi": "^1.0.0",
     "@orpc/server": "^1.0.0",
+    "arctic": "^1.6.0",
+    "cookie": "^0.6.0",
     "hono": "^3.12.0",
+    "jose": "^5.2.0",
     "kysely": "^0.28.2",
     "kysely-bun-sqlite": "^0.4.0",
+    "oslo": "^1.1.0",
     "zod": "^4.1.7"
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "@types/cookie": "^1.0.0",
     "@types/node": "^20.11.0",
     "typescript": "^5.3.3"
   }

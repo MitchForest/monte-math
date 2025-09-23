@@ -1,22 +1,47 @@
 import { Hono } from 'hono'
 import { RPCHandler } from '@orpc/server/fetch'
+import { parse as parseCookie } from 'cookie'
 
 import { appRouter } from './procedures'
+import { buildClearSessionHeader, getSessionFromRequest } from './services/auth'
+import { loadAuthEnvironment } from './config/auth'
 
 const app = new Hono()
 
 const rpcHandler = new RPCHandler(appRouter)
+const authEnv = loadAuthEnvironment()
 
 app.use('/rpc/*', async (c, next) => {
+  const cookies = parseCookie(c.req.raw.headers.get('cookie') ?? '')
+  const sessionCookie = cookies[authEnv.sessionCookieName]
+  let authState = undefined
+  try {
+    authState = await getSessionFromRequest(sessionCookie)
+  } catch (error) {
+    authState = undefined
+  }
+  const pendingCookies: string[] = []
+
+  if (sessionCookie && !authState) {
+    pendingCookies.push(buildClearSessionHeader())
+  }
+
   const { matched, response } = await rpcHandler.handle(c.req.raw, {
     prefix: '/rpc',
     context: {
       headers: Object.fromEntries(c.req.raw.headers),
-      userId: c.req.header('x-user-id') ?? undefined
+      session: authState?.session,
+      user: authState?.user,
+      setCookie: (value: string) => {
+        pendingCookies.push(value)
+      }
     }
   })
 
   if (matched && response) {
+    pendingCookies.forEach((value) => {
+      response.headers.append('set-cookie', value)
+    })
     return c.newResponse(response.body, response)
   }
 

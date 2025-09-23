@@ -9,6 +9,7 @@
     "dev:studio": "pnpm --filter @monte/studio dev",
     "sync:pull": "pnpm --filter @monte/api db:seed",
     "sync:push": "bun tools/export-db-to-content.ts",
+    "generate:secrets": "bun run tools/generate-secrets.ts",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",

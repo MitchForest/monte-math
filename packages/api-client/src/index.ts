@@ -16,7 +16,12 @@ export function createApiClient(options: CreateClientOptions = {}): ApiClient {
 
   const link = new RPCLink({
     url: `${baseUrl.replace(/\/$/, '')}/rpc`,
-    headers: getHeaders
+    headers: getHeaders,
+    fetch: async (request, init, _options, _path, _input) =>
+      fetch(request, {
+        ...init,
+        credentials: 'include'
+      })
   })
 
   return createRouterClient(appContract, { link })

@@ -4,6 +4,18 @@ import { z } from 'zod'
 import { lessonScriptSchema } from '../lesson'
 import { masteryStateSchema, skillPrerequisiteSchema, skillSchema } from '../skill'
 import { attemptSchema, nextTaskSchema, xpProgressSchema } from '../types'
+import {
+  authResultSchema,
+  beginOAuthInputSchema,
+  beginOAuthOutputSchema,
+  completeOAuthInputSchema,
+  jwtIssueInputSchema,
+  jwtIssueOutputSchema,
+  loginInputSchema,
+  registrationInputSchema,
+  sessionSchema,
+  userProfileSchema
+} from '../auth'
 
 const skillWithRelationsSchema = skillSchema.extend({
   prerequisites: z.array(skillSchema).default([]),
@@ -30,6 +42,25 @@ const prereqEdgeInput = z.object({
 const saveLessonInput = z.object({
   script: lessonScriptSchema,
   publish: z.boolean().optional()
+})
+
+export const authContract = oc.router({
+  register: oc.input(registrationInputSchema).output(authResultSchema),
+  login: oc.input(loginInputSchema).output(authResultSchema),
+  logout: oc.output(z.object({ success: z.literal(true) })),
+  me: oc.output(
+    z.object({
+      user: userProfileSchema,
+      session: sessionSchema
+    })
+  ),
+  beginOAuth: oc
+    .input(beginOAuthInputSchema)
+    .output(beginOAuthOutputSchema),
+  completeOAuth: oc
+    .input(completeOAuthInputSchema)
+    .output(authResultSchema),
+  issueJwt: oc.input(jwtIssueInputSchema).output(jwtIssueOutputSchema)
 })
 
 export const skillsContract = oc.router({
@@ -97,6 +128,7 @@ export const xpContract = oc.router({
 })
 
 export const appContract = oc.router({
+  auth: authContract,
   skills: skillsContract,
   lessons: lessonsContract,
   engine: engineContract,
