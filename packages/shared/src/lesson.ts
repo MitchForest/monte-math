@@ -1,6 +1,22 @@
 import { z } from 'zod'
 
-export const StepAction = z.union([
+const goldenBeadsConfigSchema = z.object({
+  addends: z.tuple([z.number().int(), z.number().int()]),
+  startEmpty: z.boolean().optional(),
+  prepopulateAddends: z.boolean().optional()
+})
+
+const practiceProblemSchema = z.object({
+  a: z.number().int(),
+  b: z.number().int(),
+  focus: z.string()
+})
+
+const practiceMetaSchema = z.object({
+  skillIds: z.array(z.string())
+})
+
+export const stepActionSchema = z.union([
   z.object({ kind: z.literal('focus'), target: z.string(), zoom: z.number().optional() }),
   z.object({ kind: z.literal('highlight'), target: z.string(), style: z.enum(['ring', 'pulse']).optional() }),
   z.object({ kind: z.literal('spawn'), thing: z.enum(['unit', 'ten', 'hundred', 'thousand', 'card']), qty: z.number(), to: z.string() }),
@@ -11,39 +27,41 @@ export const StepAction = z.union([
   z.object({ kind: z.literal('wait'), ms: z.number() })
 ])
 
-export const Step = z.object({
+export const stepSchema = z.object({
   id: z.string(),
   label: z.string().optional(),
-  actions: z.array(StepAction)
+  actions: z.array(stepActionSchema)
 })
 
-export const Stage = z.object({
+export const stageSchema = z.object({
   id: z.string(),
   mode: z.enum(['tutorial', 'worked', 'practice']),
   heading: z.string().optional(),
   materialSlug: z.string(),
-  materialConfig: z.record(z.any()).optional(),
-  steps: z.array(Step).optional(),
+  materialConfig: goldenBeadsConfigSchema.optional(),
+  steps: z.array(stepSchema).optional(),
   practiceTemplateId: z.string().optional()
 })
 
-export const PracticeTemplate = z.object({
+export const practiceTemplateSchema = z.object({
   id: z.string(),
   prompt: z.string(),
-  inputs: z.record(z.any()),
-  answer: z.any(),
-  meta: z.record(z.any()).optional()
+  inputs: z.object({
+    problems: z.array(practiceProblemSchema)
+  }),
+  answer: z.null(),
+  meta: practiceMetaSchema.optional()
 })
 
-export const LessonScript = z.object({
+export const lessonScriptSchema = z.object({
   lessonId: z.string(),
   version: z.string(),
-  stages: z.array(Stage),
-  practiceTemplates: z.array(PracticeTemplate).optional()
+  stages: z.array(stageSchema),
+  practiceTemplates: z.array(practiceTemplateSchema).optional()
 })
 
-export type StepAction = z.infer<typeof StepAction>
-export type Step = z.infer<typeof Step>
-export type Stage = z.infer<typeof Stage>
-export type PracticeTemplate = z.infer<typeof PracticeTemplate>
-export type LessonScript = z.infer<typeof LessonScript>
+export type StepAction = z.infer<typeof stepActionSchema>
+export type Step = z.infer<typeof stepSchema>
+export type Stage = z.infer<typeof stageSchema>
+export type PracticeTemplate = z.infer<typeof practiceTemplateSchema>
+export type LessonScript = z.infer<typeof lessonScriptSchema>

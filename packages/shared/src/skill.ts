@@ -1,19 +1,24 @@
 import { z } from 'zod'
 
-export const Skill = z.object({
+export const masteryStateSchema = z.enum([
+  'not_started',
+  'learning',
+  'mastered',
+  'review_due'
+])
+
+export const skillSchema = z.object({
   id: z.string(),
   code: z.string().optional(),
   name: z.string(),
-  description: z.string().optional()
+  description: z.string().nullish()
 })
 
-export const SkillPrereq = z.object({
+export const skillPrerequisiteSchema = z.object({
   skillId: z.string(),
   prereqId: z.string()
 })
 
-export const MasteryState = z.enum(['not_started', 'learning', 'mastered', 'review_due'])
-
-export type Skill = z.infer<typeof Skill>
-export type SkillPrereq = z.infer<typeof SkillPrereq>
-export type MasteryState = z.infer<typeof MasteryState>
+export type MasteryState = z.infer<typeof masteryStateSchema>
+export type Skill = z.infer<typeof skillSchema>
+export type SkillPrerequisite = z.infer<typeof skillPrerequisiteSchema>

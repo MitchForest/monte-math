@@ -7,6 +7,8 @@
     "dev:web": "pnpm --filter @monte/web dev",
     "dev:api": "pnpm --filter @monte/api dev",
     "dev:studio": "pnpm --filter @monte/studio dev",
+    "sync:pull": "pnpm --filter @monte/api db:seed",
+    "sync:push": "bun tools/export-db-to-content.ts",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",

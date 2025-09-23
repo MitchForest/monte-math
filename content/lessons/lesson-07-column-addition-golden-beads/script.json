@@ -1,0 +1,173 @@
+{
+  "lessonId": "lesson-07-column-addition-golden-beads",
+  "version": "0.1.0",
+  "stages": [
+    {
+      "id": "tutorial-build",
+      "mode": "tutorial",
+      "heading": "Tutorial · Build and Add 1,824 + 2,832",
+      "materialSlug": "golden-beads",
+      "materialConfig": {
+        "addends": [1824, 2832],
+        "startEmpty": true
+      },
+      "steps": [
+        {
+          "id": "introduce",
+          "label": "Problem Setup",
+          "actions": [
+            { "kind": "prompt", "text": "We will add 1,824 + 2,832 using golden beads and number cards." },
+            { "kind": "spawn", "thing": "card", "qty": 1, "to": "card.addend1.thousands" },
+            { "kind": "spawn", "thing": "card", "qty": 8, "to": "card.addend1.hundreds" },
+            { "kind": "spawn", "thing": "card", "qty": 2, "to": "card.addend1.tens" },
+            { "kind": "spawn", "thing": "card", "qty": 4, "to": "card.addend1.ones" },
+            { "kind": "spawn", "thing": "card", "qty": 2, "to": "card.addend2.thousands" },
+            { "kind": "spawn", "thing": "card", "qty": 8, "to": "card.addend2.hundreds" },
+            { "kind": "spawn", "thing": "card", "qty": 3, "to": "card.addend2.tens" },
+            { "kind": "spawn", "thing": "card", "qty": 2, "to": "card.addend2.ones" }
+          ]
+        },
+        {
+          "id": "compose-addends",
+          "label": "Compose Numbers",
+          "actions": [
+            { "kind": "prompt", "text": "Build each number on the mat: beads align with their place-value columns." },
+            { "kind": "spawn", "thing": "thousand", "qty": 1, "to": "addend1.thousands" },
+            { "kind": "spawn", "thing": "hundred", "qty": 8, "to": "addend1.hundreds" },
+            { "kind": "spawn", "thing": "ten", "qty": 2, "to": "addend1.tens" },
+            { "kind": "spawn", "thing": "unit", "qty": 4, "to": "addend1.ones" },
+            { "kind": "spawn", "thing": "thousand", "qty": 2, "to": "addend2.thousands" },
+            { "kind": "spawn", "thing": "hundred", "qty": 8, "to": "addend2.hundreds" },
+            { "kind": "spawn", "thing": "ten", "qty": 3, "to": "addend2.tens" },
+            { "kind": "spawn", "thing": "unit", "qty": 2, "to": "addend2.ones" }
+          ]
+        },
+        {
+          "id": "ones-column",
+          "label": "Add Ones",
+          "actions": [
+            { "kind": "highlight", "target": "addend1.ones" },
+            { "kind": "prompt", "text": "Start with the ones column: move all unit beads to the workspace." },
+            { "kind": "move", "target": "addend1.ones", "to": "workspace.ones", "qty": 4 },
+            { "kind": "move", "target": "addend2.ones", "to": "workspace.ones", "qty": 2 },
+            { "kind": "prompt", "text": "There are 6 unit beads. Slide them into the result column." },
+            { "kind": "move", "target": "workspace.ones", "to": "result.ones", "qty": 6 },
+            { "kind": "spawn", "thing": "card", "qty": 6, "to": "card.result.ones" }
+          ]
+        },
+        {
+          "id": "tens-column",
+          "label": "Add Tens",
+          "actions": [
+            { "kind": "highlight", "target": "addend1.tens" },
+            { "kind": "prompt", "text": "Next tens: move the ten-bars to the workspace." },
+            { "kind": "move", "target": "addend1.tens", "to": "workspace.tens", "qty": 2 },
+            { "kind": "move", "target": "addend2.tens", "to": "workspace.tens", "qty": 3 },
+            { "kind": "prompt", "text": "Five ten-bars make 50, so drop them to the result." },
+            { "kind": "move", "target": "workspace.tens", "to": "result.tens", "qty": 5 },
+            { "kind": "spawn", "thing": "card", "qty": 5, "to": "card.result.tens" }
+          ]
+        },
+        {
+          "id": "hundreds-column",
+          "label": "Regroup Hundreds",
+          "actions": [
+            { "kind": "highlight", "target": "addend1.hundreds" },
+            { "kind": "prompt", "text": "Hundreds combine to 16 blocks. Ten hundreds regroup as 1 thousand." },
+            { "kind": "move", "target": "addend1.hundreds", "to": "workspace.hundreds", "qty": 8 },
+            { "kind": "move", "target": "addend2.hundreds", "to": "workspace.hundreds", "qty": 8 },
+            { "kind": "exchange", "column": "hundreds" },
+            { "kind": "prompt", "text": "Six hundreds stay. The exchanged thousand moves above the thousands column." },
+            { "kind": "move", "target": "workspace.hundreds", "to": "result.hundreds", "qty": 6 },
+            { "kind": "spawn", "thing": "card", "qty": 6, "to": "card.result.hundreds" }
+          ]
+        },
+        {
+          "id": "thousands-column",
+          "label": "Finish Thousands",
+          "actions": [
+            { "kind": "highlight", "target": "addend1.thousands" },
+            { "kind": "prompt", "text": "Bring down the thousands, including the carry." },
+            { "kind": "move", "target": "carry.thousands", "to": "workspace.thousands", "qty": 1 },
+            { "kind": "move", "target": "addend1.thousands", "to": "workspace.thousands", "qty": 1 },
+            { "kind": "move", "target": "addend2.thousands", "to": "workspace.thousands", "qty": 2 },
+            { "kind": "move", "target": "workspace.thousands", "to": "result.thousands", "qty": 4 },
+            { "kind": "spawn", "thing": "card", "qty": 4, "to": "card.result.thousands" },
+            { "kind": "prompt", "text": "Our sum is 4,656. Read it with the number cards." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "worked-example",
+      "mode": "worked",
+      "heading": "Worked Example · You try regrouping",
+      "materialSlug": "golden-beads",
+      "materialConfig": {
+        "addends": [1859, 2452],
+        "startEmpty": false,
+        "prepopulateAddends": true
+      },
+      "steps": [
+        {
+          "id": "worked-intro",
+          "actions": [
+            { "kind": "prompt", "text": "Now add 1,859 + 2,452. The mat starts with both numbers built." },
+            { "kind": "highlight", "target": "addend1.ones" },
+            { "kind": "prompt", "text": "Move ones to the result. Type the digit when ready." },
+            { "kind": "gate-do", "expect": "ones-1", "hint": "There are 11 unit beads → 1 carry, 1 in ones place." }
+          ]
+        },
+        {
+          "id": "worked-tens",
+          "actions": [
+            { "kind": "highlight", "target": "addend1.tens" },
+            { "kind": "prompt", "text": "Tens column next. Remember the carry from ones." },
+            { "kind": "gate-do", "expect": "tens-1", "hint": "5 + 5 + carry 1 = 11 tens → 1 carry, 1 ten." }
+          ]
+        },
+        {
+          "id": "worked-hundreds",
+          "actions": [
+            { "kind": "highlight", "target": "addend1.hundreds" },
+            { "kind": "prompt", "text": "Hundreds combine to 13. What digit lands here?" },
+            { "kind": "gate-do", "expect": "hundreds-3", "hint": "8 + 4 + carry 1 = 13 → 1 carry, 3 hundreds." }
+          ]
+        },
+        {
+          "id": "worked-thousands",
+          "actions": [
+            { "kind": "highlight", "target": "addend1.thousands" },
+            { "kind": "prompt", "text": "Finally thousands. Include the carry." },
+            { "kind": "gate-do", "expect": "thousands-4", "hint": "1 + 2 + carry 1 = 4 thousands." },
+            { "kind": "prompt", "text": "Great! 1,859 + 2,452 = 4,311." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practice-set",
+      "mode": "practice",
+      "heading": "Practice · Independent problems",
+      "materialSlug": "golden-beads",
+      "practiceTemplateId": "golden-beads:column-addition-4digit"
+    }
+  ],
+  "practiceTemplates": [
+    {
+      "id": "golden-beads:column-addition-4digit",
+      "prompt": "Add the numbers. Use beads if needed, then type your sum.",
+      "inputs": {
+        "problems": [
+          { "a": 2746, "b": 1835, "focus": "regroup hundreds" },
+          { "a": 4628, "b": 1397, "focus": "regroup tens & hundreds" },
+          { "a": 3059, "b": 2874, "focus": "pen & paper only" }
+        ]
+      },
+      "answer": null,
+      "meta": {
+        "skillIds": ["S032", "S033"]
+      }
+    }
+  ]
+}

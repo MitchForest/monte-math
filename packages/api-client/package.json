@@ -1,0 +1,13 @@
+{
+  "name": "@monte/api-client",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@monte/shared": "workspace:*",
+    "@orpc/client": "^1.0.0",
+    "@orpc/server": "^1.0.0"
+  }
+}

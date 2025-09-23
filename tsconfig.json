@@ -15,7 +15,8 @@
     "baseUrl": ".",
     "paths": {
       "@monte/shared": ["packages/shared/src"],
-      "@monte/content-builder": ["packages/content-builder/src"]
+      "@monte/content-builder": ["packages/content-builder/src"],
+      "@monte/api-client": ["packages/api-client/src"]
     }
   },
   "exclude": ["node_modules", "dist", "build", ".next"]

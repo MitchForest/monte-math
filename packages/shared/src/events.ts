@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const SemanticEvent = z.union([
+export const semanticEventSchema = z.union([
   z.object({ type: z.literal('beads.exchanged'), column: z.string(), count: z.number(), to: z.string() }),
   z.object({ type: z.literal('cards.composed'), value: z.number() }),
   z.object({ type: z.literal('sum.read'), value: z.number() }),
@@ -9,4 +9,4 @@ export const SemanticEvent = z.union([
   z.object({ type: z.literal('bead-frame.moved'), wire: z.string(), position: z.number() })
 ])
 
-export type SemanticEvent = z.infer<typeof SemanticEvent>
+export type SemanticEvent = z.infer<typeof semanticEventSchema>

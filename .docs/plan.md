@@ -1,10 +1,43 @@
 # Monte Math — Canonical Architecture & Implementation Plan
 
-> **Stack:**
-> **Web (Player):** React + Vite, Tailwind + shadcn/ui, Zustand, TanStack Router, TanStack Query, PixiJS
-> **Backend:** Bun + Hono, SQLite (libSQL/Turso in prod) + Kysely
-> **Content:** Git-based versioning for MDX + JSON scripts (immutable published versions)
-> **Studio (Admin/No-Code):** Next.js (or Vite) app for authoring/preview, publishing, KG visualization
+> **Stack (Updated):**
+> 
+> **🎮 Web (Player):** 
+> - Build: React + Vite
+> - Styling: Tailwind CSS + shadcn/ui
+> - State: Zustand
+> - Routing: TanStack Router
+> - Data: TanStack Query + oRPC client
+> - Forms: TanStack Form + Zod
+> - Tables: TanStack Table
+> - Charts: Recharts
+> - Materials: PixiJS + GSAP animations
+> 
+> **🔧 Backend (API):** 
+> - Runtime: Bun
+> - Framework: oRPC server + Hono (adapter)
+> - Database: SQLite (libSQL/Turso in prod) + Kysely (type-safe queries)
+> - Validation: Zod schemas (shared)
+> - Auth: JWT (future)
+> 
+> **📝 Studio (No-Code CMS):** 
+> - Build: React + Vite (same as Player)
+> - All Player stack +
+> - Knowledge Graph: Cytoscape.js
+> - Drag & Drop: DnD Kit
+> - File uploads: React Dropzone
+> - Accessible UI: Radix UI primitives
+> 
+> **📦 Shared Package:**
+> - Zod schemas (single source of truth)
+> - TypeScript types (auto-inferred)
+> - oRPC procedures (client/server contracts)
+> - Material interfaces
+> 
+> **🚀 End-to-End Type Safety:**
+> - Zod → TypeScript → oRPC → Kysely → Database
+> - Single schema definition, validated everywhere
+> - Compile-time type checking + runtime validation
 
 ---
 
@@ -60,7 +93,7 @@ monte/
           migrations/
           seed.ts
       bunfig.toml
-    studio/                   # Authoring/admin app (Next.js recommended)
+    studio/                   # Authoring/admin app (React + Vite)
       src/
         pages/
           lessons/[lessonId].tsx     # JSON/MDX editor + live preview (Pixi embed)
@@ -106,12 +139,13 @@ monte/
 
 ---
 
-## 2) Shared Contracts (Zod + TS)
+## 2) Shared Contracts (Zod + TypeScript + oRPC)
 
 ```ts
 // packages/shared/src/lesson.ts
 import { z } from "zod";
 
+// All schemas defined with Zod for validation + type inference
 export const StepAction = z.union([
   z.object({ kind: z.literal("focus"), target: z.string(), zoom: z.number().optional() }),
   z.object({ kind: z.literal("highlight"), target: z.string(), style: z.enum(["ring","pulse"]).optional() }),
@@ -152,6 +186,9 @@ export const LessonScript = z.object({
   })).optional()
 });
 export type LessonScript = z.infer<typeof LessonScript>;
+
+// oRPC procedures use these schemas for end-to-end type safety
+// Client gets auto-complete, server gets validation
 ```
 
 ```ts
@@ -292,7 +329,12 @@ POST /auth/login                         # optional
 **Features:**
 
 * **Lesson list/search:** filter by topic, skill, version, status (draft/published).
-* **Lesson editor:** JSON form (Zod-driven), narration tokens with locale tabs, **live preview** (mount Pixi scene with the current JSON).
+* **Lesson builder:** Visual drag-and-drop interface for creating stages and steps
+  * Step library with pre-built actions (spawn, move, exchange, etc.)
+  * Visual timeline editor for sequencing
+  * Form-based property editors (no code editing)
+  * Narration script editor with locale support
+  * **Live preview** iframe showing Player app with current lesson
 * **Publish panel:** diff from previous version, semantic check results, push to CDN.
 * **Knowledge Graph view:**
 
@@ -304,10 +346,16 @@ POST /auth/login                         # optional
 * **Telemetry dashboards:** step durations, hint usage, gate failures, item difficulty drift.
 * **Permissions:** roles (Viewer, Author, Reviewer, Publisher, Admin).
 
-**Tech choices:**
+**Tech choices (No-Code Focus):**
 
-* Next.js (RSC OK, but mark player preview route as `"use client"`).
-* Component libs: shadcn/ui, react-hook-form + Zod, TanStack Table, Cytoscape.js for graph; Monaco editor for JSON with schema intellisense.
+* React + Vite (consistent with Player app)
+* TanStack ecosystem for all data needs (Router, Query, Form, Table)
+* Visual lesson builder with DnD Kit (no JSON editing)
+* Cytoscape.js for interactive Knowledge Graph
+* Form-based editing with Radix UI components
+* Media management with React Dropzone
+* Live preview via iframe to Player app
+* Recharts for analytics dashboards
 
 ---
 
@@ -338,13 +386,29 @@ POST /auth/login                         # optional
 **Player install**
 
 ```bash
-pnpm add react react-dom vite tailwindcss @tanstack/router @tanstack/react-query zustand pixi.js
+pnpm add react react-dom vite tailwindcss \
+  @tanstack/router @tanstack/react-query @tanstack/react-form @tanstack/react-table \
+  zustand pixi.js gsap recharts \
+  @orpc/client @orpc/react zod
 ```
 
 **API install**
 
 ```bash
-pnpm add -w hono bun sqlite kysely @libsql/kysely-libsql zod
+pnpm add @orpc/server @orpc/openapi hono \
+  kysely @libsql/kysely-libsql \
+  zod jsonwebtoken
+```
+
+**Studio install**
+
+```bash
+pnpm add react react-dom vite tailwindcss \
+  @tanstack/router @tanstack/react-query @tanstack/react-form @tanstack/react-table \
+  zustand recharts cytoscape cytoscape-fcose \
+  @dnd-kit/core @dnd-kit/sortable react-dropzone \
+  @radix-ui/react-select @radix-ui/react-dialog \
+  @orpc/client @orpc/react zod
 ```
 
 **Shared package alias (tsconfig paths)**
@@ -430,8 +494,10 @@ await emitManifest();
 
 ### TL;DR
 
-* **React/Vite** player + **Pixi** materials; **Bun/Hono + SQLite/Kysely** engine.
-* **Immutable lesson bundles** (JSON/MDX) on **CDN**, built by a **Content Builder**; **Studio** edits and publishes.
-* **Programmatic** everything: materials, tutorials, worked examples, practice generators.
-* **Shared schemas** + **headless smoke tests** keep thousands of lessons organized and safe.
-* **Studio** doubles as **admin** with **KG visualization** and publish workflow.
+* **Unified Stack**: React + Vite everywhere, TanStack ecosystem, Zod validation
+* **Type-Safe API**: oRPC for end-to-end TypeScript, Kysely for type-safe SQL
+* **Player**: PixiJS + GSAP materials, Zustand state, offline-capable
+* **Studio**: No-code CMS with visual builders, drag-and-drop, live preview
+* **Content**: Immutable versioned JSON scripts on CDN, Git-backed source
+* **Engine**: SQLite/Turso + smart selectors, mastery tracking, spaced repetition
+* **Developer Experience**: Single `pnpm install`, full type safety, hot reload everywhere
