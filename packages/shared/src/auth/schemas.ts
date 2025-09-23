@@ -66,3 +66,18 @@ export const jwtIssueOutputSchema = z.object({
 export type AuthProvider = z.infer<typeof authProviderSchema>
 export type UserProfile = z.infer<typeof userProfileSchema>
 export type SessionInfo = z.infer<typeof sessionSchema>
+
+export const profileUpdateInputSchema = z.object({
+  displayName: z.string().min(1).max(120)
+})
+
+export const avatarRegenerateInputSchema = z
+  .object({
+    seed: z.string().min(1).max(120).optional()
+  })
+  .default({})
+
+export const changePasswordInputSchema = z.object({
+  currentPassword: z.string().min(8),
+  newPassword: z.string().min(8)
+})

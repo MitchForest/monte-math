@@ -20,7 +20,12 @@ import {
   logout as logoutSession,
   registerWithPassword
 } from '../services/auth'
-import { toUserProfile } from '../services/auth/profile'
+import {
+  toUserProfile,
+  updateDisplayName,
+  regenerateAvatar,
+  changePassword as changeUserPassword
+} from '../services/auth/profile'
 
 const authImplementation = implement(appContract.auth).router({
   register: implement(appContract.auth.register).handler(async ({ input, context }) => {
@@ -286,8 +291,36 @@ const xpImplementation = implement(appContract.xp).router({
   }))
 })
 
+const profileImplementation = implement(appContract.profile).router({
+  updateDisplayName: implement(appContract.profile.updateDisplayName).handler(async ({ input, context }) => {
+    const user = context?.user
+    if (!user) {
+      throw new ORPCError('UNAUTHORIZED', { message: 'Session required' })
+    }
+
+    return updateDisplayName(user.id, input.displayName)
+  }),
+  regenerateAvatar: implement(appContract.profile.regenerateAvatar).handler(async ({ input, context }) => {
+    const user = context?.user
+    if (!user) {
+      throw new ORPCError('UNAUTHORIZED', { message: 'Session required' })
+    }
+
+    return regenerateAvatar(user.id, input.seed)
+  }),
+  changePassword: implement(appContract.profile.changePassword).handler(async ({ input, context }) => {
+    const user = context?.user
+    if (!user) {
+      throw new ORPCError('UNAUTHORIZED', { message: 'Session required' })
+    }
+
+    return changeUserPassword(user.id, input.currentPassword, input.newPassword)
+  })
+})
+
 export const appRouter = implement(appContract).router({
   auth: authImplementation,
+  profile: profileImplementation,
   skills: skillsImplementation,
   lessons: lessonsImplementation,
   engine: engineImplementation,

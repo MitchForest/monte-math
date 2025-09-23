@@ -12,6 +12,9 @@ import {
   jwtIssueInputSchema,
   jwtIssueOutputSchema,
   loginInputSchema,
+  profileUpdateInputSchema,
+  avatarRegenerateInputSchema,
+  changePasswordInputSchema,
   registrationInputSchema,
   sessionSchema,
   userProfileSchema
@@ -42,6 +45,20 @@ const prereqEdgeInput = z.object({
 const saveLessonInput = z.object({
   script: lessonScriptSchema,
   publish: z.boolean().optional()
+})
+
+const profileChangePasswordOutput = z.object({ success: z.literal(true) })
+
+export const profileContract = oc.router({
+  updateDisplayName: oc
+    .input(profileUpdateInputSchema)
+    .output(userProfileSchema),
+  regenerateAvatar: oc
+    .input(avatarRegenerateInputSchema)
+    .output(userProfileSchema),
+  changePassword: oc
+    .input(changePasswordInputSchema)
+    .output(profileChangePasswordOutput)
 })
 
 export const authContract = oc.router({
@@ -129,6 +146,7 @@ export const xpContract = oc.router({
 
 export const appContract = oc.router({
   auth: authContract,
+  profile: profileContract,
   skills: skillsContract,
   lessons: lessonsContract,
   engine: engineContract,
