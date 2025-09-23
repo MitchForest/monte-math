@@ -10,10 +10,11 @@ interface AdminShellProps {
   title: string
   description?: string
   children: ReactNode
+  headerAction?: ReactNode
 }
 
 const navItems = [
-  { to: '/', label: 'Knowledge Graph' },
+  { to: '/graph', label: 'Knowledge Graph' },
   { to: '/lessons', label: 'Lessons' },
 ]
 
@@ -25,7 +26,7 @@ function initials(name?: string | null) {
   return (parts[0]![0]! + parts[parts.length - 1]![0]!).toUpperCase()
 }
 
-export function AdminShell({ title, description, children }: AdminShellProps) {
+export function AdminShell({ title, description, headerAction, children }: AdminShellProps) {
   const user = useSessionStore((state) => state.user)
   const clearSession = useSessionStore((state) => state.clear)
   const queryClient = useQueryClient()
@@ -56,7 +57,7 @@ export function AdminShell({ title, description, children }: AdminShellProps) {
             return (
               <Link
                 key={item.to}
-                to={item.to as '/' | '/lessons'}
+                to={item.to as '/graph' | '/lessons'}
                 className={`flex items-center rounded-lg px-4 py-2 text-sm font-medium transition ${
                   isActive
                     ? 'bg-primary text-primary-foreground shadow-sm'
@@ -73,31 +74,40 @@ export function AdminShell({ title, description, children }: AdminShellProps) {
             <AvatarImage src={user?.avatarUrl ?? undefined} alt={user?.displayName ?? 'Admin'} />
             <AvatarFallback>{initials(user?.displayName)}</AvatarFallback>
           </Avatar>
-          <div>
+          <div className="min-w-0 flex-1">
             <p className="text-sm font-semibold text-foreground">{user?.displayName ?? 'Admin'}</p>
-            <p className="text-xs text-muted-foreground">{user?.email ?? 'No email'}</p>
+            <p
+              className="block w-full overflow-hidden text-ellipsis whitespace-nowrap text-xs text-muted-foreground"
+              title={user?.email ?? 'No email'}
+            >
+              {user?.email ?? 'No email'}
+            </p>
           </div>
         </div>
       </aside>
 
       <main className="flex-1">
         <header className="border-b border-border/60 bg-card/70 backdrop-blur">
-          <div className="flex items-center justify-between px-6 py-4">
-            <div>
+          <div className="flex items-center justify-between gap-4 px-6 py-4">
+            <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
                 {description}
               </p>
-              <h2 className="text-2xl font-semibold text-foreground">{title}</h2>
+              <h2 className="truncate text-2xl font-semibold text-foreground">{title}</h2>
             </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => logoutMutation.mutate()}
-              disabled={logoutMutation.isPending}
-            >
-              {logoutMutation.isPending ? 'Signing out…' : 'Sign out'}
-            </Button>
+            <div className="flex shrink-0 items-center gap-3">
+              {headerAction ? <div className="hidden sm:block">{headerAction}</div> : null}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => logoutMutation.mutate()}
+                disabled={logoutMutation.isPending}
+              >
+                {logoutMutation.isPending ? 'Signing out…' : 'Sign out'}
+              </Button>
+            </div>
           </div>
+          {headerAction ? <div className="px-6 pb-3 sm:hidden">{headerAction}</div> : null}
         </header>
         <div className="p-6">{children}</div>
       </main>

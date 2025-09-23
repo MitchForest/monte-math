@@ -8,6 +8,7 @@ import {
   useNavigate,
 } from '@tanstack/react-router'
 
+import { HomeView } from './views/HomeView'
 import { KnowledgeView } from './views/KnowledgeView'
 import { LessonsView } from './views/LessonsView'
 import { LoginView } from './views/LoginView'
@@ -19,9 +20,15 @@ const rootRoute = new RootRoute({
   component: RootLayout,
 })
 
-const knowledgeRoute = new Route({
+const homeRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/',
+  component: HomePage,
+})
+
+const knowledgeRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/graph',
   component: KnowledgePage,
 })
 
@@ -43,7 +50,13 @@ const signupRoute = new Route({
   component: SignupPage,
 })
 
-const routeTree = rootRoute.addChildren([knowledgeRoute, lessonsRoute, loginRoute, signupRoute])
+const routeTree = rootRoute.addChildren([
+  homeRoute,
+  knowledgeRoute,
+  lessonsRoute,
+  loginRoute,
+  signupRoute,
+])
 
 export const router = new Router({ routeTree })
 
@@ -58,12 +71,19 @@ function useAuthRedirect(target: 'auth' | 'guest') {
 
   useEffect(() => {
     if (status === 'authenticated' && target === 'guest') {
-      navigate({ to: '/' })
+      navigate({ to: '/graph' })
     }
     if (status === 'unauthenticated' && target === 'auth') {
       navigate({ to: '/login' })
     }
   }, [status, target, navigate])
+
+  if (target === 'guest') {
+    if (status === 'authenticated') {
+      return { isReady: false, user }
+    }
+    return { isReady: true, user }
+  }
 
   if (status === 'idle' || status === 'loading') {
     return { isReady: false, user: null }
@@ -74,6 +94,10 @@ function useAuthRedirect(target: 'auth' | 'guest') {
   }
 
   return { isReady: true, user }
+}
+
+function HomePage() {
+  return <HomeView />
 }
 
 function KnowledgePage() {

@@ -143,11 +143,19 @@ export const useSkillsStore = create<SkillsState>()(
       // Set position for graph layout
       setSkillPosition: (id, x, y) => {
         set((state) => {
-          const skills = new Map(state.skills)
-          const skill = skills.get(id)
-          if (skill) {
-            skills.set(id, { ...skill, position: { x, y } })
+          const skill = state.skills.get(id)
+          if (!skill) {
+            return state
           }
+
+          const currentPosition = skill.position
+          if (currentPosition && currentPosition.x === x && currentPosition.y === y) {
+            return state
+          }
+
+          const skills = new Map(state.skills)
+          skills.set(id, { ...skill, position: { x, y } })
+
           return { skills }
         })
       },

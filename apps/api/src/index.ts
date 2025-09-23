@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+import { cors } from 'hono/cors'
 import { RPCHandler } from '@orpc/server/fetch'
 import { parse as parseCookie } from 'cookie'
 
@@ -7,6 +8,33 @@ import { buildClearSessionHeader, getSessionFromRequest } from './services/auth'
 import { loadAuthEnvironment } from './config/auth'
 
 const app = new Hono()
+
+const defaultAllowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://localhost:3002',
+  'http://127.0.0.1:3002',
+]
+
+const allowedOrigins = (process.env.CORS_ORIGINS ?? '')
+  .split(',')
+  .map((value) => value.trim())
+  .filter(Boolean)
+
+const originAllowList = new Set([...defaultAllowedOrigins, ...allowedOrigins])
+
+app.use(
+  '*',
+  cors({
+    origin: (origin) => {
+      if (!origin) return origin
+      return originAllowList.has(origin) ? origin : ''
+    },
+    allowHeaders: ['Content-Type', 'Authorization'],
+    allowMethods: ['POST', 'GET', 'OPTIONS'],
+    credentials: true,
+  })
+)
 
 const rpcHandler = new RPCHandler(appRouter)
 const authEnv = loadAuthEnvironment()

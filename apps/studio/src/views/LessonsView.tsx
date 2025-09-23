@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-table'
 
 import { AdminShell } from '@/components/admin/AdminShell'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { LessonEditor } from '@/components/lessons/LessonEditor'
 
@@ -84,20 +84,19 @@ export function LessonsView() {
   })
 
   return (
-    <AdminShell title="Lessons" description="Content management">
+    <AdminShell
+      title="Lessons"
+      description="Content management"
+      headerAction={
+        <Button variant="secondary" disabled>
+          New lesson (soon)
+        </Button>
+      }
+    >
       <div className="relative">
         <Card>
-          <CardHeader className="flex items-center justify-between">
-            <div>
-              <CardTitle>Lesson catalog</CardTitle>
-              <CardDescription>Track drafts, publishing state, and metadata.</CardDescription>
-            </div>
-            <Button variant="secondary" disabled>
-              New lesson (soon)
-            </Button>
-          </CardHeader>
-          <CardContent>
-            <table className="w-full table-auto border-collapse text-sm">
+          <CardContent className="overflow-x-auto">
+            <table className="w-full min-w-[600px] table-auto border-collapse text-sm">
               <thead>
                 {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id} className="border-b border-border/60 text-left">
@@ -116,9 +115,9 @@ export function LessonsView() {
               </thead>
               <tbody>
                 {table.getRowModel().rows.map((row) => (
-                  <tr key={row.id} className="border-b border-border/40 last:border-0">
+                  <tr key={row.id} className="border-b border-border/40 last:border-0 hover:bg-muted/40">
                     {row.getVisibleCells().map((cell) => (
-                      <td key={cell.id} className="px-3 py-3">
+                      <td key={cell.id} className="px-3 py-3 align-top">
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </td>
                     ))}

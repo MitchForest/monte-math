@@ -7,6 +7,7 @@
     "dev:web": "pnpm --filter @monte/web dev",
     "dev:api": "pnpm --filter @monte/api dev",
     "dev:studio": "pnpm --filter @monte/studio dev",
+    "dev": "pnpm --parallel --filter @monte/api --filter @monte/web --filter @monte/studio run dev",
     "sync:pull": "pnpm --filter @monte/api db:seed",
     "sync:push": "bun tools/export-db-to-content.ts",
     "generate:secrets": "bun run tools/generate-secrets.ts",

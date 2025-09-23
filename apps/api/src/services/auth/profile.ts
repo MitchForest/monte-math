@@ -6,6 +6,24 @@ import { updateUser, findUserById } from './store'
 import { generateAvatarSeed } from './tokens'
 import { verifyPassword, hashPassword } from './password'
 
+function normalizeTimestamp(value: string | null | undefined) {
+  if (!value) {
+    return new Date().toISOString()
+  }
+
+  const direct = new Date(value)
+  if (!Number.isNaN(direct.getTime())) {
+    return direct.toISOString()
+  }
+
+  const withZulu = new Date(`${value}Z`)
+  if (!Number.isNaN(withZulu.getTime())) {
+    return withZulu.toISOString()
+  }
+
+  return new Date().toISOString()
+}
+
 export function toUserProfile(user: User) {
   return {
     id: user.id,
@@ -13,8 +31,8 @@ export function toUserProfile(user: User) {
     displayName: user.display_name,
     avatarSeed: user.avatar_seed,
     avatarUrl: buildDiceBearUrl({ seed: user.avatar_seed }),
-    createdAt: user.created_at,
-    updatedAt: user.updated_at,
+    createdAt: normalizeTimestamp(user.created_at),
+    updatedAt: normalizeTimestamp(user.updated_at),
   }
 }
 
