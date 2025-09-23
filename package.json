@@ -1,19 +1,23 @@
 {
-	"name": "monte-math",
-	"version": "0.1.0",
-	"private": true,
-	"workspaces": ["apps/*", "packages/*"],
-	"scripts": {
-		"dev": "bun run --filter '*' dev",
-		"build": "bun run --filter '*' build",
-		"typecheck": "bun run --filter '*' typecheck",
-		"lint": "bun run --filter '*' lint",
-		"test": "bun run --filter '*' test",
-		"format": "biome format --write .",
-		"check": "biome check ."
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"typescript": "^5"
-	}
+  "name": "monte-math",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Monte Math - Montessori mathematics education platform",
+  "scripts": {
+    "dev:web": "pnpm --filter @monte/web dev",
+    "dev:api": "pnpm --filter @monte/api dev",
+    "dev:studio": "pnpm --filter @monte/studio dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "clean": "pnpm -r clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

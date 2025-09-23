@@ -1,21 +1,27 @@
 {
-	"name": "@monte/api",
-	"version": "0.1.0",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "bun run --hot src/index.ts",
-		"build": "bun build src/index.ts --outdir dist --target bun",
-		"start": "bun run dist/index.js",
-		"typecheck": "bun x tsc --noEmit",
-		"lint": "bun x biome check",
-		"test": "bun test"
-	},
-	"dependencies": {
-		"hono": "^4.9.7"
-	},
-	"devDependencies": {
-		"@types/bun": "latest",
-		"typescript": "^5"
-	}
+  "name": "@monte/api",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir=dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext ts --report-unused-disable-directives --max-warnings 0",
+    "db:migrate": "bun run src/db/migrate.ts",
+    "db:seed": "bun run src/db/seed.ts"
+  },
+  "dependencies": {
+    "@monte/shared": "workspace:*",
+    "hono": "^3.12.0",
+    "kysely": "^0.27.2",
+    "@libsql/kysely-libsql": "^0.3.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
 }

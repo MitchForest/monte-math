@@ -1,5 +1,5 @@
 {
-  "name": "@monte/shared",
+  "name": "@monte/content-builder",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -10,9 +10,11 @@
     "lint": "eslint . --ext ts --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@monte/shared": "workspace:*",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.0"
   }
 }

@@ -1,0 +1,7 @@
+# Bun configuration file
+[test]
+preload = ["./src/db/setup.ts"]
+
+[install]
+peer = false
+dev = true
