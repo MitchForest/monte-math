@@ -1,4 +1,5 @@
 import { oc } from '@orpc/contract'
+import type { ContractRouterClient } from '@orpc/contract'
 import { z } from 'zod'
 
 import { lessonScriptSchema } from '../lesson'
@@ -17,48 +18,42 @@ import {
   changePasswordInputSchema,
   registrationInputSchema,
   sessionSchema,
-  userProfileSchema
+  userProfileSchema,
 } from '../auth'
 
 const skillWithRelationsSchema = skillSchema.extend({
   prerequisites: z.array(skillSchema).default([]),
   dependents: z.array(skillSchema).default([]),
-  mastery: masteryStateSchema.optional()
+  mastery: masteryStateSchema.optional(),
 })
 
 const skillUpdateInput = z
   .object({
     id: z.string(),
     name: z.string().min(1).max(120).optional(),
-    description: z.string().nullable().optional()
+    description: z.string().nullable().optional(),
   })
   .refine((value) => value.name !== undefined || value.description !== undefined, {
     message: 'Provide at least one field to update',
-    path: ['name']
+    path: ['name'],
   })
 
 const prereqEdgeInput = z.object({
   skillId: z.string(),
-  prereqId: z.string()
+  prereqId: z.string(),
 })
 
 const saveLessonInput = z.object({
   script: lessonScriptSchema,
-  publish: z.boolean().optional()
+  publish: z.boolean().optional(),
 })
 
 const profileChangePasswordOutput = z.object({ success: z.literal(true) })
 
 export const profileContract = oc.router({
-  updateDisplayName: oc
-    .input(profileUpdateInputSchema)
-    .output(userProfileSchema),
-  regenerateAvatar: oc
-    .input(avatarRegenerateInputSchema)
-    .output(userProfileSchema),
-  changePassword: oc
-    .input(changePasswordInputSchema)
-    .output(profileChangePasswordOutput)
+  updateDisplayName: oc.input(profileUpdateInputSchema).output(userProfileSchema),
+  regenerateAvatar: oc.input(avatarRegenerateInputSchema).output(userProfileSchema),
+  changePassword: oc.input(changePasswordInputSchema).output(profileChangePasswordOutput),
 })
 
 export const authContract = oc.router({
@@ -68,38 +63,31 @@ export const authContract = oc.router({
   me: oc.output(
     z.object({
       user: userProfileSchema,
-      session: sessionSchema
+      session: sessionSchema,
     })
   ),
-  beginOAuth: oc
-    .input(beginOAuthInputSchema)
-    .output(beginOAuthOutputSchema),
-  completeOAuth: oc
-    .input(completeOAuthInputSchema)
-    .output(authResultSchema),
-  issueJwt: oc.input(jwtIssueInputSchema).output(jwtIssueOutputSchema)
+  beginOAuth: oc.input(beginOAuthInputSchema).output(beginOAuthOutputSchema),
+  completeOAuth: oc.input(completeOAuthInputSchema).output(authResultSchema),
+  issueJwt: oc.input(jwtIssueInputSchema).output(jwtIssueOutputSchema),
 })
 
 export const skillsContract = oc.router({
-  list: oc
-    .output(
-      z.object({
-        skills: z.array(skillSchema),
-        prerequisites: z.array(skillPrerequisiteSchema)
-      })
-    ),
-  get: oc
-    .input(z.object({ id: z.string() }))
-    .output(
-      z.object({
-        skill: skillWithRelationsSchema,
-        prerequisites: z.array(skillSchema),
-        dependents: z.array(skillSchema)
-      })
-    ),
+  list: oc.output(
+    z.object({
+      skills: z.array(skillSchema),
+      prerequisites: z.array(skillPrerequisiteSchema),
+    })
+  ),
+  get: oc.input(z.object({ id: z.string() })).output(
+    z.object({
+      skill: skillWithRelationsSchema,
+      prerequisites: z.array(skillSchema),
+      dependents: z.array(skillSchema),
+    })
+  ),
   update: oc.input(skillUpdateInput).output(skillSchema),
   addPrerequisite: oc.input(prereqEdgeInput).output(z.object({ success: z.literal(true) })),
-  removePrerequisite: oc.input(prereqEdgeInput).output(z.object({ success: z.literal(true) }))
+  removePrerequisite: oc.input(prereqEdgeInput).output(z.object({ success: z.literal(true) })),
 })
 
 export const lessonsContract = oc.router({
@@ -107,41 +95,33 @@ export const lessonsContract = oc.router({
     .input(
       z.object({
         lessonId: z.string(),
-        version: z.string().optional()
+        version: z.string().optional(),
       })
     )
     .output(lessonScriptSchema),
-  saveScript: oc
-    .input(saveLessonInput)
-    .output(lessonScriptSchema)
+  saveScript: oc.input(saveLessonInput).output(lessonScriptSchema),
 })
 
 export const engineContract = oc.router({
-  getNextTask: oc
-    .input(z.object({ userId: z.string() }))
-    .output(nextTaskSchema),
-  recordAttempt: oc
-    .input(attemptSchema)
-    .output(
-      z.object({
-        success: z.literal(true),
-        masteryUpdate: z
-          .object({
-            skillId: z.string(),
-            newMastery: masteryStateSchema
-          })
-          .optional()
-      })
-    )
+  getNextTask: oc.input(z.object({ userId: z.string() })).output(nextTaskSchema),
+  recordAttempt: oc.input(attemptSchema).output(
+    z.object({
+      success: z.literal(true),
+      masteryUpdate: z
+        .object({
+          skillId: z.string(),
+          newMastery: masteryStateSchema,
+        })
+        .optional(),
+    })
+  ),
 })
 
 export const xpContract = oc.router({
-  getProgress: oc
-    .input(z.object({ userId: z.string() }))
-    .output(xpProgressSchema),
+  getProgress: oc.input(z.object({ userId: z.string() })).output(xpProgressSchema),
   updateGoal: oc
     .input(z.object({ userId: z.string(), goal: z.number().int().min(1) }))
-    .output(z.object({ success: z.literal(true) }))
+    .output(z.object({ success: z.literal(true) })),
 })
 
 export const appContract = oc.router({
@@ -150,7 +130,8 @@ export const appContract = oc.router({
   skills: skillsContract,
   lessons: lessonsContract,
   engine: engineContract,
-  xp: xpContract
+  xp: xpContract,
 })
 
 export type AppContract = typeof appContract
+export type AppContractClient = ContractRouterClient<AppContract>

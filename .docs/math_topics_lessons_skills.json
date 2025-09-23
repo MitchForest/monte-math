@@ -5,52 +5,27 @@
       "lessons": [
         {
           "lesson": "Counting & One-to-One",
-          "skills": [
-            "S001",
-            "S006",
-            "S014",
-            "S019"
-          ]
+          "skills": ["S001", "S006", "S014", "S019"]
         },
         {
           "lesson": "Numerals & Zero",
-          "skills": [
-            "S002",
-            "S003",
-            "S004"
-          ]
+          "skills": ["S002", "S003", "S004"]
         },
         {
           "lesson": "Teens and Tens Composition",
-          "skills": [
-            "S007",
-            "S008",
-            "S011"
-          ]
+          "skills": ["S007", "S008", "S011"]
         },
         {
           "lesson": "Read/Write/Compare to 100",
-          "skills": [
-            "S009",
-            "S010",
-            "S014"
-          ]
+          "skills": ["S009", "S010", "S014"]
         },
         {
           "lesson": "Hundreds & Thousands",
-          "skills": [
-            "S012",
-            "S013",
-            "S015"
-          ]
+          "skills": ["S012", "S013", "S015"]
         },
         {
           "lesson": "Rounding & Estimation (early)",
-          "skills": [
-            "S016",
-            "S017",
-            "S018"
-          ]
+          "skills": ["S016", "S017", "S018"]
         }
       ]
     },
@@ -59,43 +34,23 @@
       "lessons": [
         {
           "lesson": "Addition as Combining",
-          "skills": [
-            "S021",
-            "S023",
-            "S024",
-            "S029",
-            "S030"
-          ]
+          "skills": ["S021", "S023", "S024", "S029", "S030"]
         },
         {
           "lesson": "Subtraction as Taking/Comparing",
-          "skills": [
-            "S022",
-            "S024"
-          ]
+          "skills": ["S022", "S024"]
         },
         {
           "lesson": "Multiplication Concepts",
-          "skills": [
-            "S025",
-            "S026",
-            "S028"
-          ]
+          "skills": ["S025", "S026", "S028"]
         },
         {
           "lesson": "Division Concepts",
-          "skills": [
-            "S027",
-            "S028"
-          ]
+          "skills": ["S027", "S028"]
         },
         {
           "lesson": "Fact Families & Situations",
-          "skills": [
-            "S024",
-            "S025",
-            "S027"
-          ]
+          "skills": ["S024", "S025", "S027"]
         }
       ]
     },
@@ -104,41 +59,27 @@
       "lessons": [
         {
           "lesson": "Basic Concepts (Point/Line/Surface/Solid)",
-          "skills": [
-            "S115"
-          ]
+          "skills": ["S115"]
         },
         {
           "lesson": "Polygons Overview",
-          "skills": [
-            "S116"
-          ]
+          "skills": ["S116"]
         },
         {
           "lesson": "Triangles (by sides & angles)",
-          "skills": [
-            "S117",
-            "S118"
-          ]
+          "skills": ["S117", "S118"]
         },
         {
           "lesson": "Quadrilaterals",
-          "skills": [
-            "S119"
-          ]
+          "skills": ["S119"]
         },
         {
           "lesson": "Circles (parts & vocabulary)",
-          "skills": [
-            "S120"
-          ]
+          "skills": ["S120"]
         },
         {
           "lesson": "Symmetry & Composition",
-          "skills": [
-            "S121",
-            "S122"
-          ]
+          "skills": ["S121", "S122"]
         }
       ]
     },
@@ -147,42 +88,27 @@
       "lessons": [
         {
           "lesson": "What Is Measurement & Choosing Units",
-          "skills": [
-            "S188"
-          ]
+          "skills": ["S188"]
         },
         {
           "lesson": "Length: Measuring & Converting",
-          "skills": [
-            "S189",
-            "S190",
-            "S191",
-            "S197"
-          ]
+          "skills": ["S189", "S190", "S191", "S197"]
         },
         {
           "lesson": "Mass/Weight",
-          "skills": [
-            "S192"
-          ]
+          "skills": ["S192"]
         },
         {
           "lesson": "Liquid Volume",
-          "skills": [
-            "S193"
-          ]
+          "skills": ["S193"]
         },
         {
           "lesson": "Temperature",
-          "skills": [
-            "S194"
-          ]
+          "skills": ["S194"]
         },
         {
           "lesson": "Perimeter Basics",
-          "skills": [
-            "S199"
-          ]
+          "skills": ["S199"]
         }
       ]
     },
@@ -191,43 +117,27 @@
       "lessons": [
         {
           "lesson": "Place Value to Thousands",
-          "skills": [
-            "S015",
-            "S152"
-          ]
+          "skills": ["S015", "S152"]
         },
         {
           "lesson": "Read/Write to Millions",
-          "skills": [
-            "S152",
-            "S155"
-          ]
+          "skills": ["S152", "S155"]
         },
         {
           "lesson": "Compare Multi-Digit Numbers",
-          "skills": [
-            "S153"
-          ]
+          "skills": ["S153"]
         },
         {
           "lesson": "Rounding Larger Numbers",
-          "skills": [
-            "S154"
-          ]
+          "skills": ["S154"]
         },
         {
           "lesson": "Compose/Decompose Numbers",
-          "skills": [
-            "S008",
-            "S015",
-            "S155"
-          ]
+          "skills": ["S008", "S015", "S155"]
         },
         {
           "lesson": "Estimation with Whole Numbers",
-          "skills": [
-            "S018"
-          ]
+          "skills": ["S018"]
         }
       ]
     },
@@ -236,38 +146,23 @@
       "lessons": [
         {
           "lesson": "Lines, Segments, Rays; Parallel/Perpendicular",
-          "skills": [
-            "S115",
-            "S127"
-          ]
+          "skills": ["S115", "S127"]
         },
         {
           "lesson": "Angles: Types & Relationships",
-          "skills": [
-            "S123",
-            "S125"
-          ]
+          "skills": ["S123", "S125"]
         },
         {
           "lesson": "Measure Angles",
-          "skills": [
-            "S124"
-          ]
+          "skills": ["S124"]
         },
         {
           "lesson": "Circles (review & extensions)",
-          "skills": [
-            "S120"
-          ]
+          "skills": ["S120"]
         },
         {
           "lesson": "Polygon Classification",
-          "skills": [
-            "S116",
-            "S117",
-            "S118",
-            "S119"
-          ]
+          "skills": ["S116", "S117", "S118", "S119"]
         }
       ]
     },
@@ -276,40 +171,23 @@
       "lessons": [
         {
           "lesson": "Properties & Mental Strategies",
-          "skills": [
-            "S029",
-            "S030",
-            "S200",
-            "S043",
-            "S044"
-          ]
+          "skills": ["S029", "S030", "S200", "S043", "S044"]
         },
         {
           "lesson": "Column Addition (no regroup)",
-          "skills": [
-            "S031"
-          ]
+          "skills": ["S031"]
         },
         {
           "lesson": "Column Addition (with regroup)",
-          "skills": [
-            "S032",
-            "S033"
-          ]
+          "skills": ["S032", "S033"]
         },
         {
           "lesson": "Estimate Sums & Rounding in Sums",
-          "skills": [
-            "S034",
-            "S016",
-            "S017"
-          ]
+          "skills": ["S034", "S016", "S017"]
         },
         {
           "lesson": "Addition Word Problems",
-          "skills": [
-            "S035"
-          ]
+          "skills": ["S035"]
         }
       ]
     },
@@ -318,33 +196,23 @@
       "lessons": [
         {
           "lesson": "Column Subtraction (no regroup)",
-          "skills": [
-            "S036"
-          ]
+          "skills": ["S036"]
         },
         {
           "lesson": "Column Subtraction (with regroup/borrow)",
-          "skills": [
-            "S037"
-          ]
+          "skills": ["S037"]
         },
         {
           "lesson": "Subtract Across Zeros",
-          "skills": [
-            "S038"
-          ]
+          "skills": ["S038"]
         },
         {
           "lesson": "Estimate Differences",
-          "skills": [
-            "S039"
-          ]
+          "skills": ["S039"]
         },
         {
           "lesson": "Add/Sub Word Problems",
-          "skills": [
-            "S040"
-          ]
+          "skills": ["S040"]
         }
       ]
     },
@@ -353,27 +221,19 @@
       "lessons": [
         {
           "lesson": "Tell Time to the Minute",
-          "skills": [
-            "S144"
-          ]
+          "skills": ["S144"]
         },
         {
           "lesson": "Elapsed Time",
-          "skills": [
-            "S145"
-          ]
+          "skills": ["S145"]
         },
         {
           "lesson": "Money: Values & Change",
-          "skills": [
-            "S146"
-          ]
+          "skills": ["S146"]
         },
         {
           "lesson": "Money Word Problems",
-          "skills": [
-            "S147"
-          ]
+          "skills": ["S147"]
         }
       ]
     },
@@ -382,25 +242,15 @@
       "lessons": [
         {
           "lesson": "Addition Facts Fluency",
-          "skills": [
-            "S041",
-            "S043",
-            "S044"
-          ]
+          "skills": ["S041", "S043", "S044"]
         },
         {
           "lesson": "Subtraction Facts Fluency",
-          "skills": [
-            "S042"
-          ]
+          "skills": ["S042"]
         },
         {
           "lesson": "Fact Families & Mental Agility",
-          "skills": [
-            "S024",
-            "S021",
-            "S022"
-          ]
+          "skills": ["S024", "S021", "S022"]
         }
       ]
     },
@@ -409,48 +259,27 @@
       "lessons": [
         {
           "lesson": "Concepts: Arrays & Area",
-          "skills": [
-            "S025",
-            "S026"
-          ]
+          "skills": ["S025", "S026"]
         },
         {
           "lesson": "Properties (commutative/associative/distributive)",
-          "skills": [
-            "S046",
-            "S047",
-            "S048"
-          ]
+          "skills": ["S046", "S047", "S048"]
         },
         {
           "lesson": "\u00d7 by 10s/100s (place shifts)",
-          "skills": [
-            "S049"
-          ]
+          "skills": ["S049"]
         },
         {
           "lesson": "Multi-digit \u00d7 1-digit",
-          "skills": [
-            "S050",
-            "S051"
-          ]
+          "skills": ["S050", "S051"]
         },
         {
           "lesson": "Estimate Products",
-          "skills": [
-            "S056"
-          ]
+          "skills": ["S056"]
         },
         {
           "lesson": "Factors/Multiples/Divisibility/Primes",
-          "skills": [
-            "S061",
-            "S062",
-            "S063",
-            "S064",
-            "S065",
-            "S066"
-          ]
+          "skills": ["S061", "S062", "S063", "S064", "S065", "S066"]
         }
       ]
     },
@@ -459,29 +288,19 @@
       "lessons": [
         {
           "lesson": "Division Concepts & Remainders",
-          "skills": [
-            "S027",
-            "S057"
-          ]
+          "skills": ["S027", "S057"]
         },
         {
           "lesson": "Multi-digit \u00f7 1-digit",
-          "skills": [
-            "S058"
-          ]
+          "skills": ["S058"]
         },
         {
           "lesson": "Multi-digit \u00f7 2-digit",
-          "skills": [
-            "S059",
-            "S060"
-          ]
+          "skills": ["S059", "S060"]
         },
         {
           "lesson": "Estimate/Check Quotients",
-          "skills": [
-            "S202"
-          ]
+          "skills": ["S202"]
         }
       ]
     },
@@ -490,16 +309,11 @@
       "lessons": [
         {
           "lesson": "Multiplication Facts Fluency",
-          "skills": [
-            "S045",
-            "S067"
-          ]
+          "skills": ["S045", "S067"]
         },
         {
           "lesson": "Division Facts Fluency",
-          "skills": [
-            "S068"
-          ]
+          "skills": ["S068"]
         }
       ]
     },
@@ -508,30 +322,19 @@
       "lessons": [
         {
           "lesson": "Partitioning & Unit Fractions",
-          "skills": [
-            "S069",
-            "S070"
-          ]
+          "skills": ["S069", "S070"]
         },
         {
           "lesson": "Fractions on the Number Line",
-          "skills": [
-            "S071"
-          ]
+          "skills": ["S071"]
         },
         {
           "lesson": "Equivalence & Simplification",
-          "skills": [
-            "S072",
-            "S073"
-          ]
+          "skills": ["S072", "S073"]
         },
         {
           "lesson": "Compare Fractions (like & unlike)",
-          "skills": [
-            "S074",
-            "S075"
-          ]
+          "skills": ["S074", "S075"]
         }
       ]
     },
@@ -540,21 +343,15 @@
       "lessons": [
         {
           "lesson": "Congruence via Rigid Motions",
-          "skills": [
-            "S128"
-          ]
+          "skills": ["S128"]
         },
         {
           "lesson": "Similarity & Scale Factor",
-          "skills": [
-            "S129"
-          ]
+          "skills": ["S129"]
         },
         {
           "lesson": "Area Equivalence by Dissection",
-          "skills": [
-            "S130"
-          ]
+          "skills": ["S130"]
         }
       ]
     },
@@ -563,29 +360,19 @@
       "lessons": [
         {
           "lesson": "Area of Rectangles & Composites",
-          "skills": [
-            "S131"
-          ]
+          "skills": ["S131"]
         },
         {
           "lesson": "Area of Triangles & Parallelograms",
-          "skills": [
-            "S132",
-            "S133"
-          ]
+          "skills": ["S132", "S133"]
         },
         {
           "lesson": "Area of Trapezoids & Regular Polygons",
-          "skills": [
-            "S134",
-            "S135"
-          ]
+          "skills": ["S134", "S135"]
         },
         {
           "lesson": "Composite Area",
-          "skills": [
-            "S136"
-          ]
+          "skills": ["S136"]
         }
       ]
     },
@@ -594,33 +381,23 @@
       "lessons": [
         {
           "lesson": "Partial Products (concept)",
-          "skills": [
-            "S052"
-          ]
+          "skills": ["S052"]
         },
         {
           "lesson": "2\u00d71 Column Multiplication",
-          "skills": [
-            "S053"
-          ]
+          "skills": ["S053"]
         },
         {
           "lesson": "2\u00d72 Column Multiplication",
-          "skills": [
-            "S054"
-          ]
+          "skills": ["S054"]
         },
         {
           "lesson": "Internal Zeros & Structure",
-          "skills": [
-            "S055"
-          ]
+          "skills": ["S055"]
         },
         {
           "lesson": "Estimate/Check Products",
-          "skills": [
-            "S056"
-          ]
+          "skills": ["S056"]
         }
       ]
     },
@@ -629,29 +406,19 @@
       "lessons": [
         {
           "lesson": "Long Division Setup & Place-Value Reasoning",
-          "skills": [
-            "S060"
-          ]
+          "skills": ["S060"]
         },
         {
           "lesson": "\u00f7 by 1-Digit with Remainders",
-          "skills": [
-            "S058",
-            "S057"
-          ]
+          "skills": ["S058", "S057"]
         },
         {
           "lesson": "\u00f7 by 2-Digits (partial quotients/standard)",
-          "skills": [
-            "S059",
-            "S060"
-          ]
+          "skills": ["S059", "S060"]
         },
         {
           "lesson": "Estimate/Check Quotients",
-          "skills": [
-            "S202"
-          ]
+          "skills": ["S202"]
         }
       ]
     },
@@ -660,25 +427,15 @@
       "lessons": [
         {
           "lesson": "Identify 3D Solids & Nets",
-          "skills": [
-            "S137",
-            "S141"
-          ]
+          "skills": ["S137", "S141"]
         },
         {
           "lesson": "Surface Area (prisms, cylinders)",
-          "skills": [
-            "S138",
-            "S139"
-          ]
+          "skills": ["S138", "S139"]
         },
         {
           "lesson": "Volume (unit cubes; prisms/cylinders; additivity)",
-          "skills": [
-            "S142",
-            "S140",
-            "S143"
-          ]
+          "skills": ["S142", "S140", "S143"]
         }
       ]
     },
@@ -687,36 +444,23 @@
       "lessons": [
         {
           "lesson": "Common Denominators via LCM",
-          "skills": [
-            "S076",
-            "S065"
-          ]
+          "skills": ["S076", "S065"]
         },
         {
           "lesson": "Add/Sub Like Denominators",
-          "skills": [
-            "S077",
-            "S079"
-          ]
+          "skills": ["S077", "S079"]
         },
         {
           "lesson": "Add/Sub Unlike Denominators",
-          "skills": [
-            "S078",
-            "S080"
-          ]
+          "skills": ["S078", "S080"]
         },
         {
           "lesson": "Compare/Order with Common Denominators",
-          "skills": [
-            "S075"
-          ]
+          "skills": ["S075"]
         },
         {
           "lesson": "Estimate Fraction Results",
-          "skills": [
-            "S087"
-          ]
+          "skills": ["S087"]
         }
       ]
     },
@@ -725,22 +469,15 @@
       "lessons": [
         {
           "lesson": "Decimal Place Value (to thousandths)",
-          "skills": [
-            "S089"
-          ]
+          "skills": ["S089"]
         },
         {
           "lesson": "Fraction \u2194 Decimal Conversions",
-          "skills": [
-            "S090"
-          ]
+          "skills": ["S090"]
         },
         {
           "lesson": "Compare/Order & Round Decimals",
-          "skills": [
-            "S091",
-            "S092"
-          ]
+          "skills": ["S091", "S092"]
         }
       ]
     },
@@ -749,21 +486,15 @@
       "lessons": [
         {
           "lesson": "Add Decimals",
-          "skills": [
-            "S093"
-          ]
+          "skills": ["S093"]
         },
         {
           "lesson": "Subtract Decimals",
-          "skills": [
-            "S094"
-          ]
+          "skills": ["S094"]
         },
         {
           "lesson": "Money Applications",
-          "skills": [
-            "S100"
-          ]
+          "skills": ["S100"]
         }
       ]
     },
@@ -772,23 +503,15 @@
       "lessons": [
         {
           "lesson": "Multiply Decimals (\u00d7 whole; \u00d7 decimal)",
-          "skills": [
-            "S095",
-            "S096"
-          ]
+          "skills": ["S095", "S096"]
         },
         {
           "lesson": "Divide Decimals (\u00f7 by whole; \u00f7 by decimal)",
-          "skills": [
-            "S097",
-            "S098"
-          ]
+          "skills": ["S097", "S098"]
         },
         {
           "lesson": "Estimate/Reasonableness with Decimals",
-          "skills": [
-            "S099"
-          ]
+          "skills": ["S099"]
         }
       ]
     },
@@ -797,23 +520,11 @@
       "lessons": [
         {
           "lesson": "Measurement with Decimals & Conversions",
-          "skills": [
-            "S101",
-            "S189",
-            "S190",
-            "S191",
-            "S192",
-            "S193",
-            "S194",
-            "S197"
-          ]
+          "skills": ["S101", "S189", "S190", "S191", "S192", "S193", "S194", "S197"]
         },
         {
           "lesson": "Multi-step Decimal Word Problems",
-          "skills": [
-            "S099",
-            "S100"
-          ]
+          "skills": ["S099", "S100"]
         }
       ]
     },
@@ -822,34 +533,23 @@
       "lessons": [
         {
           "lesson": "Percent as Per-Hundred; Conversions",
-          "skills": [
-            "S103",
-            "S104"
-          ]
+          "skills": ["S103", "S104"]
         },
         {
           "lesson": "Percent of a Quantity",
-          "skills": [
-            "S105"
-          ]
+          "skills": ["S105"]
         },
         {
           "lesson": "Find Whole from Part & Percent",
-          "skills": [
-            "S106"
-          ]
+          "skills": ["S106"]
         },
         {
           "lesson": "Percent Change",
-          "skills": [
-            "S107"
-          ]
+          "skills": ["S107"]
         },
         {
           "lesson": "Simple Interest",
-          "skills": [
-            "S108"
-          ]
+          "skills": ["S108"]
         }
       ]
     },
@@ -858,26 +558,15 @@
       "lessons": [
         {
           "lesson": "Multiply Fractions & Mixed Numbers",
-          "skills": [
-            "S081",
-            "S082",
-            "S086"
-          ]
+          "skills": ["S081", "S082", "S086"]
         },
         {
           "lesson": "Divide Fractions (whole \u00f7 frac; frac \u00f7 whole; frac \u00f7 frac)",
-          "skills": [
-            "S083",
-            "S084",
-            "S085"
-          ]
+          "skills": ["S083", "S084", "S085"]
         },
         {
           "lesson": "Fraction Word Problems & Estimation",
-          "skills": [
-            "S088",
-            "S087"
-          ]
+          "skills": ["S088", "S087"]
         }
       ]
     },
@@ -886,27 +575,19 @@
       "lessons": [
         {
           "lesson": "Ratios & Equivalent Ratios",
-          "skills": [
-            "S109"
-          ]
+          "skills": ["S109"]
         },
         {
           "lesson": "Unit Rates",
-          "skills": [
-            "S110"
-          ]
+          "skills": ["S110"]
         },
         {
           "lesson": "Solve Proportions",
-          "skills": [
-            "S111"
-          ]
+          "skills": ["S111"]
         },
         {
           "lesson": "Scale Drawings",
-          "skills": [
-            "S112"
-          ]
+          "skills": ["S112"]
         }
       ]
     },
@@ -915,24 +596,15 @@
       "lessons": [
         {
           "lesson": "Mixtures & Concentrations",
-          "skills": [
-            "S113"
-          ]
+          "skills": ["S113"]
         },
         {
           "lesson": "Speed\u2013Time\u2013Distance",
-          "skills": [
-            "S114"
-          ]
+          "skills": ["S114"]
         },
         {
           "lesson": "Multi-step Proportional Reasoning",
-          "skills": [
-            "S109",
-            "S110",
-            "S111",
-            "S112"
-          ]
+          "skills": ["S109", "S110", "S111", "S112"]
         }
       ]
     },
@@ -941,31 +613,19 @@
       "lessons": [
         {
           "lesson": "Evaluate Expressions & Order of Operations",
-          "skills": [
-            "S173",
-            "S174",
-            "S163"
-          ]
+          "skills": ["S173", "S174", "S163"]
         },
         {
           "lesson": "Translate Words \u2194 Expressions",
-          "skills": [
-            "S175"
-          ]
+          "skills": ["S175"]
         },
         {
           "lesson": "One-Step Equations (\u00b1, \u00d7/\u00f7)",
-          "skills": [
-            "S176",
-            "S177"
-          ]
+          "skills": ["S176", "S177"]
         },
         {
           "lesson": "Two-Step & Distributive in Equations",
-          "skills": [
-            "S178",
-            "S179"
-          ]
+          "skills": ["S178", "S179"]
         }
       ]
     },
@@ -974,27 +634,19 @@
       "lessons": [
         {
           "lesson": "Read/Interpret Graphs",
-          "skills": [
-            "S148"
-          ]
+          "skills": ["S148"]
         },
         {
           "lesson": "Create Graphs from Data",
-          "skills": [
-            "S149"
-          ]
+          "skills": ["S149"]
         },
         {
           "lesson": "Mean/Median/Mode/Range",
-          "skills": [
-            "S150"
-          ]
+          "skills": ["S150"]
         },
         {
           "lesson": "Data Interpretation & Conclusions",
-          "skills": [
-            "S151"
-          ]
+          "skills": ["S151"]
         }
       ]
     },
@@ -1003,21 +655,15 @@
       "lessons": [
         {
           "lesson": "Square Numbers (patterns & area link)",
-          "skills": [
-            "S156"
-          ]
+          "skills": ["S156"]
         },
         {
           "lesson": "Cube Numbers (patterns & volume link)",
-          "skills": [
-            "S157"
-          ]
+          "skills": ["S157"]
         },
         {
           "lesson": "Square/Cube Sequences",
-          "skills": [
-            "S158"
-          ]
+          "skills": ["S158"]
         }
       ]
     },
@@ -1026,15 +672,11 @@
       "lessons": [
         {
           "lesson": "(a + b)\u00b2 via Area Model",
-          "skills": [
-            "S159"
-          ]
+          "skills": ["S159"]
         },
         {
           "lesson": "Simple Binomial/Trinomial Expansions (conceptual)",
-          "skills": [
-            "S160"
-          ]
+          "skills": ["S160"]
         }
       ]
     },
@@ -1043,23 +685,15 @@
       "lessons": [
         {
           "lesson": "Exponent Notation & Evaluation",
-          "skills": [
-            "S161",
-            "S162"
-          ]
+          "skills": ["S161", "S162"]
         },
         {
           "lesson": "Order of Operations with Exponents",
-          "skills": [
-            "S163"
-          ]
+          "skills": ["S163"]
         },
         {
           "lesson": "Powers of 10 (place-value link)",
-          "skills": [
-            "S162",
-            "S049"
-          ]
+          "skills": ["S162", "S049"]
         }
       ]
     },
@@ -1068,16 +702,11 @@
       "lessons": [
         {
           "lesson": "Square Root Concept; Perfect Squares",
-          "skills": [
-            "S164",
-            "S165"
-          ]
+          "skills": ["S164", "S165"]
         },
         {
           "lesson": "Estimate Non-perfect Square Roots",
-          "skills": [
-            "S166"
-          ]
+          "skills": ["S166"]
         }
       ]
     },
@@ -1086,22 +715,15 @@
       "lessons": [
         {
           "lesson": "Angle Types & Measurement",
-          "skills": [
-            "S123",
-            "S124"
-          ]
+          "skills": ["S123", "S124"]
         },
         {
           "lesson": "Angle Relationships",
-          "skills": [
-            "S125"
-          ]
+          "skills": ["S125"]
         },
         {
           "lesson": "Angle Sums",
-          "skills": [
-            "S126"
-          ]
+          "skills": ["S126"]
         }
       ]
     },
@@ -1110,27 +732,19 @@
       "lessons": [
         {
           "lesson": "Understand Relationship",
-          "skills": [
-            "S169"
-          ]
+          "skills": ["S169"]
         },
         {
           "lesson": "Compute Missing Sides",
-          "skills": [
-            "S170"
-          ]
+          "skills": ["S170"]
         },
         {
           "lesson": "Pythagorean Triples",
-          "skills": [
-            "S171"
-          ]
+          "skills": ["S171"]
         },
         {
           "lesson": "Distance on Grid (extension)",
-          "skills": [
-            "S172"
-          ]
+          "skills": ["S172"]
         }
       ]
     },
@@ -1139,10 +753,7 @@
       "lessons": [
         {
           "lesson": "Cube Root Concept & Perfect Cubes",
-          "skills": [
-            "S167",
-            "S168"
-          ]
+          "skills": ["S167", "S168"]
         }
       ]
     },
@@ -1151,30 +762,19 @@
       "lessons": [
         {
           "lesson": "Integers on the Number Line; Compare/Order",
-          "skills": [
-            "S181",
-            "S182"
-          ]
+          "skills": ["S181", "S182"]
         },
         {
           "lesson": "Add/Subtract Integers",
-          "skills": [
-            "S183",
-            "S184"
-          ]
+          "skills": ["S183", "S184"]
         },
         {
           "lesson": "Multiply/Divide Integers",
-          "skills": [
-            "S185",
-            "S186"
-          ]
+          "skills": ["S185", "S186"]
         },
         {
           "lesson": "Absolute Value",
-          "skills": [
-            "S187"
-          ]
+          "skills": ["S187"]
         }
       ]
     }

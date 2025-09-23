@@ -1,8 +1,9 @@
 # Monte Math — Canonical Architecture & Implementation Plan
 
 > **Stack (Updated):**
-> 
-> **🎮 Web (Player):** 
+>
+> **🎮 Web (Player):**
+>
 > - Build: React + Vite
 > - Styling: Tailwind CSS + shadcn/ui
 > - State: Zustand
@@ -12,29 +13,33 @@
 > - Tables: TanStack Table
 > - Charts: Recharts
 > - Materials: PixiJS + GSAP animations
-> 
-> **🔧 Backend (API):** 
+>
+> **🔧 Backend (API):**
+>
 > - Runtime: Bun
 > - Framework: oRPC server + Hono (adapter)
 > - Database: SQLite (libSQL/Turso in prod) + Kysely (type-safe queries)
 > - Validation: Zod schemas (shared)
 > - Auth: JWT (future)
-> 
-> **📝 Studio (No-Code CMS):** 
+>
+> **📝 Studio (No-Code CMS):**
+>
 > - Build: React + Vite (same as Player)
 > - All Player stack +
 > - Knowledge Graph: Cytoscape.js
 > - Drag & Drop: DnD Kit
 > - File uploads: React Dropzone
 > - Accessible UI: Radix UI primitives
-> 
+>
 > **📦 Shared Package:**
+>
 > - Zod schemas (single source of truth)
 > - TypeScript types (auto-inferred)
 > - oRPC procedures (client/server contracts)
 > - Material interfaces
-> 
+>
 > **🚀 End-to-End Type Safety:**
+>
 > - Zod → TypeScript → oRPC → Kysely → Database
 > - Single schema definition, validated everywhere
 > - Compile-time type checking + runtime validation
@@ -43,11 +48,11 @@
 
 ## 0) Goals
 
-* **Scale to thousands of lessons** with **immutable**, versioned JSON/MDX + media published to a CDN.
-* Build **programmatic materials** (Pixi) + **programmatic tutorials/worked/practice** via templates and seeded generators.
-* Keep **engine state** (skills, mastery, XP) small, fast, and type-safe in SQLite/Kysely.
-* Provide a **Studio** for non-technical editing, organizing lessons, and **visualizing the Knowledge Graph (KG)**.
-* Enable **AI-assisted authoring** (CLI agents) without corrupting structure (Zod-validated contracts).
+- **Scale to thousands of lessons** with **immutable**, versioned JSON/MDX + media published to a CDN.
+- Build **programmatic materials** (Pixi) + **programmatic tutorials/worked/practice** via templates and seeded generators.
+- Keep **engine state** (skills, mastery, XP) small, fast, and type-safe in SQLite/Kysely.
+- Provide a **Studio** for non-technical editing, organizing lessons, and **visualizing the Knowledge Graph (KG)**.
+- Enable **AI-assisted authoring** (CLI agents) without corrupting structure (Zod-validated contracts).
 
 ---
 
@@ -143,49 +148,70 @@ monte/
 
 ```ts
 // packages/shared/src/lesson.ts
-import { z } from "zod";
+import { z } from 'zod'
 
 // All schemas defined with Zod for validation + type inference
 export const StepAction = z.union([
-  z.object({ kind: z.literal("focus"), target: z.string(), zoom: z.number().optional() }),
-  z.object({ kind: z.literal("highlight"), target: z.string(), style: z.enum(["ring","pulse"]).optional() }),
-  z.object({ kind: z.literal("spawn"), thing: z.enum(["unit","ten","hundred","thousand","card"]), qty: z.number(), to: z.string() }),
-  z.object({ kind: z.literal("move"), target: z.string(), to: z.string(), qty: z.number().optional() }),
-  z.object({ kind: z.literal("exchange"), column: z.enum(["units","tens","hundreds","thousands"]) }),
-  z.object({ kind: z.literal("prompt"), text: z.string(), token: z.string().optional() }), // token for i18n
-  z.object({ kind: z.literal("gate-do"), expect: z.string(), hint: z.string().optional() }),
-  z.object({ kind: z.literal("wait"), ms: z.number() })
-]);
+  z.object({ kind: z.literal('focus'), target: z.string(), zoom: z.number().optional() }),
+  z.object({
+    kind: z.literal('highlight'),
+    target: z.string(),
+    style: z.enum(['ring', 'pulse']).optional(),
+  }),
+  z.object({
+    kind: z.literal('spawn'),
+    thing: z.enum(['unit', 'ten', 'hundred', 'thousand', 'card']),
+    qty: z.number(),
+    to: z.string(),
+  }),
+  z.object({
+    kind: z.literal('move'),
+    target: z.string(),
+    to: z.string(),
+    qty: z.number().optional(),
+  }),
+  z.object({
+    kind: z.literal('exchange'),
+    column: z.enum(['units', 'tens', 'hundreds', 'thousands']),
+  }),
+  z.object({ kind: z.literal('prompt'), text: z.string(), token: z.string().optional() }), // token for i18n
+  z.object({ kind: z.literal('gate-do'), expect: z.string(), hint: z.string().optional() }),
+  z.object({ kind: z.literal('wait'), ms: z.number() }),
+])
 
 export const Step = z.object({
   id: z.string(),
   label: z.string().optional(),
-  actions: z.array(StepAction)
-});
+  actions: z.array(StepAction),
+})
 
 export const Stage = z.object({
   id: z.string(),
-  mode: z.enum(["tutorial","worked","practice"]),
+  mode: z.enum(['tutorial', 'worked', 'practice']),
   heading: z.string().optional(),
   materialSlug: z.string(),
   materialConfig: z.record(z.any()).optional(),
   steps: z.array(Step).optional(),
-  practiceTemplateId: z.string().optional()
-});
+  practiceTemplateId: z.string().optional(),
+})
 
 export const LessonScript = z.object({
   lessonId: z.string(),
-  version: z.string(),           // immutable
+  version: z.string(), // immutable
   stages: z.array(Stage),
-  practiceTemplates: z.array(z.object({
-    id: z.string(),
-    prompt: z.string(),
-    inputs: z.record(z.any()),
-    answer: z.any(),
-    meta: z.record(z.any()).optional()
-  })).optional()
-});
-export type LessonScript = z.infer<typeof LessonScript>;
+  practiceTemplates: z
+    .array(
+      z.object({
+        id: z.string(),
+        prompt: z.string(),
+        inputs: z.record(z.any()),
+        answer: z.any(),
+        meta: z.record(z.any()).optional(),
+      })
+    )
+    .optional(),
+})
+export type LessonScript = z.infer<typeof LessonScript>
 
 // oRPC procedures use these schemas for end-to-end type safety
 // Client gets auto-complete, server gets validation
@@ -194,26 +220,31 @@ export type LessonScript = z.infer<typeof LessonScript>;
 ```ts
 // packages/shared/src/skill.ts
 export const Skill = z.object({
-  id: z.string(),                // "S053"
+  id: z.string(), // "S053"
   code: z.string().optional(),
   name: z.string(),
-  description: z.string().optional()
-});
+  description: z.string().optional(),
+})
 export const SkillPrereq = z.object({
   skillId: z.string(),
-  prereqId: z.string()
-});
-export const MasteryState = z.enum(["not_started","learning","mastered","review_due"]);
+  prereqId: z.string(),
+})
+export const MasteryState = z.enum(['not_started', 'learning', 'mastered', 'review_due'])
 ```
 
 ```ts
 // packages/shared/src/events.ts
 export const SemanticEvent = z.union([
-  z.object({ type: z.literal("beads.exchanged"), column: z.string(), count: z.number(), to: z.string() }),
-  z.object({ type: z.literal("cards.composed"), value: z.number() }),
-  z.object({ type: z.literal("sum.read"), value: z.number() }),
+  z.object({
+    type: z.literal('beads.exchanged'),
+    column: z.string(),
+    count: z.number(),
+    to: z.string(),
+  }),
+  z.object({ type: z.literal('cards.composed'), value: z.number() }),
+  z.object({ type: z.literal('sum.read'), value: z.number() }),
   // extend for each material
-]);
+])
 ```
 
 ---
@@ -224,22 +255,22 @@ export const SemanticEvent = z.union([
 
 ```ts
 export interface MaterialScene {
-  mount(canvas: HTMLCanvasElement, cfg?: Record<string, unknown>): void;
-  apply(action: z.infer<typeof StepAction>): Promise<void>; // script drives this
-  lock(interactive: boolean): void;                          // gate during "do"
-  onSemantic(cb: (e: z.infer<typeof SemanticEvent>) => void): () => void;
-  generate(templateId: string, seed: number): any;           // practice input
-  validate(input: any, reading: any): { correct: boolean };  // practice check
-  unmount(): void;
+  mount(canvas: HTMLCanvasElement, cfg?: Record<string, unknown>): void
+  apply(action: z.infer<typeof StepAction>): Promise<void> // script drives this
+  lock(interactive: boolean): void // gate during "do"
+  onSemantic(cb: (e: z.infer<typeof SemanticEvent>) => void): () => void
+  generate(templateId: string, seed: number): any // practice input
+  validate(input: any, reading: any): { correct: boolean } // practice check
+  unmount(): void
 }
 ```
 
 **LessonPlayer loop (simplified):**
 
-* Loads `LessonScript` (by `lessonId@version` from CDN).
-* For **tutorial**: iterates steps → `scene.apply(action)`; supports pause/rewind; adds XP.
-* For **worked**: runs “show” actions; for `gate-do` waits for matching `SemanticEvent`; hints reduce XP; continue.
-* For **practice**: uses `scene.generate()` with seed; disables overlays; after user completes, `scene.validate()` → log attempt (correct + latency), add XP.
+- Loads `LessonScript` (by `lessonId@version` from CDN).
+- For **tutorial**: iterates steps → `scene.apply(action)`; supports pause/rewind; adds XP.
+- For **worked**: runs “show” actions; for `gate-do` waits for matching `SemanticEvent`; hints reduce XP; continue.
+- For **practice**: uses `scene.generate()` with seed; disables overlays; after user completes, `scene.validate()` → log attempt (correct + latency), add XP.
 
 ---
 
@@ -247,13 +278,13 @@ export interface MaterialScene {
 
 **Kysely tables (essentials):**
 
-* `skill(id TEXT PK, name TEXT, description TEXT)`
-* `skill_prereq(skill_id TEXT, prereq_skill_id TEXT, PRIMARY KEY(skill_id, prereq_skill_id))`
-* `user(id TEXT PK, …)`
-* `user_skill(user_id TEXT, skill_id TEXT, mastery TEXT, fluency_ms INTEGER, last_seen_at TEXT, next_review_at TEXT)`
-* `attempt(id TEXT PK, user_id TEXT, skill_id TEXT, lesson_id TEXT, version TEXT, correct INTEGER, latency_ms INTEGER, created_at TEXT)`
-* `xp_log(id TEXT PK, user_id TEXT, source TEXT, amount INTEGER, meta_json TEXT, created_at TEXT)`
-* `goal_daily(user_id TEXT PK, xp_target INTEGER, updated_at TEXT)`
+- `skill(id TEXT PK, name TEXT, description TEXT)`
+- `skill_prereq(skill_id TEXT, prereq_skill_id TEXT, PRIMARY KEY(skill_id, prereq_skill_id))`
+- `user(id TEXT PK, …)`
+- `user_skill(user_id TEXT, skill_id TEXT, mastery TEXT, fluency_ms INTEGER, last_seen_at TEXT, next_review_at TEXT)`
+- `attempt(id TEXT PK, user_id TEXT, skill_id TEXT, lesson_id TEXT, version TEXT, correct INTEGER, latency_ms INTEGER, created_at TEXT)`
+- `xp_log(id TEXT PK, user_id TEXT, source TEXT, amount INTEGER, meta_json TEXT, created_at TEXT)`
+- `goal_daily(user_id TEXT PK, xp_target INTEGER, updated_at TEXT)`
 
 **Hono routes:**
 
@@ -269,9 +300,9 @@ POST /auth/login                         # optional
 
 **Engine basics:**
 
-* `selector.ts`: unlockable skills = prereqs mastered; choose next by priority (new learning, review due via SRS, checkpoint).
-* `mastery.ts`: e.g., mastery = `3 of last 4` correct + **fluency** threshold (skill-specific).
-* `srs.ts`: review intervals (1w → 1m → 3m → 6m); shorten on failure/high latency.
+- `selector.ts`: unlockable skills = prereqs mastered; choose next by priority (new learning, review due via SRS, checkpoint).
+- `mastery.ts`: e.g., mastery = `3 of last 4` correct + **fluency** threshold (skill-specific).
+- `srs.ts`: review intervals (1w → 1m → 3m → 6m); shorten on failure/high latency.
 
 ---
 
@@ -279,8 +310,8 @@ POST /auth/login                         # optional
 
 **Authoring options:**
 
-* **Files-first:** `content/lessons/**` – PR-based authoring.
-* **Studio:** internal app writes JSON/MDX to S3 (drafts), then triggers **Content Builder** to publish immutable version.
+- **Files-first:** `content/lessons/**` – PR-based authoring.
+- **Studio:** internal app writes JSON/MDX to S3 (drafts), then triggers **Content Builder** to publish immutable version.
 
 **Content Builder steps:**
 
@@ -291,11 +322,10 @@ POST /auth/login                         # optional
    `/lessons/<lessonId>/<version>/script.json`
    `/lessons/<lessonId>/<version>/readme.mdx`
 5. **Emit `manifest.json`** (latest versions + indexes):
-
-   * `lessons.json`: `{ "lesson-17-column-2x1": "1.3.2", ... }`
-   * `skills.json`: skill → lessonIds\@versions
-   * `topics.json`: topic → lessonIds\@versions
-   * `search.json`: tags, locale, difficulty
+   - `lessons.json`: `{ "lesson-17-column-2x1": "1.3.2", ... }`
+   - `skills.json`: skill → lessonIds\@versions
+   - `topics.json`: topic → lessonIds\@versions
+   - `search.json`: tags, locale, difficulty
 
 **Player flow:** fetch `manifest.json` on boot (cache), then `script.json` for the assigned lesson/version.
 
@@ -305,22 +335,23 @@ POST /auth/login                         # optional
 
 **Materials (Pixi)**
 
-* Each manipulative implements `MaterialScene` and exposes a **factory**:
+- Each manipulative implements `MaterialScene` and exposes a **factory**:
 
   ```ts
-  export function createMaterial(slug: "golden-beads" | "checkerboard", opts): MaterialScene
+  export function createMaterial(slug: 'golden-beads' | 'checkerboard', opts): MaterialScene
   ```
-* Keep **deterministic RNG** for practice seeds and reproducible sessions.
+
+- Keep **deterministic RNG** for practice seeds and reproducible sessions.
 
 **Template Generators**
 
-* Example: `golden-beads:column-add` produces tutorial/worked timelines from params `{ addendA, addendB }`.
-* Practice generators: `(seed)=>{input}` + `validate(input, reading)`.
+- Example: `golden-beads:column-add` produces tutorial/worked timelines from params `{ addendA, addendB }`.
+- Practice generators: `(seed)=>{input}` + `validate(input, reading)`.
 
 **AI-assisted authoring**
 
-* Use a CLI (`tools/authoring-agent.ts`) to draft steps/narration **into a valid schema** (Zod-checked).
-* Require **CI validation** + smoke tests; never allow agents to publish directly.
+- Use a CLI (`tools/authoring-agent.ts`) to draft steps/narration **into a valid schema** (Zod-checked).
+- Require **CI validation** + smoke tests; never allow agents to publish directly.
 
 ---
 
@@ -328,56 +359,56 @@ POST /auth/login                         # optional
 
 **Features:**
 
-* **Lesson list/search:** filter by topic, skill, version, status (draft/published).
-* **Lesson builder:** Visual drag-and-drop interface for creating stages and steps
-  * Step library with pre-built actions (spawn, move, exchange, etc.)
-  * Visual timeline editor for sequencing
-  * Form-based property editors (no code editing)
-  * Narration script editor with locale support
-  * **Live preview** iframe showing Player app with current lesson
-* **Publish panel:** diff from previous version, semantic check results, push to CDN.
-* **Knowledge Graph view:**
+- **Lesson list/search:** filter by topic, skill, version, status (draft/published).
+- **Lesson builder:** Visual drag-and-drop interface for creating stages and steps
+  - Step library with pre-built actions (spawn, move, exchange, etc.)
+  - Visual timeline editor for sequencing
+  - Form-based property editors (no code editing)
+  - Narration script editor with locale support
+  - **Live preview** iframe showing Player app with current lesson
+- **Publish panel:** diff from previous version, semantic check results, push to CDN.
+- **Knowledge Graph view:**
+  - Force-directed or DAG layout (e.g., Cytoscape.js/elkjs).
+  - Search nodes by ID/name/tags.
+  - Select a skill → see prereqs, dependents, linked lessons.
+  - **Edit edges** (add/remove prereqs) with validation (no cycles).
+  - “Simulate learner” mode: toggle mastered nodes to preview unlockable set.
 
-  * Force-directed or DAG layout (e.g., Cytoscape.js/elkjs).
-  * Search nodes by ID/name/tags.
-  * Select a skill → see prereqs, dependents, linked lessons.
-  * **Edit edges** (add/remove prereqs) with validation (no cycles).
-  * “Simulate learner” mode: toggle mastered nodes to preview unlockable set.
-* **Telemetry dashboards:** step durations, hint usage, gate failures, item difficulty drift.
-* **Permissions:** roles (Viewer, Author, Reviewer, Publisher, Admin).
+- **Telemetry dashboards:** step durations, hint usage, gate failures, item difficulty drift.
+- **Permissions:** roles (Viewer, Author, Reviewer, Publisher, Admin).
 
 **Tech choices (No-Code Focus):**
 
-* React + Vite (consistent with Player app)
-* TanStack ecosystem for all data needs (Router, Query, Form, Table)
-* Visual lesson builder with DnD Kit (no JSON editing)
-* Cytoscape.js for interactive Knowledge Graph
-* Form-based editing with Radix UI components
-* Media management with React Dropzone
-* Live preview via iframe to Player app
-* Recharts for analytics dashboards
+- React + Vite (consistent with Player app)
+- TanStack ecosystem for all data needs (Router, Query, Form, Table)
+- Visual lesson builder with DnD Kit (no JSON editing)
+- Cytoscape.js for interactive Knowledge Graph
+- Form-based editing with Radix UI components
+- Media management with React Dropzone
+- Live preview via iframe to Player app
+- Recharts for analytics dashboards
 
 ---
 
 ## 8) UX & Player
 
-* **Home:** XP goal progress, “Start” (engine-chosen next task), Review card.
-* **Lesson Player:** tabs (Tutorial / Worked / Practice / Review), captions, hints, rewind.
-* **Checkpoint quiz:** branded “Checkpoint”, items span multiple skills; XP bonus.
-* **Progress:** streaks, XP history; parents see mastery/fluency and upcoming reviews.
-* **Accessibility:** keyboard equivalents for drag/drop; captions; high-contrast mode.
+- **Home:** XP goal progress, “Start” (engine-chosen next task), Review card.
+- **Lesson Player:** tabs (Tutorial / Worked / Practice / Review), captions, hints, rewind.
+- **Checkpoint quiz:** branded “Checkpoint”, items span multiple skills; XP bonus.
+- **Progress:** streaks, XP history; parents see mastery/fluency and upcoming reviews.
+- **Accessibility:** keyboard equivalents for drag/drop; captions; high-contrast mode.
 
 ---
 
 ## 9) Testing, CI/CD, Ops
 
-* **Unit tests:** materials logic (exchange/compose), practice validators, engine rules.
-* **Integration tests:** headless Pixi smoke run per script (catch bad steps).
-* **Visual snapshots:** optional for key material frames.
-* **CI pipeline:** lint → typecheck → unit → content-builder validate+smoke → publish to CDN (staging) → promote to prod.
-* **Observability:** API logs, attempt metrics; client telemetry batched per stage.
-* **Backups:** SQLite with Turso branches (or Litestream to S3 if self-hosted).
-* **Feature flags:** allow pinning lesson versions per cohort.
+- **Unit tests:** materials logic (exchange/compose), practice validators, engine rules.
+- **Integration tests:** headless Pixi smoke run per script (catch bad steps).
+- **Visual snapshots:** optional for key material frames.
+- **CI pipeline:** lint → typecheck → unit → content-builder validate+smoke → publish to CDN (staging) → promote to prod.
+- **Observability:** API logs, attempt metrics; client telemetry batched per stage.
+- **Backups:** SQLite with Turso branches (or Litestream to S3 if self-hosted).
+- **Feature flags:** allow pinning lesson versions per cohort.
 
 ---
 
@@ -426,10 +457,10 @@ pnpm add react react-dom vite tailwindcss \
 
 ```tsx
 // apps/web/src/routes/lesson.$id.tsx
-import script from "../../content/local/lesson-17-column-2x1/script.json"; // dev only
-import { LessonPlayer } from "../components/player/LessonPlayer";
+import script from '../../content/local/lesson-17-column-2x1/script.json' // dev only
+import { LessonPlayer } from '../components/player/LessonPlayer'
 export default function LessonRoute() {
-  return <LessonPlayer script={script} />;
+  return <LessonPlayer script={script} />
 }
 ```
 
@@ -437,48 +468,47 @@ export default function LessonRoute() {
 
 ```ts
 // apps/api/src/routes/next.ts
-import { Hono } from "hono";
-export const next = new Hono()
-  .get("/", async (c) => {
-    // read user_skill, pick next task via engine/selector
-    return c.json({ kind: "lesson", lessonId: "lesson-17-column-2x1", version: "1.0.3", estXP: 12 });
-  });
+import { Hono } from 'hono'
+export const next = new Hono().get('/', async (c) => {
+  // read user_skill, pick next task via engine/selector
+  return c.json({ kind: 'lesson', lessonId: 'lesson-17-column-2x1', version: '1.0.3', estXP: 12 })
+})
 ```
 
 **Content Builder (CLI entry)**
 
 ```ts
 // tools/build-content.ts
-import { LessonScript } from "@monte/shared";
-import { validateScript, smokeTest, publish, emitManifest } from "@monte/content-builder";
+import { LessonScript } from '@monte/shared'
+import { validateScript, smokeTest, publish, emitManifest } from '@monte/content-builder'
 
-const lessons: LessonScript[] = loadLocalLessons(); // from content/
+const lessons: LessonScript[] = loadLocalLessons() // from content/
 for (const script of lessons) {
-  validateScript(script);
-  await smokeTest(script);     // headless Pixi runner
-  await publish(script);       // push to CDN path by lessonId/version
+  validateScript(script)
+  await smokeTest(script) // headless Pixi runner
+  await publish(script) // push to CDN path by lessonId/version
 }
-await emitManifest();
+await emitManifest()
 ```
 
 ---
 
 ## 11) Organization & Naming
 
-* **Lesson IDs:** `lesson-<topic-number>-<slug>` e.g., `lesson-17-column-2x1`
-* **Versions:** semantic (`1.3.2`) — **immutable**; publish a new version to change behavior.
-* **Materials:** slugs: `golden-beads`, `checkerboard`, `stamp-game`, `bead-frame`.
-* **Practice templates:** `golden-beads:add-2x1`, `checkerboard:pp-2x2`, etc.
-* **Skill IDs:** keep the canonical `S001…` as already defined; store `skills.json` on CDN.
+- **Lesson IDs:** `lesson-<topic-number>-<slug>` e.g., `lesson-17-column-2x1`
+- **Versions:** semantic (`1.3.2`) — **immutable**; publish a new version to change behavior.
+- **Materials:** slugs: `golden-beads`, `checkerboard`, `stamp-game`, `bead-frame`.
+- **Practice templates:** `golden-beads:add-2x1`, `checkerboard:pp-2x2`, etc.
+- **Skill IDs:** keep the canonical `S001…` as already defined; store `skills.json` on CDN.
 
 ---
 
 ## 12) Security & Roles
 
-* **Studio auth:** email SSO or Auth0; roles in DB.
-* **Publish rights:** Reviewer → Publisher workflow; record version + checksum + publisher id.
-* **API auth:** JWT per student/parent; rate limit attempts endpoint.
-* **Content integrity:** script JSON must pass schema + smoke test; signed publish artifacts if needed.
+- **Studio auth:** email SSO or Auth0; roles in DB.
+- **Publish rights:** Reviewer → Publisher workflow; record version + checksum + publisher id.
+- **API auth:** JWT per student/parent; rate limit attempts endpoint.
+- **Content integrity:** script JSON must pass schema + smoke test; signed publish artifacts if needed.
 
 ---
 
@@ -494,10 +524,10 @@ await emitManifest();
 
 ### TL;DR
 
-* **Unified Stack**: React + Vite everywhere, TanStack ecosystem, Zod validation
-* **Type-Safe API**: oRPC for end-to-end TypeScript, Kysely for type-safe SQL
-* **Player**: PixiJS + GSAP materials, Zustand state, offline-capable
-* **Studio**: No-code CMS with visual builders, drag-and-drop, live preview
-* **Content**: Immutable versioned JSON scripts on CDN, Git-backed source
-* **Engine**: SQLite/Turso + smart selectors, mastery tracking, spaced repetition
-* **Developer Experience**: Single `pnpm install`, full type safety, hot reload everywhere
+- **Unified Stack**: React + Vite everywhere, TanStack ecosystem, Zod validation
+- **Type-Safe API**: oRPC for end-to-end TypeScript, Kysely for type-safe SQL
+- **Player**: PixiJS + GSAP materials, Zustand state, offline-capable
+- **Studio**: No-code CMS with visual builders, drag-and-drop, live preview
+- **Content**: Immutable versioned JSON scripts on CDN, Git-backed source
+- **Engine**: SQLite/Turso + smart selectors, mastery tracking, spaced repetition
+- **Developer Experience**: Single `pnpm install`, full type safety, hot reload everywhere

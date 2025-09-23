@@ -4,7 +4,7 @@ declare module '*.md?raw' {
 }
 
 declare module '@docs/*.json' {
-  const value: any
+  const value: unknown
   export default value
 }
 

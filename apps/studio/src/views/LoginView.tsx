@@ -14,7 +14,7 @@ import { apiClient } from '@/lib/orpc-client'
 
 const loginSchema = z.object({
   email: z.string().email('Enter a valid email'),
-  password: z.string().min(1, 'Password required')
+  password: z.string().min(1, 'Password required'),
 })
 
 function FormError({ message }: { message?: string }) {
@@ -39,24 +39,30 @@ export function LoginView() {
     },
     onSuccess: () => {
       navigate({ to: '/' })
-    }
+    },
   })
 
   const form = useForm({
     defaultValues: {
       email: '',
-      password: ''
+      password: '',
     },
     validators: {
-      onSubmit: zodValidator(loginSchema)
+      onSubmit: zodValidator(loginSchema),
     },
     onSubmit: async ({ value }) => {
       await loginMutation.mutateAsync(value)
-    }
+    },
   })
 
-  const emailField = form.useField({ name: 'email', validators: { onChange: zodValidator(loginSchema.shape.email) } })
-  const passwordField = form.useField({ name: 'password', validators: { onChange: zodValidator(loginSchema.shape.password) } })
+  const emailField = form.useField({
+    name: 'email',
+    validators: { onChange: zodValidator(loginSchema.shape.email) },
+  })
+  const passwordField = form.useField({
+    name: 'password',
+    validators: { onChange: zodValidator(loginSchema.shape.password) },
+  })
 
   return (
     <AuthLayout
@@ -65,7 +71,10 @@ export function LoginView() {
       footer={
         <span>
           Need an account?{' '}
-          <Link to="/signup" className="font-semibold text-primary underline-offset-4 hover:underline">
+          <Link
+            to="/signup"
+            className="font-semibold text-primary underline-offset-4 hover:underline"
+          >
             Request access
           </Link>
         </span>
@@ -111,7 +120,12 @@ export function LoginView() {
                   autoComplete="current-password"
                   disabled={loginMutation.isPending}
                 />
-                <Button type="button" size="sm" variant="outline" onClick={() => setShowPassword((prev) => !prev)}>
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                >
                   {showPassword ? 'Hide' : 'Show'}
                 </Button>
               </div>

@@ -15,9 +15,9 @@ const pulsing = {
     transition: {
       repeat: Infinity,
       duration: 4,
-      ease: 'easeInOut'
-    }
-  }
+      ease: 'easeInOut',
+    },
+  },
 }
 
 export function NextLessonCard() {
@@ -27,7 +27,7 @@ export function NextLessonCard() {
     queryKey: ['engine', 'next-task', userId],
     enabled: Boolean(userId),
     queryFn: () => apiClient.engine.getNextTask({ userId: userId! }),
-    staleTime: 1000 * 60
+    staleTime: 1000 * 60,
   })
 
   const today = useMemo(() => format(new Date(), 'EEE, MMM d'), [])
@@ -60,7 +60,12 @@ export function NextLessonCard() {
     )
   }
 
-  const subtitle = data.kind === 'lesson' ? 'Next lesson in your path' : data.kind === 'checkpoint' ? 'Checkpoint challenge' : 'Review mission'
+  const subtitle =
+    data.kind === 'lesson'
+      ? 'Next lesson in your path'
+      : data.kind === 'checkpoint'
+        ? 'Checkpoint challenge'
+        : 'Review mission'
 
   return (
     <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-[#fff7f0] via-[#f5f8ff] to-[#e3fff8]">
@@ -80,8 +85,8 @@ export function NextLessonCard() {
             Jump back in where you left off or explore a fresh challenge curated by Monte Math.
           </p>
           <p>
-            Keep tapping through activities to build your streak. Each mission is tuned to your pace so you stay in the
-            sweet spot of learning.
+            Keep tapping through activities to build your streak. Each mission is tuned to your pace
+            so you stay in the sweet spot of learning.
           </p>
         </div>
         <motion.div
@@ -92,7 +97,9 @@ export function NextLessonCard() {
           <Button size="lg" className="min-w-[220px]">
             {data.kind === 'lesson' ? 'Resume lesson' : 'Start mission'}
           </Button>
-          <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Tap to continue</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            Tap to continue
+          </p>
         </motion.div>
       </CardContent>
     </Card>

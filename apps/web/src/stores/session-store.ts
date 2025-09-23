@@ -15,10 +15,11 @@ export const useSessionStore = create<SessionState>((set) => ({
   user: null,
   session: null,
   status: 'idle',
-  hydrate: (payload) => set({ user: payload.user, session: payload.session, status: 'authenticated' }),
+  hydrate: (payload) =>
+    set({ user: payload.user, session: payload.session, status: 'authenticated' }),
   clear: () => set({ user: null, session: null, status: 'unauthenticated' }),
   setStatus: (status) => set((state) => ({ ...state, status })),
-  setUser: (user) => set((state) => ({ ...state, user }))
+  setUser: (user) => set((state) => ({ ...state, user })),
 }))
 
 export const getSessionState = () => useSessionStore.getState()

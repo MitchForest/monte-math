@@ -7,18 +7,18 @@ import type {
   NewUserSession,
   User,
   UserIdentity,
-  UserSession
+  UserSession,
+  UserUpdate,
 } from '../../db/schema'
+import type { AuthProvider } from '@monte/shared'
 
 export async function insertUser(user: NewUser): Promise<User> {
-  return db
-    .insertInto('users')
-    .values(user)
-    .returningAll()
-    .executeTakeFirstOrThrow()
+  return db.insertInto('users').values(user).returningAll().executeTakeFirstOrThrow()
 }
 
-export async function updateUser(userId: string, updates: Partial<Omit<User, 'id'>>): Promise<User> {
+type MutableUserFields = Omit<UserUpdate, 'id'>
+
+export async function updateUser(userId: string, updates: MutableUserFields): Promise<User> {
   return db
     .updateTable('users')
     .set({ ...updates, updated_at: sql`CURRENT_TIMESTAMP` })
@@ -28,27 +28,15 @@ export async function updateUser(userId: string, updates: Partial<Omit<User, 'id
 }
 
 export async function findUserByEmail(email: string): Promise<User | undefined> {
-  return db
-    .selectFrom('users')
-    .selectAll()
-    .where('email', '=', email)
-    .executeTakeFirst()
+  return db.selectFrom('users').selectAll().where('email', '=', email).executeTakeFirst()
 }
 
 export async function findUserById(id: string): Promise<User | undefined> {
-  return db
-    .selectFrom('users')
-    .selectAll()
-    .where('id', '=', id)
-    .executeTakeFirst()
+  return db.selectFrom('users').selectAll().where('id', '=', id).executeTakeFirst()
 }
 
 export async function insertSession(session: NewUserSession): Promise<UserSession> {
-  return db
-    .insertInto('user_sessions')
-    .values(session)
-    .returningAll()
-    .executeTakeFirstOrThrow()
+  return db.insertInto('user_sessions').values(session).returningAll().executeTakeFirstOrThrow()
 }
 
 export async function deleteSessionById(sessionId: string): Promise<void> {
@@ -56,11 +44,7 @@ export async function deleteSessionById(sessionId: string): Promise<void> {
 }
 
 export async function findSessionById(sessionId: string): Promise<UserSession | undefined> {
-  return db
-    .selectFrom('user_sessions')
-    .selectAll()
-    .where('id', '=', sessionId)
-    .executeTakeFirst()
+  return db.selectFrom('user_sessions').selectAll().where('id', '=', sessionId).executeTakeFirst()
 }
 
 export async function deleteSessionsByUserId(userId: string): Promise<void> {
@@ -80,19 +64,17 @@ export async function upsertIdentity(identity: NewUserIdentity): Promise<UserIde
     .insertInto('user_identities')
     .values(identity)
     .onConflict((oc) =>
-      oc
-        .columns(['provider', 'provider_user_id'])
-        .doUpdateSet({
-          user_id: (eb) => eb.ref('excluded.user_id'),
-          email: (eb) => eb.ref('excluded.email'),
-          updated_at: sql`CURRENT_TIMESTAMP`
-        })
+      oc.columns(['provider', 'provider_user_id']).doUpdateSet({
+        user_id: (eb) => eb.ref('excluded.user_id'),
+        email: (eb) => eb.ref('excluded.email'),
+        updated_at: sql`CURRENT_TIMESTAMP`,
+      })
     )
     .returningAll()
     .executeTakeFirstOrThrow()
 }
 
-export async function findIdentity(provider: string, providerUserId: string) {
+export async function findIdentity(provider: AuthProvider, providerUserId: string) {
   return db
     .selectFrom('user_identities')
     .selectAll()

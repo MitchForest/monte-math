@@ -20,7 +20,10 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     ref={ref}
-    className={cn('fixed inset-0 z-50 bg-foreground/20 backdrop-blur-sm data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0', className)}
+    className={cn(
+      'fixed inset-0 z-50 bg-foreground/20 backdrop-blur-sm data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+      className
+    )}
     {...props}
   />
 ))
@@ -32,7 +35,7 @@ const sheetVariants = {
     'inset-x-0 bottom-0 border-t rounded-t-[calc(var(--radius)*1.2)] data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom',
   left: 'inset-y-0 left-0 h-full w-full max-w-xl border-r data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left',
   right:
-    'inset-y-0 right-0 h-full w-full max-w-xl border-l rounded-l-[calc(var(--radius)*1.2)] data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right'
+    'inset-y-0 right-0 h-full w-full max-w-xl border-l rounded-l-[calc(var(--radius)*1.2)] data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right',
 } as const
 
 type SheetSide = keyof typeof sheetVariants
@@ -68,7 +71,10 @@ const SheetHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElemen
 SheetHeader.displayName = 'SheetHeader'
 
 const SheetFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col-reverse gap-2 sm:flex-row sm:justify-end', className)} {...props} />
+  <div
+    className={cn('flex flex-col-reverse gap-2 sm:flex-row sm:justify-end', className)}
+    {...props}
+  />
 )
 SheetFooter.displayName = 'SheetFooter'
 
@@ -104,5 +110,5 @@ export {
   SheetFooter,
   SheetTitle,
   SheetDescription,
-  SheetClose
+  SheetClose,
 }

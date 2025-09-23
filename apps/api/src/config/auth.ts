@@ -28,10 +28,14 @@ export function loadAuthEnvironment(): AuthEnvironment {
   const jwtSecret = process.env.JWT_SECRET ?? 'dev-secret'
 
   const githubConfigured = Boolean(
-    process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET && process.env.GITHUB_REDIRECT_URI
+    process.env.GITHUB_CLIENT_ID &&
+      process.env.GITHUB_CLIENT_SECRET &&
+      process.env.GITHUB_REDIRECT_URI
   )
   const googleConfigured = Boolean(
-    process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET && process.env.GOOGLE_REDIRECT_URI
+    process.env.GOOGLE_CLIENT_ID &&
+      process.env.GOOGLE_CLIENT_SECRET &&
+      process.env.GOOGLE_REDIRECT_URI
   )
 
   return {
@@ -43,15 +47,15 @@ export function loadAuthEnvironment(): AuthEnvironment {
       ? {
           clientId: requireEnv('GITHUB_CLIENT_ID'),
           clientSecret: requireEnv('GITHUB_CLIENT_SECRET'),
-          redirectUri: requireEnv('GITHUB_REDIRECT_URI')
+          redirectUri: requireEnv('GITHUB_REDIRECT_URI'),
         }
       : undefined,
     google: googleConfigured
       ? {
           clientId: requireEnv('GOOGLE_CLIENT_ID'),
           clientSecret: requireEnv('GOOGLE_CLIENT_SECRET'),
-          redirectUri: requireEnv('GOOGLE_REDIRECT_URI')
+          redirectUri: requireEnv('GOOGLE_REDIRECT_URI'),
         }
-      : undefined
+      : undefined,
   }
 }

@@ -15,7 +15,7 @@ import { createApiClient } from '@monte/api-client'
 
 const client = createApiClient({
   baseUrl: 'https://api.monte.dev',
-  getHeaders: () => ({ 'x-user-id': 'demo' })
+  getHeaders: () => ({ 'x-user-id': 'demo' }),
 })
 
 await client.skills.list()

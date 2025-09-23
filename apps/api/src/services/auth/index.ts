@@ -8,21 +8,15 @@ import {
   buildSessionClearHeader,
   createSession,
   getSessionFromCookie,
-  invalidateSession
+  invalidateSession,
 } from './session'
-import {
-  findIdentity,
-  findUserByEmail,
-  findUserById,
-  insertUser,
-  upsertIdentity
-} from './store'
+import { findIdentity, findUserByEmail, findUserById, insertUser, upsertIdentity } from './store'
 import {
   generateAvatarSeed,
   generateCodeVerifier,
   generateIdentityId,
   generateOAuthState,
-  generateUserId
+  generateUserId,
 } from './tokens'
 import { createProvider, getRedirectUri } from './providers'
 import type { User } from '../../db/schema'
@@ -60,7 +54,7 @@ export async function registerWithPassword(input: CredentialsInput) {
     email_verified_at: null,
     password_hash: passwordHash,
     display_name: input.displayName ?? null,
-    avatar_seed: generateAvatarSeed()
+    avatar_seed: generateAvatarSeed(),
   })
 
   const session = await createSession(user)
@@ -69,9 +63,9 @@ export async function registerWithPassword(input: CredentialsInput) {
     user: toUserProfile(user),
     session: {
       id: session.sessionId,
-      expiresAt: session.expiresAt.toISOString()
+      expiresAt: session.expiresAt.toISOString(),
     },
-    cookie: session.header
+    cookie: session.header,
   }
 }
 
@@ -93,9 +87,9 @@ export async function loginWithPassword(input: CredentialsInput) {
     user: toUserProfile(user),
     session: {
       id: session.sessionId,
-      expiresAt: session.expiresAt.toISOString()
+      expiresAt: session.expiresAt.toISOString(),
     },
-    cookie: session.header
+    cookie: session.header,
   }
 }
 
@@ -121,42 +115,66 @@ export async function issueJwtForSession(opts: {
 }
 
 export async function beginOAuthFlow(provider: AuthProvider) {
-  const oauthProvider = createProvider(provider)
-  const redirectUri = getRedirectUri(provider)
-
   const state = generateOAuthState()
-  const codeVerifier = generateCodeVerifier()
 
-  const result = await oauthProvider.createAuthorizationURL(redirectUri, {
-    state,
-    scopes: provider === 'github' ? ['user:email'] : ['openid', 'email', 'profile'],
-    codeVerifier
+  if (provider === 'github') {
+    const oauthProvider = createProvider('github')
+    const authorizationUrl = await oauthProvider.createAuthorizationURL(state, {
+      scopes: ['user:email'],
+    })
+
+    return {
+      authorizationUrl: authorizationUrl.href,
+      state,
+    }
+  }
+
+  const oauthProvider = createProvider('google')
+  const codeVerifier = generateCodeVerifier()
+  const authorizationUrl = await oauthProvider.createAuthorizationURL(state, codeVerifier, {
+    scopes: ['openid', 'email', 'profile'],
   })
 
   return {
-    authorizationUrl: result instanceof URL ? result.href : String(result),
+    authorizationUrl: authorizationUrl.href,
     state,
-    codeVerifier
+    codeVerifier,
   }
 }
 
-export async function completeOAuthFlow(provider: AuthProvider, params: {
-  code: string
-  state: string
-  redirectUri: string
-  codeVerifier?: string
-}) {
+export async function completeOAuthFlow(
+  provider: AuthProvider,
+  params: {
+    code: string
+    state: string
+    redirectUri: string
+    codeVerifier?: string
+  }
+) {
   if (!params.state) {
     throw new ORPCError('BAD_REQUEST', { message: 'Missing OAuth state' })
   }
 
-  const oauthProvider = createProvider(provider)
+  const expectedRedirect = getRedirectUri(provider)
+  if (params.redirectUri !== expectedRedirect) {
+    throw new ORPCError('BAD_REQUEST', { message: 'Invalid redirect URI' })
+  }
 
-  const tokens = await oauthProvider.validateAuthorizationCode(params.code, params.redirectUri, {
-    codeVerifier: params.codeVerifier
-  })
+  const identityData = await (async () => {
+    if (provider === 'github') {
+      const oauthProvider = createProvider('github')
+      const tokens = await oauthProvider.validateAuthorizationCode(params.code)
+      return fetchProviderIdentity('github', tokens.accessToken)
+    }
 
-  const identityData = await fetchProviderIdentity(provider, tokens.accessToken)
+    if (!params.codeVerifier) {
+      throw new ORPCError('BAD_REQUEST', { message: 'Missing PKCE code verifier' })
+    }
+
+    const oauthProvider = createProvider('google')
+    const tokens = await oauthProvider.validateAuthorizationCode(params.code, params.codeVerifier)
+    return fetchProviderIdentity('google', tokens.accessToken)
+  })()
 
   const existingIdentity = await findIdentity(provider, identityData.providerUserId)
   if (existingIdentity) {
@@ -167,9 +185,9 @@ export async function completeOAuthFlow(provider: AuthProvider, params: {
       user: toUserProfile(user),
       session: {
         id: session.sessionId,
-        expiresAt: session.expiresAt.toISOString()
+        expiresAt: session.expiresAt.toISOString(),
       },
-      cookie: session.header
+      cookie: session.header,
     }
   }
 
@@ -182,7 +200,7 @@ export async function completeOAuthFlow(provider: AuthProvider, params: {
       email_verified_at: identityData.email ? new Date().toISOString() : null,
       password_hash: null,
       display_name: identityData.displayName ?? null,
-      avatar_seed: generateAvatarSeed()
+      avatar_seed: generateAvatarSeed(),
     })
   }
 
@@ -191,7 +209,7 @@ export async function completeOAuthFlow(provider: AuthProvider, params: {
     user_id: user.id,
     provider,
     provider_user_id: identityData.providerUserId,
-    email: identityData.email ?? null
+    email: identityData.email ?? null,
   })
 
   const session = await createSession(user)
@@ -200,9 +218,9 @@ export async function completeOAuthFlow(provider: AuthProvider, params: {
     user: toUserProfile(user),
     session: {
       id: session.sessionId,
-      expiresAt: session.expiresAt.toISOString()
+      expiresAt: session.expiresAt.toISOString(),
     },
-    cookie: session.header
+    cookie: session.header,
   }
 }
 
@@ -212,34 +230,45 @@ interface ProviderIdentityResult {
   displayName?: string
 }
 
-async function fetchProviderIdentity(provider: AuthProvider, accessToken: string): Promise<ProviderIdentityResult> {
+async function fetchProviderIdentity(
+  provider: AuthProvider,
+  accessToken: string
+): Promise<ProviderIdentityResult> {
   if (provider === 'github') {
     const response = await fetch('https://api.github.com/user', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        Accept: 'application/json'
-      }
+        Accept: 'application/json',
+      },
     })
 
     if (!response.ok) {
       throw new ORPCError('INTERNAL_SERVER_ERROR', {
-        message: 'Failed to fetch GitHub profile'
+        message: 'Failed to fetch GitHub profile',
       })
     }
 
-    const profile = (await response.json()) as { id: number; email: string | null; name: string | null }
+    const profile = (await response.json()) as {
+      id: number
+      email: string | null
+      name: string | null
+    }
 
     let email = profile.email ?? undefined
     if (!email) {
       const emailResponse = await fetch('https://api.github.com/user/emails', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          Accept: 'application/json'
-        }
+          Accept: 'application/json',
+        },
       })
 
       if (emailResponse.ok) {
-        const emails = (await emailResponse.json()) as Array<{ email: string; primary: boolean; verified: boolean }>
+        const emails = (await emailResponse.json()) as Array<{
+          email: string
+          primary: boolean
+          verified: boolean
+        }>
         const primary = emails.find((item) => item.primary && item.verified)
         email = primary?.email
       }
@@ -248,20 +277,20 @@ async function fetchProviderIdentity(provider: AuthProvider, accessToken: string
     return {
       providerUserId: String(profile.id),
       email,
-      displayName: profile.name ?? undefined
+      displayName: profile.name ?? undefined,
     }
   }
 
   if (provider === 'google') {
     const response = await fetch('https://openidconnect.googleapis.com/v1/userinfo', {
       headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
+        Authorization: `Bearer ${accessToken}`,
+      },
     })
 
     if (!response.ok) {
       throw new ORPCError('INTERNAL_SERVER_ERROR', {
-        message: 'Failed to fetch Google profile'
+        message: 'Failed to fetch Google profile',
       })
     }
 
@@ -270,7 +299,7 @@ async function fetchProviderIdentity(provider: AuthProvider, accessToken: string
     return {
       providerUserId: profile.sub,
       email: profile.email,
-      displayName: profile.name
+      displayName: profile.name,
     }
   }
 

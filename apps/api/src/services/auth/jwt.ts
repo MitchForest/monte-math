@@ -12,12 +12,7 @@ export interface JwtIssueOptions {
   expiresInSeconds: number
 }
 
-export async function issueJwt({
-  userId,
-  sessionId,
-  audience,
-  expiresInSeconds
-}: JwtIssueOptions) {
+export async function issueJwt({ userId, sessionId, audience, expiresInSeconds }: JwtIssueOptions) {
   const expiresAt = new Date(Date.now() + expiresInSeconds * 1000)
 
   let jwt = new SignJWT({ sid: sessionId })
@@ -35,6 +30,6 @@ export async function issueJwt({
 
   return {
     token,
-    expiresAt
+    expiresAt,
   }
 }

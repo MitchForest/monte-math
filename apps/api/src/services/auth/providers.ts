@@ -12,13 +12,17 @@ export interface OAuthAuthorizationRequest {
   codeVerifier?: string
 }
 
-export function createProvider(provider: SupportedProvider) {
+export function createProvider(provider: 'github'): GitHub
+export function createProvider(provider: 'google'): Google
+export function createProvider(provider: SupportedProvider): GitHub | Google {
   if (provider === 'github') {
     if (!env.github) {
       throw new Error('GitHub OAuth is not configured')
     }
 
-    return new GitHub(env.github.clientId, env.github.clientSecret)
+    return new GitHub(env.github.clientId, env.github.clientSecret, {
+      redirectURI: env.github.redirectUri,
+    })
   }
 
   if (provider === 'google') {
@@ -26,7 +30,7 @@ export function createProvider(provider: SupportedProvider) {
       throw new Error('Google OAuth is not configured')
     }
 
-    return new Google(env.google.clientId, env.google.clientSecret)
+    return new Google(env.google.clientId, env.google.clientSecret, env.google.redirectUri)
   }
 
   throw new Error(`Unsupported provider: ${provider}`)

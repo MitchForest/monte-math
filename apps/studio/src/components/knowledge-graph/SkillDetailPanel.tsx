@@ -14,50 +14,50 @@ export function SkillDetailPanel() {
     selectSkill,
     updateSkill,
     addPrerequisite,
-    removePrerequisite
+    removePrerequisite,
   } = useSkillsStore()
-  
+
   const [isEditing, setIsEditing] = useState(false)
   const [editedName, setEditedName] = useState('')
   const [editedDescription, setEditedDescription] = useState('')
   const [newPrereqId, setNewPrereqId] = useState('')
-  
+
   if (!selectedSkillId) return null
-  
+
   const skill = skills.get(selectedSkillId)
   if (!skill) return null
-  
+
   // Get prerequisites and dependents
-  const skillPrereqs = prerequisites.filter(p => p.toId === selectedSkillId)
-  const skillDependents = prerequisites.filter(p => p.fromId === selectedSkillId)
-  
+  const skillPrereqs = prerequisites.filter((p) => p.toId === selectedSkillId)
+  const skillDependents = prerequisites.filter((p) => p.fromId === selectedSkillId)
+
   const handleEdit = () => {
     setEditedName(skill.name)
     setEditedDescription(skill.description || '')
     setIsEditing(true)
   }
-  
+
   const handleSave = async () => {
     await updateSkill(selectedSkillId, {
       name: editedName,
-      description: editedDescription
+      description: editedDescription,
     })
     setIsEditing(false)
   }
-  
+
   const handleCancel = () => {
     setIsEditing(false)
     setEditedName('')
     setEditedDescription('')
   }
-  
+
   const handleAddPrerequisite = async () => {
     if (newPrereqId && skills.has(newPrereqId)) {
       await addPrerequisite(newPrereqId, selectedSkillId)
       setNewPrereqId('')
     }
   }
-  
+
   return (
     <Card className="absolute top-4 right-4 w-96 max-h-[calc(100vh-2rem)] overflow-y-auto z-50 shadow-xl">
       <CardHeader className="pb-3">
@@ -66,12 +66,7 @@ export function SkillDetailPanel() {
             <CardTitle className="text-xl flex items-center gap-2">
               {skill.id}
               {!isEditing && (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-6 w-6"
-                  onClick={handleEdit}
-                >
+                <Button variant="ghost" size="icon" className="h-6 w-6" onClick={handleEdit}>
                   <Edit2 className="h-3 w-3" />
                 </Button>
               )}
@@ -84,21 +79,15 @@ export function SkillDetailPanel() {
                 placeholder="Skill name"
               />
             ) : (
-              <CardDescription className="mt-1">
-                {skill.name}
-              </CardDescription>
+              <CardDescription className="mt-1">{skill.name}</CardDescription>
             )}
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => selectSkill(null)}
-          >
+          <Button variant="ghost" size="icon" onClick={() => selectSkill(null)}>
             <X className="h-4 w-4" />
           </Button>
         </div>
       </CardHeader>
-      
+
       <CardContent className="space-y-4">
         {/* Description */}
         <div>
@@ -117,7 +106,7 @@ export function SkillDetailPanel() {
             </p>
           )}
         </div>
-        
+
         {/* Edit buttons */}
         {isEditing && (
           <div className="flex gap-2">
@@ -130,7 +119,7 @@ export function SkillDetailPanel() {
             </Button>
           </div>
         )}
-        
+
         {/* Prerequisites */}
         <div>
           <Label className="flex items-center justify-between">
@@ -143,11 +132,7 @@ export function SkillDetailPanel() {
                   placeholder="S###"
                   className="h-6 w-16 text-xs"
                 />
-                <Button
-                  size="icon"
-                  className="h-6 w-6"
-                  onClick={handleAddPrerequisite}
-                >
+                <Button size="icon" className="h-6 w-6" onClick={handleAddPrerequisite}>
                   <Plus className="h-3 w-3" />
                 </Button>
               </div>
@@ -157,21 +142,16 @@ export function SkillDetailPanel() {
             {skillPrereqs.length === 0 ? (
               <p className="text-xs text-muted-foreground">No prerequisites</p>
             ) : (
-              skillPrereqs.map(prereq => {
+              skillPrereqs.map((prereq) => {
                 const prereqSkill = skills.get(prereq.fromId)
                 return (
                   <div
                     key={prereq.fromId}
                     className="flex items-center justify-between p-2 bg-slate-50 rounded text-xs hover:bg-slate-100 transition-colors"
                   >
-                    <button
-                      onClick={() => selectSkill(prereq.fromId)}
-                      className="flex-1 text-left"
-                    >
+                    <button onClick={() => selectSkill(prereq.fromId)} className="flex-1 text-left">
                       <span className="font-medium">{prereq.fromId}</span>
-                      <span className="text-muted-foreground ml-2">
-                        {prereqSkill?.name}
-                      </span>
+                      <span className="text-muted-foreground ml-2">{prereqSkill?.name}</span>
                     </button>
                     {isEditing && (
                       <Button
@@ -191,17 +171,15 @@ export function SkillDetailPanel() {
             )}
           </div>
         </div>
-        
+
         {/* Dependents */}
         <div>
-          <Label>
-            Leads to ({skillDependents.length})
-          </Label>
+          <Label>Leads to ({skillDependents.length})</Label>
           <div className="mt-2 space-y-1">
             {skillDependents.length === 0 ? (
               <p className="text-xs text-muted-foreground">No dependent skills</p>
             ) : (
-              skillDependents.map(dep => {
+              skillDependents.map((dep) => {
                 const depSkill = skills.get(dep.toId)
                 return (
                   <button
@@ -210,9 +188,7 @@ export function SkillDetailPanel() {
                     className="w-full flex items-center p-2 bg-blue-50 rounded text-xs hover:bg-blue-100 transition-colors text-left"
                   >
                     <span className="font-medium">{dep.toId}</span>
-                    <span className="text-muted-foreground ml-2">
-                      {depSkill?.name}
-                    </span>
+                    <span className="text-muted-foreground ml-2">{depSkill?.name}</span>
                   </button>
                 )
               })

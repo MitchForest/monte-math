@@ -1,0 +1,27 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+dist
+build
+.next
+.turbo
+*.tsbuildinfo
+
+# Generated files
+pnpm-lock.yaml
+*.db
+*.sqlite
+*.sqlite3
+
+# Coverage
+coverage
+.nyc_output
+
+# Misc
+.DS_Store
+.git
+.cache
+.parcel-cache

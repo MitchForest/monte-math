@@ -11,12 +11,12 @@ The studio app is the internal tool for curriculum teams. It visualizes the math
 
 ## Stack Overview
 
-| Concern      | Library                                        | Notes                                                |
-|--------------|------------------------------------------------|------------------------------------------------------|
-| Build        | Vite + TypeScript                               | Same toolchain as web                               |
-| Data Fetch   | Zustand store + `apiClient`                     | Store wraps API list/get requests                    |
-| Visualization| PixiJS + Dagre                                  | Layout + canvas graph rendering                      |
-| UI           | Tailwind v4, shadcn/ui, lucide icons            | Components under `src/components/ui`                 |
+| Concern       | Library                              | Notes                                |
+| ------------- | ------------------------------------ | ------------------------------------ |
+| Build         | Vite + TypeScript                    | Same toolchain as web                |
+| Data Fetch    | Zustand store + `apiClient`          | Store wraps API list/get requests    |
+| Visualization | PixiJS + Dagre                       | Layout + canvas graph rendering      |
+| UI            | Tailwind v4, shadcn/ui, lucide icons | Components under `src/components/ui` |
 
 ## Integration Boundaries
 

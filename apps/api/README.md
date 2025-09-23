@@ -12,13 +12,13 @@ The API service exposes the Monte Math contract over HTTP, acting as the “back
 
 ## Key Technology
 
-| Layer          | Library                     | Reason                                                             |
-|----------------|-----------------------------|--------------------------------------------------------------------|
-| Runtime        | Bun                          | Fast startup + native TypeScript/ESM                              |
-| HTTP           | Hono                         | Lightweight router over Fetch API                                 |
-| Contracts      | @orpc/server + Zod 4         | Type-safe RPC with runtime validation                             |
-| Database       | SQLite (libsql-ready) + Kysely| Strong typing end-to-end, easy to swap to Turso/libSQL             |
-| Content ingest | Native FS                    | Reads immutable lesson JSON under `content/`                      |
+| Layer          | Library                        | Reason                                                 |
+| -------------- | ------------------------------ | ------------------------------------------------------ |
+| Runtime        | Bun                            | Fast startup + native TypeScript/ESM                   |
+| HTTP           | Hono                           | Lightweight router over Fetch API                      |
+| Contracts      | @orpc/server + Zod 4           | Type-safe RPC with runtime validation                  |
+| Database       | SQLite (libsql-ready) + Kysely | Strong typing end-to-end, easy to swap to Turso/libSQL |
+| Content ingest | Native FS                      | Reads immutable lesson JSON under `content/`           |
 
 ## Package Boundaries
 

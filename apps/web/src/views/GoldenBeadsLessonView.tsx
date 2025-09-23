@@ -10,15 +10,19 @@ import {
   createEmptyBoard,
   lowToHighPlaces,
   populateAddends,
-  splitDigits
+  splitDigits,
 } from '../materials/golden-beads/state'
-import type { GoldenBeadsBoard, GoldenBeadsConfig, PlaceValue } from '../materials/golden-beads/types'
+import type {
+  GoldenBeadsBoard,
+  GoldenBeadsConfig,
+  PlaceValue,
+} from '../materials/golden-beads/types'
 import { apiClient } from '@/lib/orpc-client'
 
 const stageDescriptors: Record<Stage['mode'], string> = {
   tutorial: 'Tutorial',
   worked: 'Worked Example',
-  practice: 'Practice'
+  practice: 'Practice',
 }
 
 const LESSON_ID = 'lesson-07-column-addition-golden-beads'
@@ -26,7 +30,7 @@ const LESSON_ID = 'lesson-07-column-addition-golden-beads'
 const nextPlaceMap: Partial<Record<PlaceValue, PlaceValue>> = {
   ones: 'tens',
   tens: 'hundreds',
-  hundreds: 'thousands'
+  hundreds: 'thousands',
 }
 
 interface GateState {
@@ -70,7 +74,7 @@ function parseGateAction(action?: StepAction): GateState | null {
   return {
     column: column as PlaceValue,
     expectedDigit: parsedDigit,
-    hint: action.hint
+    hint: action.hint,
   }
 }
 
@@ -82,7 +86,7 @@ function deriveArithmetic(config: GoldenBeadsConfig) {
     ones: { result: 0, carryOut: 0, carryIn: 0 },
     tens: { result: 0, carryOut: 0, carryIn: 0 },
     hundreds: { result: 0, carryOut: 0, carryIn: 0 },
-    thousands: { result: 0, carryOut: 0, carryIn: 0 }
+    thousands: { result: 0, carryOut: 0, carryIn: 0 },
   }
 
   lowToHighPlaces.forEach((place) => {
@@ -98,7 +102,9 @@ function deriveArithmetic(config: GoldenBeadsConfig) {
 
 function PracticePanel({ template }: { template: PracticeTemplate }) {
   const problems = (template.inputs as { problems?: PracticeProblem[] }).problems ?? []
-  const [responses, setResponses] = useState(() => problems.map(() => ({ value: '', correct: null as null | boolean })))
+  const [responses, setResponses] = useState(() =>
+    problems.map(() => ({ value: '', correct: null as null | boolean }))
+  )
 
   useEffect(() => {
     setResponses(problems.map(() => ({ value: '', correct: null })))
@@ -112,7 +118,7 @@ function PracticePanel({ template }: { template: PracticeTemplate }) {
         const numeric = Number(response.value)
         return {
           value: response.value,
-          correct: !Number.isNaN(numeric) && numeric === expected
+          correct: !Number.isNaN(numeric) && numeric === expected,
         }
       })
     )
@@ -176,9 +182,13 @@ function PracticePanel({ template }: { template: PracticeTemplate }) {
 }
 
 export function GoldenBeadsLessonView() {
-  const { data: script, isLoading, isError } = useQuery({
+  const {
+    data: script,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ['lessons', LESSON_ID, 'script'],
-    queryFn: () => apiClient.lessons.getScript({ lessonId: LESSON_ID })
+    queryFn: () => apiClient.lessons.getScript({ lessonId: LESSON_ID }),
   })
 
   const stages = script?.stages ?? []
@@ -203,8 +213,13 @@ export function GoldenBeadsLessonView() {
   const gateAction = currentStep?.actions.find((action) => action.kind === 'gate-do')
 
   const practiceTemplate = useMemo(() => {
-    if (!currentStage || currentStage.mode !== 'practice' || !currentStage.practiceTemplateId) return null
-    return script?.practiceTemplates?.find((template) => template.id === currentStage.practiceTemplateId) ?? null
+    if (!currentStage || currentStage.mode !== 'practice' || !currentStage.practiceTemplateId)
+      return null
+    return (
+      script?.practiceTemplates?.find(
+        (template) => template.id === currentStage.practiceTemplateId
+      ) ?? null
+    )
   }, [currentStage, script?.practiceTemplates])
 
   useEffect(() => {
@@ -343,10 +358,13 @@ export function GoldenBeadsLessonView() {
   return (
     <div className="space-y-6">
       <header className="space-y-2">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Golden Beads Lesson Flow</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-900">
+          Golden Beads Lesson Flow
+        </h2>
         <p className="text-sm text-slate-600">
-          Aligned to <strong>Topic 07 · Column Addition (with regroup)</strong> covering skills S032–S033. Follow the
-          staged experience: tutorial scaffolding, worked support, and independent practice.
+          Aligned to <strong>Topic 07 · Column Addition (with regroup)</strong> covering skills
+          S032–S033. Follow the staged experience: tutorial scaffolding, worked support, and
+          independent practice.
         </p>
       </header>
 
@@ -358,7 +376,9 @@ export function GoldenBeadsLessonView() {
               key={stage.id}
               onClick={() => setStageIndex(index)}
               className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-                isActive ? 'border-slate-900 bg-slate-900 text-white' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-100'
+                isActive
+                  ? 'border-slate-900 bg-slate-900 text-white'
+                  : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-100'
               }`}
             >
               {stageDescriptors[stage.mode]} · {stage.heading ?? stage.id}
@@ -373,10 +393,14 @@ export function GoldenBeadsLessonView() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">{stageLabel}</div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {stageLabel}
+            </div>
             <h3 className="mt-1 text-lg font-semibold text-slate-900">{currentStage.heading}</h3>
             {currentStep && (
-              <p className="mt-1 text-xs uppercase tracking-wide text-slate-400">Step {stepIndex + 1} of {steps.length}</p>
+              <p className="mt-1 text-xs uppercase tracking-wide text-slate-400">
+                Step {stepIndex + 1} of {steps.length}
+              </p>
             )}
             <ul className="mt-3 space-y-2 text-sm text-slate-700">
               {prompts.length > 0 ? (
@@ -394,7 +418,9 @@ export function GoldenBeadsLessonView() {
 
           {gateState && (
             <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm">
-              <p className="font-semibold text-amber-800">Your turn: what digit belongs in the {gateState.column} column?</p>
+              <p className="font-semibold text-amber-800">
+                Your turn: what digit belongs in the {gateState.column} column?
+              </p>
               <div className="mt-3 flex items-center gap-2">
                 <input
                   value={gateInput}
@@ -411,7 +437,9 @@ export function GoldenBeadsLessonView() {
                 >
                   Check digit
                 </button>
-                {gateCorrect && <span className="text-xs font-semibold uppercase text-emerald-600">Correct!</span>}
+                {gateCorrect && (
+                  <span className="text-xs font-semibold uppercase text-emerald-600">Correct!</span>
+                )}
               </div>
               {!gateCorrect && gateState.hint && (
                 <p className="mt-2 text-xs text-amber-700">Hint: {gateState.hint}</p>
@@ -444,7 +472,9 @@ export function GoldenBeadsLessonView() {
                   : 'bg-slate-900 text-white hover:bg-slate-700'
               }`}
             >
-              {stageIndex === stages.length - 1 && currentStage.mode === 'practice' ? 'Done' : 'Next'}
+              {stageIndex === stages.length - 1 && currentStage.mode === 'practice'
+                ? 'Done'
+                : 'Next'}
             </button>
           </div>
         </div>
@@ -452,8 +482,9 @@ export function GoldenBeadsLessonView() {
 
       <footer className="rounded-xl border border-slate-200 bg-white p-4 text-xs text-slate-600 shadow-sm">
         <p>
-          Scripted with <code>@monte/shared</code> lesson schema. Materials respond to each <code>StepAction</code>, so the
-          same configuration can run headless validations or render inside the Studio for authoring workflows.
+          Scripted with <code>@monte/shared</code> lesson schema. Materials respond to each{' '}
+          <code>StepAction</code>, so the same configuration can run headless validations or render
+          inside the Studio for authoring workflows.
         </p>
       </footer>
     </div>

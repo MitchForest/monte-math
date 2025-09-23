@@ -6,7 +6,7 @@ import {
   createBoardFromConfig,
   highToLowPlaces,
   lowToHighPlaces,
-  SpawnThing
+  SpawnThing,
 } from '../materials/golden-beads/state'
 import { GoldenBeadsBoard, PlaceValue } from '../materials/golden-beads/types'
 
@@ -14,7 +14,7 @@ const placeToThing: Record<PlaceValue, SpawnThing> = {
   thousands: 'thousand',
   hundreds: 'hundred',
   tens: 'ten',
-  ones: 'unit'
+  ones: 'unit',
 }
 
 const toDigits = (value: number) => {
@@ -23,7 +23,7 @@ const toDigits = (value: number) => {
     thousands: Number(str[0]),
     hundreds: Number(str[1]),
     tens: Number(str[2]),
-    ones: Number(str[3])
+    ones: Number(str[3]),
   }
 }
 
@@ -32,7 +32,7 @@ const clampFourDigit = (value: number) => Math.min(9999, Math.max(0, Math.floor(
 const nextPlaceMap: Partial<Record<PlaceValue, PlaceValue>> = {
   ones: 'tens',
   tens: 'hundreds',
-  hundreds: 'thousands'
+  hundreds: 'thousands',
 }
 
 const formatNumber = (value: number) => value.toLocaleString('en-US')
@@ -40,13 +40,18 @@ const formatNumber = (value: number) => value.toLocaleString('en-US')
 export function GoldenBeadsMaterialView() {
   const [addendA, setAddendA] = useState(1824)
   const [addendB, setAddendB] = useState(2832)
-  const [board, setBoard] = useState<GoldenBeadsBoard>(() => createBoardFromConfig({ addends: [1824, 2832] }))
+  const [board, setBoard] = useState<GoldenBeadsBoard>(() =>
+    createBoardFromConfig({ addends: [1824, 2832] })
+  )
   const [status, setStatus] = useState('Enter numbers and build them on the mat.')
 
-  const addendDigits = useMemo(() => ({
-    first: toDigits(addendA),
-    second: toDigits(addendB)
-  }), [addendA, addendB])
+  const addendDigits = useMemo(
+    () => ({
+      first: toDigits(addendA),
+      second: toDigits(addendB),
+    }),
+    [addendA, addendB]
+  )
 
   const rebuildBoard = () => {
     setBoard(createBoardFromConfig({ addends: [addendA, addendB] }))
@@ -60,10 +65,20 @@ export function GoldenBeadsMaterialView() {
       const firstCount = addendDigits.first[place]
       const secondCount = addendDigits.second[place]
       if (firstCount) {
-        actions.push({ kind: 'spawn', thing: placeToThing[place], qty: firstCount, to: `addend1.${place}` })
+        actions.push({
+          kind: 'spawn',
+          thing: placeToThing[place],
+          qty: firstCount,
+          to: `addend1.${place}`,
+        })
       }
       if (secondCount) {
-        actions.push({ kind: 'spawn', thing: placeToThing[place], qty: secondCount, to: `addend2.${place}` })
+        actions.push({
+          kind: 'spawn',
+          thing: placeToThing[place],
+          qty: secondCount,
+          to: `addend2.${place}`,
+        })
       }
     })
 
@@ -109,17 +124,22 @@ export function GoldenBeadsMaterialView() {
   }
 
   const highlightColumn = (place: PlaceValue) => {
-    setBoard((prev) => ({ ...cloneBoard(prev), highlightColumn: prev.highlightColumn === place ? undefined : place }))
+    setBoard((prev) => ({
+      ...cloneBoard(prev),
+      highlightColumn: prev.highlightColumn === place ? undefined : place,
+    }))
   }
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Golden Beads + Number Cards</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">
+            Golden Beads + Number Cards
+          </h2>
           <p className="mt-1 text-sm text-slate-600">
-            Programmatic PixiJS scene that composes four-digit numbers using Montessori bead material and color-coded
-            number cards. Configure any numbers and animate the build-out.
+            Programmatic PixiJS scene that composes four-digit numbers using Montessori bead
+            material and color-coded number cards. Configure any numbers and animate the build-out.
           </p>
         </div>
         <div className="rounded-full bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">
@@ -133,7 +153,9 @@ export function GoldenBeadsMaterialView() {
         </div>
         <div className="space-y-4 text-sm text-slate-700">
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500">Controls</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              Controls
+            </h4>
             <div className="mt-3 space-y-2">
               <label className="flex flex-col gap-1 text-xs font-medium text-slate-500">
                 First addend
@@ -187,7 +209,9 @@ export function GoldenBeadsMaterialView() {
           </div>
 
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500">Highlight columns</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              Highlight columns
+            </h4>
             <div className="mt-3 grid grid-cols-2 gap-2">
               {highToLowPlaces.map((place) => (
                 <button
@@ -209,8 +233,9 @@ export function GoldenBeadsMaterialView() {
             <p className="font-semibold text-slate-500">Status</p>
             <p className="mt-1 text-slate-700">{status}</p>
             <p className="mt-3">
-              Use this panel to demo why the manipulative supports place-value reasoning. Change the addends, rebuild,
-              and highlight the regroup steps as needed during stakeholder walkthroughs.
+              Use this panel to demo why the manipulative supports place-value reasoning. Change the
+              addends, rebuild, and highlight the regroup steps as needed during stakeholder
+              walkthroughs.
             </p>
           </div>
         </div>
@@ -218,9 +243,9 @@ export function GoldenBeadsMaterialView() {
 
       <div className="rounded-xl border border-slate-200 bg-white p-4 text-xs text-slate-600 shadow-sm">
         <p>
-          Tip: The number cards stay in sync with the digits you enter. When you run <em>Auto Solve</em>, we calculate
-          carries column-by-column (ones → thousands) and place the resulting digits on the card track, matching the
-          manual lesson flow.
+          Tip: The number cards stay in sync with the digits you enter. When you run{' '}
+          <em>Auto Solve</em>, we calculate carries column-by-column (ones → thousands) and place
+          the resulting digits on the card track, matching the manual lesson flow.
         </p>
       </div>
     </div>

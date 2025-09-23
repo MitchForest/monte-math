@@ -40,7 +40,7 @@ export function SessionSynchronizer() {
       } else {
         setStatus('unauthenticated')
       }
-    }
+    },
   })
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export function SessionSynchronizer() {
       if (snapshot.user && snapshot.session) {
         queryClient.setQueryData(['auth', 'me'], {
           user: snapshot.user,
-          session: snapshot.session
+          session: snapshot.session,
         })
       }
     }

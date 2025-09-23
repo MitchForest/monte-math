@@ -1,6 +1,7 @@
 # End-to-End Type Safety Example
 
 ## 1. Define Schema Once (Shared Package)
+
 ```typescript
 // packages/shared/src/procedures.ts
 import { z } from 'zod'
@@ -8,16 +9,19 @@ import { z } from 'zod'
 export const CreateLessonInput = z.object({
   title: z.string().min(1).max(100),
   skillId: z.string(),
-  stages: z.array(z.object({
-    mode: z.enum(['tutorial', 'worked', 'practice']),
-    materialSlug: z.string()
-  }))
+  stages: z.array(
+    z.object({
+      mode: z.enum(['tutorial', 'worked', 'practice']),
+      materialSlug: z.string(),
+    })
+  ),
 })
 
 export type CreateLessonInput = z.infer<typeof CreateLessonInput>
 ```
 
 ## 2. Server Uses Schema (API)
+
 ```typescript
 // apps/api/src/procedures/lessons.ts
 import { orpc } from '@orpc/server'
@@ -33,11 +37,12 @@ export const lessonRouter = orpc.router({
         .values(input) // ← Kysely type-checks this
         .execute()
       return result
-    })
+    }),
 })
 ```
 
 ## 3. Client Gets Full Types (Web/Studio)
+
 ```typescript
 // apps/studio/src/components/LessonForm.tsx
 import { useForm } from '@tanstack/react-form'
@@ -46,7 +51,7 @@ import { orpc } from '@/lib/orpc-client'
 
 function LessonForm() {
   const createLesson = orpc.lessons.create.useMutation()
-  
+
   const form = useForm({
     defaultValues: {
       title: '',
@@ -61,7 +66,7 @@ function LessonForm() {
       onChange: CreateLessonInput // ← Same Zod schema!
     }
   })
-  
+
   return (
     <form onSubmit={form.handleSubmit}>
       <form.Field
@@ -80,6 +85,7 @@ function LessonForm() {
 ```
 
 ## 4. Database Types (Kysely)
+
 ```typescript
 // apps/api/src/db/types.ts
 interface Database {

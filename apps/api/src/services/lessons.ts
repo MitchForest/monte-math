@@ -22,10 +22,7 @@ async function readLessonFromContent(lessonId: string) {
 }
 
 export async function getLessonScript(lessonId: string, version?: string) {
-  const query = db
-    .selectFrom('lesson_scripts')
-    .selectAll()
-    .where('lesson_id', '=', lessonId)
+  const query = db.selectFrom('lesson_scripts').selectAll().where('lesson_id', '=', lessonId)
 
   const row = version
     ? await query.where('version', '=', version).executeTakeFirst()
@@ -43,13 +40,16 @@ export async function getLessonScript(lessonId: string, version?: string) {
   return fallback
 }
 
-export async function saveLessonScript(script: LessonScript, options: { status?: 'draft' | 'published' } = {}) {
+export async function saveLessonScript(
+  script: LessonScript,
+  options: { status?: 'draft' | 'published' } = {}
+) {
   const status = options.status ?? 'draft'
   const payload: NewLessonScript = {
     lesson_id: script.lessonId,
     version: script.version,
     status,
-    script: serializeLesson(script)
+    script: serializeLesson(script),
   }
 
   if (status === 'published') {
@@ -60,14 +60,12 @@ export async function saveLessonScript(script: LessonScript, options: { status?:
     .insertInto('lesson_scripts')
     .values(payload)
     .onConflict((oc) =>
-      oc
-        .columns(['lesson_id', 'version'])
-        .doUpdateSet({
-          status: (eb) => eb.ref('excluded.status'),
-          script: (eb) => eb.ref('excluded.script'),
-          updated_at: sql`CURRENT_TIMESTAMP`,
-          published_at: (eb) => eb.ref('excluded.published_at')
-        })
+      oc.columns(['lesson_id', 'version']).doUpdateSet({
+        status: (eb) => eb.ref('excluded.status'),
+        script: (eb) => eb.ref('excluded.script'),
+        updated_at: sql`CURRENT_TIMESTAMP`,
+        published_at: (eb) => eb.ref('excluded.published_at'),
+      })
     )
     .execute()
 

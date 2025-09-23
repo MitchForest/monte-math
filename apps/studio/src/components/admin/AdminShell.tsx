@@ -14,7 +14,7 @@ interface AdminShellProps {
 
 const navItems = [
   { to: '/', label: 'Knowledge Graph' },
-  { to: '/lessons', label: 'Lessons' }
+  { to: '/lessons', label: 'Lessons' },
 ]
 
 function initials(name?: string | null) {
@@ -38,14 +38,16 @@ export function AdminShell({ title, description, children }: AdminShellProps) {
     onSuccess: () => {
       clearSession()
       queryClient.clear()
-    }
+    },
   })
 
   return (
     <div className="flex min-h-screen bg-background">
       <aside className="hidden w-64 flex-col border-r border-border/70 bg-sidebar p-6 text-sidebar-foreground md:flex">
         <div className="mb-10 space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">Monte Math</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+            Monte Math
+          </p>
           <h1 className="text-2xl font-semibold">Studio</h1>
         </div>
         <nav className="flex flex-1 flex-col gap-2">
@@ -56,7 +58,9 @@ export function AdminShell({ title, description, children }: AdminShellProps) {
                 key={item.to}
                 to={item.to as '/' | '/lessons'}
                 className={`flex items-center rounded-lg px-4 py-2 text-sm font-medium transition ${
-                  isActive ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:bg-muted'
+                  isActive
+                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    : 'text-muted-foreground hover:bg-muted'
                 }`}
               >
                 {item.label}
@@ -80,7 +84,9 @@ export function AdminShell({ title, description, children }: AdminShellProps) {
         <header className="border-b border-border/60 bg-card/70 backdrop-blur">
           <div className="flex items-center justify-between px-6 py-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">{description}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+                {description}
+              </p>
               <h2 className="text-2xl font-semibold text-foreground">{title}</h2>
             </div>
             <Button

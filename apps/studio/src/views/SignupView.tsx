@@ -15,7 +15,7 @@ const signupBaseSchema = z.object({
   displayName: z.string().min(2, 'Include at least 2 characters'),
   email: z.string().email('Enter a valid email'),
   password: z.string().min(8, 'Use at least 8 characters'),
-  confirmPassword: z.string().min(8, 'Confirm your password')
+  confirmPassword: z.string().min(8, 'Confirm your password'),
 })
 
 const signupSchema = signupBaseSchema.superRefine((value, ctx) => {
@@ -23,7 +23,7 @@ const signupSchema = signupBaseSchema.superRefine((value, ctx) => {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       message: 'Passwords must match',
-      path: ['confirmPassword']
+      path: ['confirmPassword'],
     })
   }
 })
@@ -49,7 +49,7 @@ export function SignupView() {
     },
     onSuccess: () => {
       navigate({ to: '/' })
-    }
+    },
   })
 
   const form = useForm({
@@ -57,24 +57,36 @@ export function SignupView() {
       displayName: '',
       email: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
     },
     validators: {
-      onSubmit: zodValidator(signupSchema)
+      onSubmit: zodValidator(signupSchema),
     },
     onSubmit: async ({ value }) => {
       await signupMutation.mutateAsync({
         email: value.email,
         password: value.password,
-        displayName: value.displayName
+        displayName: value.displayName,
       })
-    }
+    },
   })
 
-  const displayNameField = form.useField({ name: 'displayName', validators: { onChange: zodValidator(signupBaseSchema.shape.displayName) } })
-  const emailField = form.useField({ name: 'email', validators: { onChange: zodValidator(signupBaseSchema.shape.email) } })
-  const passwordField = form.useField({ name: 'password', validators: { onChange: zodValidator(signupBaseSchema.shape.password) } })
-  const confirmPasswordField = form.useField({ name: 'confirmPassword', validators: { onChange: zodValidator(signupBaseSchema.shape.confirmPassword) } })
+  const displayNameField = form.useField({
+    name: 'displayName',
+    validators: { onChange: zodValidator(signupBaseSchema.shape.displayName) },
+  })
+  const emailField = form.useField({
+    name: 'email',
+    validators: { onChange: zodValidator(signupBaseSchema.shape.email) },
+  })
+  const passwordField = form.useField({
+    name: 'password',
+    validators: { onChange: zodValidator(signupBaseSchema.shape.password) },
+  })
+  const confirmPasswordField = form.useField({
+    name: 'confirmPassword',
+    validators: { onChange: zodValidator(signupBaseSchema.shape.confirmPassword) },
+  })
 
   return (
     <AuthLayout
@@ -83,7 +95,10 @@ export function SignupView() {
       footer={
         <span>
           Already onboarded?{' '}
-          <Link to="/login" className="font-semibold text-primary underline-offset-4 hover:underline">
+          <Link
+            to="/login"
+            className="font-semibold text-primary underline-offset-4 hover:underline"
+          >
             Sign in
           </Link>
         </span>

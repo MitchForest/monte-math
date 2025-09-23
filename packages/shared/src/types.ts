@@ -18,7 +18,7 @@ export const nextTaskSchema = z.object({
   lessonId: z.string().optional(),
   checkpointId: z.string().optional(),
   version: z.string(),
-  estimatedXP: z.number()
+  estimatedXP: z.number(),
 })
 
 export type NextTask = z.infer<typeof nextTaskSchema>
@@ -29,7 +29,7 @@ export const attemptSchema = z.object({
   lessonId: z.string(),
   version: z.string(),
   correct: z.boolean(),
-  latencyMs: z.number()
+  latencyMs: z.number(),
 })
 
 export type AttemptPayload = z.infer<typeof attemptSchema>
@@ -37,7 +37,7 @@ export type AttemptPayload = z.infer<typeof attemptSchema>
 export const xpProgressSchema = z.object({
   todayXP: z.number(),
   goal: z.number(),
-  streak: z.number()
+  streak: z.number(),
 })
 
 export type XPProgress = z.infer<typeof xpProgressSchema>

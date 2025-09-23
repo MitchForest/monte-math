@@ -6,15 +6,22 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint . --ext ts --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{ts,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,json,md}\""
   },
   "dependencies": {
     "@monte/shared": "workspace:*",
     "zod": "^4.1.7"
   },
   "devDependencies": {
-    "typescript": "^5.3.3",
-    "@types/node": "^20.11.0"
+    "@types/bun": "^1.2.22",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
   }
 }

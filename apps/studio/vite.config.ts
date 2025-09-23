@@ -6,12 +6,12 @@ import path from 'path'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    port: 3002
+    port: 3002,
   },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@monte/shared': path.resolve(__dirname, '../../packages/shared/src')
-    }
-  }
+      '@monte/shared': path.resolve(__dirname, '../../packages/shared/src'),
+    },
+  },
 })

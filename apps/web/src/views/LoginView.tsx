@@ -14,7 +14,7 @@ import { apiClient } from '@/lib/orpc-client'
 
 const loginSchema = z.object({
   email: z.string().email('Enter a valid email'),
-  password: z.string().min(1, 'Password required')
+  password: z.string().min(1, 'Password required'),
 })
 
 function FormError({ message }: { message?: string }) {
@@ -39,30 +39,30 @@ export function LoginView() {
     },
     onSuccess: () => {
       navigate({ to: '/' })
-    }
+    },
   })
 
   const form = useForm({
     defaultValues: {
       email: '',
-      password: ''
+      password: '',
     },
     validators: {
-      onSubmit: zodValidator(loginSchema)
+      onSubmit: zodValidator(loginSchema),
     },
     onSubmit: async ({ value }) => {
       await loginMutation.mutateAsync(value)
-    }
+    },
   })
 
   const emailField = form.useField({
     name: 'email',
-    validators: { onChange: zodValidator(loginSchema.shape.email) }
+    validators: { onChange: zodValidator(loginSchema.shape.email) },
   })
 
   const passwordField = form.useField({
     name: 'password',
-    validators: { onChange: zodValidator(loginSchema.shape.password) }
+    validators: { onChange: zodValidator(loginSchema.shape.password) },
   })
 
   return (

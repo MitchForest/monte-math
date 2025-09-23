@@ -23,12 +23,12 @@ interface SkillsState {
     numSkills: number
     numEdges: number
   }
-  
+
   // UI State
   selectedSkillId: string | null
   highlightedSkills: Set<string>
   editingSkillId: string | null
-  
+
   // Actions
   loadSkills: () => Promise<void>
   selectSkill: (id: string | null) => void
@@ -50,7 +50,7 @@ export const useSkillsStore = create<SkillsState>()(
       selectedSkillId: null,
       highlightedSkills: new Set(),
       editingSkillId: null,
-      
+
       // Load skills from API
       loadSkills: async () => {
         const data = await apiClient.skills.list()
@@ -60,13 +60,13 @@ export const useSkillsStore = create<SkillsState>()(
           skillsMap.set(skill.id, {
             id: skill.id,
             name: skill.name,
-            description: skill.description ?? undefined
+            description: skill.description ?? undefined,
           })
         })
 
         const prerequisites: Prerequisite[] = data.prerequisites.map((edge) => ({
           fromId: edge.prereqId,
-          toId: edge.skillId
+          toId: edge.skillId,
         }))
 
         set({
@@ -74,11 +74,11 @@ export const useSkillsStore = create<SkillsState>()(
           prerequisites,
           stats: {
             numSkills: data.skills.length,
-            numEdges: data.prerequisites.length
-          }
+            numEdges: data.prerequisites.length,
+          },
         })
       },
-      
+
       // Select a skill
       selectSkill: (id) => {
         set({ selectedSkillId: id })
@@ -88,61 +88,61 @@ export const useSkillsStore = create<SkillsState>()(
           get().clearHighlights()
         }
       },
-      
+
       // Update skill details
       updateSkill: async (id, updates) => {
         await apiClient.skills.update({
           id,
           ...(updates.name !== undefined ? { name: updates.name } : {}),
-          ...(updates.description !== undefined ? { description: updates.description } : {})
+          ...(updates.description !== undefined ? { description: updates.description } : {}),
         })
         await get().loadSkills()
       },
-      
+
       // Add prerequisite edge
       addPrerequisite: async (fromId, toId) => {
         await apiClient.skills.addPrerequisite({ prereqId: fromId, skillId: toId })
         await get().loadSkills()
       },
-      
+
       // Remove prerequisite edge
       removePrerequisite: async (fromId, toId) => {
         await apiClient.skills.removePrerequisite({ prereqId: fromId, skillId: toId })
         await get().loadSkills()
       },
-      
+
       // Highlight prerequisites and dependents
       highlightPrerequisites: (skillId) => {
         const highlighted = new Set<string>()
         highlighted.add(skillId)
-        
+
         const prereqs = get().prerequisites
-        
+
         // Find all prerequisites (skills that come before)
-        prereqs.forEach(p => {
+        prereqs.forEach((p) => {
           if (p.toId === skillId) {
             highlighted.add(p.fromId)
           }
         })
-        
+
         // Find all dependents (skills that come after)
-        prereqs.forEach(p => {
+        prereqs.forEach((p) => {
           if (p.fromId === skillId) {
             highlighted.add(p.toId)
           }
         })
-        
+
         set({ highlightedSkills: highlighted })
       },
-      
+
       // Clear highlights
       clearHighlights: () => {
         set({ highlightedSkills: new Set() })
       },
-      
+
       // Set position for graph layout
       setSkillPosition: (id, x, y) => {
-        set(state => {
+        set((state) => {
           const skills = new Map(state.skills)
           const skill = skills.get(id)
           if (skill) {
@@ -150,10 +150,10 @@ export const useSkillsStore = create<SkillsState>()(
           }
           return { skills }
         })
-      }
+      },
     }),
     {
-      name: 'skills-store'
+      name: 'skills-store',
     }
   )
 )

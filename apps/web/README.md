@@ -11,14 +11,14 @@ The web app showcases Monte Math lessons, materials, and data visualizations for
 
 ## Stack Overview
 
-| Concern      | Library                                        | Notes                                                        |
-|--------------|------------------------------------------------|--------------------------------------------------------------|
-| Build        | Vite + TypeScript                               | Fast HMR, compatible with shadcn CLI                        |
-| Router       | TanStack Router                                 | Fileless routing with data-prefetch hooks                   |
-| Data Fetch   | TanStack Query + `@monte/api-client`             | Contract-typed queries/mutations                            |
-| State        | Local component state + derived React Query data | Zustand reserved for heavier flows                           |
-| UI           | Tailwind CSS v4, shadcn/ui (New York theme)      | Components in `src/components/ui`                           |
-| Canvas       | PixiJS (8.x)                                     | Materials under `src/materials`                             |
+| Concern    | Library                                          | Notes                                     |
+| ---------- | ------------------------------------------------ | ----------------------------------------- |
+| Build      | Vite + TypeScript                                | Fast HMR, compatible with shadcn CLI      |
+| Router     | TanStack Router                                  | Fileless routing with data-prefetch hooks |
+| Data Fetch | TanStack Query + `@monte/api-client`             | Contract-typed queries/mutations          |
+| State      | Local component state + derived React Query data | Zustand reserved for heavier flows        |
+| UI         | Tailwind CSS v4, shadcn/ui (New York theme)      | Components in `src/components/ui`         |
+| Canvas     | PixiJS (8.x)                                     | Materials under `src/materials`           |
 
 ## Integration Points
 

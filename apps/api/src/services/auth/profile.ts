@@ -14,7 +14,7 @@ export function toUserProfile(user: User) {
     avatarSeed: user.avatar_seed,
     avatarUrl: buildDiceBearUrl({ seed: user.avatar_seed }),
     createdAt: user.created_at,
-    updatedAt: user.updated_at
+    updatedAt: user.updated_at,
   }
 }
 

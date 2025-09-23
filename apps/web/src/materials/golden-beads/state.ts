@@ -11,7 +11,7 @@ const placeToThingMap: Record<PlaceValue, SpawnThing> = {
   thousands: 'thousand',
   hundreds: 'hundred',
   tens: 'ten',
-  ones: 'unit'
+  ones: 'unit',
 }
 
 export const splitDigits = (value: number) => {
@@ -20,7 +20,7 @@ export const splitDigits = (value: number) => {
     thousands: Number(str[0]),
     hundreds: Number(str[1]),
     tens: Number(str[2]),
-    ones: Number(str[3])
+    ones: Number(str[3]),
   } as Record<PlaceValue, number>
 }
 
@@ -29,30 +29,31 @@ const emptyColumn = () => ({
   addend2: 0,
   workspace: 0,
   result: 0,
-  carry: 0
+  carry: 0,
 })
 
-const emptyCardRow = () => ({
-  thousands: null,
-  hundreds: null,
-  tens: null,
-  ones: null
-} as Record<PlaceValue, number | null>)
+const emptyCardRow = () =>
+  ({
+    thousands: null,
+    hundreds: null,
+    tens: null,
+    ones: null,
+  }) as Record<PlaceValue, number | null>
 
 export const createEmptyBoard = (): GoldenBeadsBoard => ({
   columns: {
     thousands: emptyColumn(),
     hundreds: emptyColumn(),
     tens: emptyColumn(),
-    ones: emptyColumn()
+    ones: emptyColumn(),
   },
   cards: {
     addend1: emptyCardRow(),
     addend2: emptyCardRow(),
     result: emptyCardRow(),
-    carry: emptyCardRow()
+    carry: emptyCardRow(),
   },
-  highlightColumn: undefined
+  highlightColumn: undefined,
 })
 
 export const createBoardFromConfig = (config: GoldenBeadsConfig): GoldenBeadsBoard => {
@@ -73,7 +74,10 @@ export const createBoardFromConfig = (config: GoldenBeadsConfig): GoldenBeadsBoa
 export const createBoardForConfig = (config: GoldenBeadsConfig): GoldenBeadsBoard =>
   config.startEmpty ? createEmptyBoard() : createBoardFromConfig(config)
 
-export const populateAddends = (board: GoldenBeadsBoard, config: GoldenBeadsConfig): GoldenBeadsBoard => {
+export const populateAddends = (
+  board: GoldenBeadsBoard,
+  config: GoldenBeadsConfig
+): GoldenBeadsBoard => {
   let working = cloneBoard(board)
   const [first, second] = config.addends
   const firstDigits = splitDigits(first)
@@ -87,7 +91,7 @@ export const populateAddends = (board: GoldenBeadsBoard, config: GoldenBeadsConf
         kind: 'spawn',
         thing: placeToThingMap[place],
         qty: amountA,
-        to: `addend1.${place}`
+        to: `addend1.${place}`,
       })
     }
     if (amountB) {
@@ -95,7 +99,7 @@ export const populateAddends = (board: GoldenBeadsBoard, config: GoldenBeadsConf
         kind: 'spawn',
         thing: placeToThingMap[place],
         qty: amountB,
-        to: `addend2.${place}`
+        to: `addend2.${place}`,
       })
     }
   })
@@ -108,15 +112,15 @@ export const cloneBoard = (board: GoldenBeadsBoard): GoldenBeadsBoard => ({
     thousands: { ...board.columns.thousands },
     hundreds: { ...board.columns.hundreds },
     tens: { ...board.columns.tens },
-    ones: { ...board.columns.ones }
+    ones: { ...board.columns.ones },
   },
   cards: {
     addend1: { ...board.cards.addend1 },
     addend2: { ...board.cards.addend2 },
     result: { ...board.cards.result },
-    carry: { ...board.cards.carry }
+    carry: { ...board.cards.carry },
   },
-  highlightColumn: board.highlightColumn
+  highlightColumn: board.highlightColumn,
 })
 
 type Target =
@@ -137,7 +141,10 @@ const parseTarget = (location?: string): Target | null => {
   if (parts[0] === 'card') {
     const row = parts[1]
     const column = parts[2]
-    if ((['addend1', 'addend2', 'result', 'carry'] as string[]).includes(row) && isPlaceValue(column)) {
+    if (
+      (['addend1', 'addend2', 'result', 'carry'] as string[]).includes(row) &&
+      isPlaceValue(column)
+    ) {
       return { kind: 'card', row: row as 'addend1' | 'addend2' | 'result' | 'carry', column }
     }
     return null
@@ -153,7 +160,8 @@ const parseTarget = (location?: string): Target | null => {
 
 type ExchangeColumn = 'units' | PlaceValue
 
-const normalizeColumn = (column: ExchangeColumn): PlaceValue => (column === 'units' ? 'ones' : column)
+const normalizeColumn = (column: ExchangeColumn): PlaceValue =>
+  column === 'units' ? 'ones' : column
 
 const nextColumn = (column: PlaceValue): PlaceValue | null => {
   const index = placeValues.indexOf(column)

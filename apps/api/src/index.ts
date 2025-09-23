@@ -17,7 +17,7 @@ app.use('/rpc/*', async (c, next) => {
   let authState = undefined
   try {
     authState = await getSessionFromRequest(sessionCookie)
-  } catch (error) {
+  } catch {
     authState = undefined
   }
   const pendingCookies: string[] = []
@@ -34,8 +34,8 @@ app.use('/rpc/*', async (c, next) => {
       user: authState?.user,
       setCookie: (value: string) => {
         pendingCookies.push(value)
-      }
-    }
+      },
+    },
   })
 
   if (matched && response) {
@@ -54,8 +54,8 @@ app.get('/', (c) =>
     version: '0.0.1',
     status: 'ready',
     endpoints: {
-      rpc: '/rpc'
-    }
+      rpc: '/rpc',
+    },
   })
 )
 
@@ -66,5 +66,5 @@ console.log(`Server running on http://localhost:${port}`)
 
 export default {
   port,
-  fetch: app.fetch
+  fetch: app.fetch,
 }

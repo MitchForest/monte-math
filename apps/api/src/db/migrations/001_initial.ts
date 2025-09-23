@@ -7,26 +7,20 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('id', 'text', (col) => col.primaryKey())
     .addColumn('name', 'text', (col) => col.notNull())
     .addColumn('description', 'text')
-    .addColumn('created_at', 'text', (col) => 
-      col.notNull().defaultTo(sql`CURRENT_TIMESTAMP`)
-    )
-    .addColumn('updated_at', 'text', (col) => 
-      col.notNull().defaultTo(sql`CURRENT_TIMESTAMP`)
-    )
+    .addColumn('created_at', 'text', (col) => col.notNull().defaultTo(sql`CURRENT_TIMESTAMP`))
+    .addColumn('updated_at', 'text', (col) => col.notNull().defaultTo(sql`CURRENT_TIMESTAMP`))
     .execute()
 
   // Create skill_prerequisites table
   await db.schema
     .createTable('skill_prerequisites')
-    .addColumn('skill_id', 'text', (col) => 
+    .addColumn('skill_id', 'text', (col) =>
       col.notNull().references('skills.id').onDelete('cascade')
     )
-    .addColumn('prereq_id', 'text', (col) => 
+    .addColumn('prereq_id', 'text', (col) =>
       col.notNull().references('skills.id').onDelete('cascade')
     )
-    .addColumn('created_at', 'text', (col) => 
-      col.notNull().defaultTo(sql`CURRENT_TIMESTAMP`)
-    )
+    .addColumn('created_at', 'text', (col) => col.notNull().defaultTo(sql`CURRENT_TIMESTAMP`))
     .addPrimaryKeyConstraint('pk_skill_prerequisites', ['skill_id', 'prereq_id'])
     .execute()
 

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2022",
     "module": "ESNext",
-    "lib": ["ES2020"],
+    "lib": ["ES2022", "DOM"],
     "moduleResolution": "bundler",
     "strict": true,
     "skipLibCheck": true,
@@ -10,14 +10,20 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "@monte/shared": ["packages/shared/src"],
+      "@monte/shared/*": ["packages/shared/src/*"],
       "@monte/content-builder": ["packages/content-builder/src"],
-      "@monte/api-client": ["packages/api-client/src"]
+      "@monte/content-builder/*": ["packages/content-builder/src/*"],
+      "@monte/api-client": ["packages/api-client/src"],
+      "@monte/api-client/*": ["packages/api-client/src/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "build", ".next"]
+  "exclude": ["node_modules", "dist", "build", ".next", "coverage", "*.config.*"]
 }

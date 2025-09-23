@@ -2,16 +2,8 @@ import { serialize } from 'cookie'
 
 import { loadAuthEnvironment } from '../../config/auth'
 import type { User } from '../../db/schema'
-import {
-  deleteSessionById,
-  findSessionById,
-  insertSession
-} from './store'
-import {
-  generateSessionId,
-  generateSessionToken,
-  hashSessionToken
-} from './tokens'
+import { deleteSessionById, findSessionById, insertSession } from './store'
+import { generateSessionId, generateSessionToken, hashSessionToken } from './tokens'
 
 const env = loadAuthEnvironment()
 
@@ -34,7 +26,7 @@ export async function createSession(user: User): Promise<SessionCookie> {
     id: sessionId,
     user_id: user.id,
     hashed_session_token: hashedToken,
-    expires_at: expiresAt.toISOString()
+    expires_at: expiresAt.toISOString(),
   })
 
   const header = serialize(env.sessionCookieName, `${sessionId}.${sessionToken}`, {
@@ -42,14 +34,14 @@ export async function createSession(user: User): Promise<SessionCookie> {
     sameSite: 'lax',
     secure: isProduction,
     path: '/',
-    maxAge: env.sessionMaxAgeSeconds
+    maxAge: env.sessionMaxAgeSeconds,
   })
 
   return {
     header,
     sessionId,
     sessionToken,
-    expiresAt
+    expiresAt,
   }
 }
 
@@ -95,6 +87,6 @@ export function buildSessionClearHeader(): string {
     sameSite: 'lax',
     secure: isProduction,
     path: '/',
-    maxAge: 0
+    maxAge: 0,
   })
 }

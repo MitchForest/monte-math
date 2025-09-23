@@ -1,5 +1,12 @@
 import { useEffect } from 'react'
-import { Router, RootRoute, Route, RouterProvider, Outlet, useNavigate } from '@tanstack/react-router'
+import {
+  Router,
+  RootRoute,
+  Route,
+  RouterProvider,
+  Outlet,
+  useNavigate,
+} from '@tanstack/react-router'
 
 import { KnowledgeView } from './views/KnowledgeView'
 import { LessonsView } from './views/LessonsView'
@@ -9,31 +16,31 @@ import { useSessionStore } from './stores/session-store'
 import { LoadingScreen } from './components/admin/LoadingScreen'
 
 const rootRoute = new RootRoute({
-  component: RootLayout
+  component: RootLayout,
 })
 
 const knowledgeRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: KnowledgePage
+  component: KnowledgePage,
 })
 
 const lessonsRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/lessons',
-  component: LessonsPage
+  component: LessonsPage,
 })
 
 const loginRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/login',
-  component: LoginPage
+  component: LoginPage,
 })
 
 const signupRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/signup',
-  component: SignupPage
+  component: SignupPage,
 })
 
 const routeTree = rootRoute.addChildren([knowledgeRoute, lessonsRoute, loginRoute, signupRoute])

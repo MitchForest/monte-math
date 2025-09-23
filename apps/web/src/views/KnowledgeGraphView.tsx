@@ -27,7 +27,7 @@ export function KnowledgeGraphView() {
 
   const { data, isLoading } = useQuery({
     queryKey: ['skills', 'list'],
-    queryFn: () => apiClient.skills.list()
+    queryFn: () => apiClient.skills.list(),
   })
 
   const { nodes, edges, stats } = useMemo(() => {
@@ -35,7 +35,7 @@ export function KnowledgeGraphView() {
       return {
         nodes: [] as GraphNode[],
         edges: [] as GraphEdge[],
-        stats: { skills: 0, edges: 0, depth: 1, maxRows: 1 }
+        stats: { skills: 0, edges: 0, depth: 1, maxRows: 1 },
       }
     }
 
@@ -64,7 +64,7 @@ export function KnowledgeGraphView() {
       name: skill.name,
       depth: depthFor(skill.id),
       x: 0,
-      y: 0
+      y: 0,
     }))
 
     const byLevel = new Map<number, GraphNode[]>()
@@ -91,7 +91,7 @@ export function KnowledgeGraphView() {
 
     const edges: GraphEdge[] = data.prerequisites.map(({ skillId, prereqId }) => ({
       from: prereqId,
-      to: skillId
+      to: skillId,
     }))
 
     return {
@@ -101,8 +101,8 @@ export function KnowledgeGraphView() {
         skills: data.skills.length,
         edges: edges.length,
         depth: Math.max(1, byLevel.size),
-        maxRows
-      }
+        maxRows,
+      },
     }
   }, [data])
 
@@ -152,10 +152,12 @@ export function KnowledgeGraphView() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Knowledge Graph Overview</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">
+            Knowledge Graph Overview
+          </h2>
           <p className="mt-1 text-sm text-slate-600">
-            Snapshot of {stats.skills} skills and {stats.edges} prerequisite links. Depth {stats.depth} ≈ scope from
-            counting foundations through algebra.
+            Snapshot of {stats.skills} skills and {stats.edges} prerequisite links. Depth{' '}
+            {stats.depth} ≈ scope from counting foundations through algebra.
           </p>
         </div>
         <div className="flex items-center gap-2 text-xs text-slate-500">
@@ -175,8 +177,12 @@ export function KnowledgeGraphView() {
             const to = nodes.find((node) => node.id === edge.to)
             if (!from || !to) return null
             const isActive =
-              additionFocus.has(edge.from) && additionFocus.has(edge.to) && additionFocus.has(focusedSkill ?? '')
-            const isAncestor = focusAncestors.has(edge.from) && (focusedSkill === edge.to || focusAncestors.has(edge.to))
+              additionFocus.has(edge.from) &&
+              additionFocus.has(edge.to) &&
+              additionFocus.has(focusedSkill ?? '')
+            const isAncestor =
+              focusAncestors.has(edge.from) &&
+              (focusedSkill === edge.to || focusAncestors.has(edge.to))
             const stroke = isActive ? '#f59e0b' : isAncestor ? '#334155' : '#cbd5f5'
             const opacity = isActive || isAncestor ? 0.9 : 0.35
             return (
@@ -273,7 +279,9 @@ export function KnowledgeGraphView() {
 
       <aside className="grid gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm md:grid-cols-2">
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500">Focused skill</h4>
+          <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+            Focused skill
+          </h4>
           {focusedSkill ? (
             <div className="mt-2 space-y-1 text-sm text-slate-700">
               <div className="font-semibold text-slate-900">{focusedSkill}</div>
@@ -283,14 +291,18 @@ export function KnowledgeGraphView() {
               </div>
             </div>
           ) : (
-            <p className="mt-2 text-sm text-slate-500">Click a node to inspect its incoming path.</p>
+            <p className="mt-2 text-sm text-slate-500">
+              Click a node to inspect its incoming path.
+            </p>
           )}
         </div>
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500">Addition track</h4>
+          <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+            Addition track
+          </h4>
           <p className="mt-2 text-sm text-slate-600">
-            Highlighted nodes trace the path toward <strong>Column Addition (with regroup)</strong>. Skills S032 and
-            S033 are the targets for the golden bead lesson you&apos;ll see next.
+            Highlighted nodes trace the path toward <strong>Column Addition (with regroup)</strong>.
+            Skills S032 and S033 are the targets for the golden bead lesson you&apos;ll see next.
           </p>
         </div>
       </aside>

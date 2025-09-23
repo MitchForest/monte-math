@@ -6,11 +6,7 @@ import { listPublishedLessonScripts } from '../apps/api/src/services/lessons'
 import { db } from '../apps/api/src/db/client'
 
 async function exportSkills() {
-  const skills = await db
-    .selectFrom('skills')
-    .select(['id', 'name'])
-    .orderBy('id')
-    .execute()
+  const skills = await db.selectFrom('skills').select(['id', 'name']).orderBy('id').execute()
 
   const prereqRows = await db
     .selectFrom('skill_prerequisites')
@@ -33,8 +29,8 @@ async function exportSkills() {
     prerequisites: prereqs,
     stats: {
       num_skills: skills.length,
-      num_edges: numEdges
-    }
+      num_edges: numEdges,
+    },
   }
 
   const target = path.resolve(process.cwd(), 'content/skills/graph.json')

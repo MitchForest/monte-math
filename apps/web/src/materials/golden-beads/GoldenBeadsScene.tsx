@@ -7,14 +7,14 @@ const columnLabels: Record<PlaceValue, string> = {
   thousands: 'Thousands',
   hundreds: 'Hundreds',
   tens: 'Tens',
-  ones: 'Ones'
+  ones: 'Ones',
 }
 
 const cardPalette: Record<PlaceValue, number> = {
   thousands: 0x047857,
   hundreds: 0xdc2626,
   tens: 0x2563eb,
-  ones: 0x16a34a
+  ones: 0x16a34a,
 }
 
 const beadColor = 0xfbbf24
@@ -27,10 +27,16 @@ const rowPositions = {
   addend2: 130,
   workspace: 210,
   result: 300,
-  resultCard: 352
+  resultCard: 352,
 } as const
 
-function drawCard(container: PIXI.Container, value: number | null, x: number, y: number, color: number) {
+function drawCard(
+  container: PIXI.Container,
+  value: number | null,
+  x: number,
+  y: number,
+  color: number
+) {
   const card = new PIXI.Graphics()
   card.roundRect(x - 36, y - 26, 72, 44, 10)
   card.fill(0xffffff, value === null ? 0.3 : 0.95)
@@ -41,7 +47,7 @@ function drawCard(container: PIXI.Container, value: number | null, x: number, y:
     fontFamily: 'Inter, sans-serif',
     fontSize: 24,
     fontWeight: '600',
-    fill: value === null ? 0xd1d5db : color
+    fill: value === null ? 0xd1d5db : color,
   })
   text.anchor.set(0.5)
   text.x = x
@@ -49,7 +55,13 @@ function drawCard(container: PIXI.Container, value: number | null, x: number, y:
   container.addChild(text)
 }
 
-function drawBeads(container: PIXI.Container, count: number, place: PlaceValue, x: number, y: number) {
+function drawBeads(
+  container: PIXI.Container,
+  count: number,
+  place: PlaceValue,
+  x: number,
+  y: number
+) {
   if (count <= 0) return
   const perRow = 4
   const spacing = 26
@@ -81,7 +93,12 @@ function drawBeads(container: PIXI.Container, count: number, place: PlaceValue, 
   }
 }
 
-function drawColumn(app: PIXI.Application, board: GoldenBeadsBoard, place: PlaceValue, index: number) {
+function drawColumn(
+  app: PIXI.Application,
+  board: GoldenBeadsBoard,
+  place: PlaceValue,
+  index: number
+) {
   const columnContainer = new PIXI.Container()
   const baseX = 60 + index * columnWidth
   columnContainer.x = baseX
@@ -91,7 +108,10 @@ function drawColumn(app: PIXI.Application, board: GoldenBeadsBoard, place: Place
   const columnBackground = new PIXI.Graphics()
   columnBackground.roundRect(-50, 0, columnWidth - 40, 380, 24)
   columnBackground.fill(isHighlighted ? 0xfffbeb : 0xf8fafc)
-  columnBackground.stroke({ color: isHighlighted ? 0xf97316 : 0xe2e8f0, width: isHighlighted ? 3 : 1 })
+  columnBackground.stroke({
+    color: isHighlighted ? 0xf97316 : 0xe2e8f0,
+    width: isHighlighted ? 3 : 1,
+  })
   columnContainer.addChild(columnBackground)
 
   const column = board.columns[place]
@@ -115,7 +135,7 @@ function drawColumn(app: PIXI.Application, board: GoldenBeadsBoard, place: Place
     fontFamily: 'Inter, sans-serif',
     fontSize: 14,
     fontWeight: '600',
-    fill: 0x1e293b
+    fill: 0x1e293b,
   })
   label.anchor.set(0.5)
   label.x = 0
@@ -151,7 +171,7 @@ export function GoldenBeadsScene({ board }: GoldenBeadsSceneProps) {
         backgroundAlpha: 0,
         antialias: true,
         resolution: window.devicePixelRatio || 1,
-        autoDensity: true
+        autoDensity: true,
       })
       .then(() => {
         containerRef.current?.appendChild(app.canvas)
@@ -170,5 +190,10 @@ export function GoldenBeadsScene({ board }: GoldenBeadsSceneProps) {
     drawBoard(appRef.current, board)
   }, [board])
 
-  return <div ref={containerRef} className="w-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow" />
+  return (
+    <div
+      ref={containerRef}
+      className="w-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow"
+    />
+  )
 }

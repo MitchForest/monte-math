@@ -12,7 +12,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
 import { SettingsSheet } from './SettingsSheet'
@@ -36,7 +36,7 @@ export function StudentShell({ children }: { children: React.ReactNode }) {
     queryKey: ['xp', 'progress', user?.id],
     enabled: Boolean(user?.id),
     queryFn: () => apiClient.xp.getProgress({ userId: user!.id }),
-    staleTime: 1000 * 60
+    staleTime: 1000 * 60,
   })
 
   const logoutMutation = useMutation({
@@ -47,7 +47,7 @@ export function StudentShell({ children }: { children: React.ReactNode }) {
       clearSession()
       queryClient.clear()
       navigate({ to: '/login' })
-    }
+    },
   })
 
   const xpGoal = xpData?.goal ?? 100
@@ -65,7 +65,9 @@ export function StudentShell({ children }: { children: React.ReactNode }) {
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
             <div className="flex items-center gap-4 rounded-[calc(var(--radius)/1.4)] bg-white/60 px-5 py-3 shadow-[var(--shadow-soft)]">
               <div className="flex flex-col">
-                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">XP</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+                  XP
+                </span>
                 <span className="text-2xl font-black text-foreground">{xpToday}</span>
               </div>
               <div className="w-40">
@@ -80,8 +82,12 @@ export function StudentShell({ children }: { children: React.ReactNode }) {
             </div>
 
             <div className="text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.5em] text-muted-foreground">Today</p>
-              <h1 className="mt-1 text-4xl font-black uppercase tracking-[0.12em] text-foreground drop-shadow-sm">Monte Math</h1>
+              <p className="text-xs font-semibold uppercase tracking-[0.5em] text-muted-foreground">
+                Today
+              </p>
+              <h1 className="mt-1 text-4xl font-black uppercase tracking-[0.12em] text-foreground drop-shadow-sm">
+                Monte Math
+              </h1>
             </div>
 
             <DropdownMenu>
@@ -96,8 +102,12 @@ export function StudentShell({ children }: { children: React.ReactNode }) {
                     <AvatarFallback>{initials(user?.displayName)}</AvatarFallback>
                   </Avatar>
                   <div className="hidden flex-col sm:flex">
-                    <span className="text-sm font-semibold text-foreground">{user?.displayName ?? 'Explorer'}</span>
-                    <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Tap for menu</span>
+                    <span className="text-sm font-semibold text-foreground">
+                      {user?.displayName ?? 'Explorer'}
+                    </span>
+                    <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      Tap for menu
+                    </span>
                   </div>
                 </button>
               </DropdownMenuTrigger>
@@ -127,9 +137,7 @@ export function StudentShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-10">
-          {children}
-        </main>
+        <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-10">{children}</main>
       </div>
 
       <SettingsSheet open={settingsOpen} onOpenChange={setSettingsOpen} />

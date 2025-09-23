@@ -6,6 +6,6 @@ export async function smokeTest(script: LessonScript): Promise<void> {
   if (!script.stages || script.stages.length === 0) {
     throw new Error('Script has no stages')
   }
-  
+
   console.log(`Smoke test passed for ${script.lessonId}@${script.version}`)
 }

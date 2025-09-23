@@ -1,5 +1,10 @@
 import { useMemo, useState } from 'react'
-import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
 
 import { AdminShell } from '@/components/admin/AdminShell'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -24,14 +29,14 @@ export function LessonsView() {
         lessonId: 'lesson-07-column-addition-golden-beads',
         title: 'Golden Beads Addition',
         status: 'published',
-        updatedAt: '2024-05-16'
+        updatedAt: '2024-05-16',
       },
       {
         lessonId: 'lesson-08-column-subtraction-golden-beads',
         title: 'Golden Beads Subtraction',
         status: 'draft',
-        updatedAt: '2024-05-10'
-      }
+        updatedAt: '2024-05-10',
+      },
     ],
     []
   )
@@ -39,10 +44,10 @@ export function LessonsView() {
   const columns = useMemo(
     () => [
       columnHelper.accessor('lessonId', {
-        header: 'Lesson ID'
+        header: 'Lesson ID',
       }),
       columnHelper.accessor('title', {
-        header: 'Title'
+        header: 'Title',
       }),
       columnHelper.accessor('status', {
         header: 'Status',
@@ -50,20 +55,24 @@ export function LessonsView() {
           <span className={info.getValue() === 'published' ? 'text-emerald-600' : 'text-amber-600'}>
             {info.getValue() === 'published' ? 'Published' : 'Draft'}
           </span>
-        )
+        ),
       }),
       columnHelper.accessor('updatedAt', {
-        header: 'Last updated'
+        header: 'Last updated',
       }),
       columnHelper.display({
         id: 'actions',
         header: '',
         cell: (info) => (
-          <Button size="sm" variant="outline" onClick={() => setActiveLessonId(info.row.original.lessonId)}>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => setActiveLessonId(info.row.original.lessonId)}
+          >
             Edit
           </Button>
-        )
-      })
+        ),
+      }),
     ],
     []
   )
@@ -71,7 +80,7 @@ export function LessonsView() {
   const table = useReactTable({
     data,
     columns,
-    getCoreRowModel: getCoreRowModel()
+    getCoreRowModel: getCoreRowModel(),
   })
 
   return (
@@ -83,39 +92,46 @@ export function LessonsView() {
               <CardTitle>Lesson catalog</CardTitle>
               <CardDescription>Track drafts, publishing state, and metadata.</CardDescription>
             </div>
-          <Button variant="secondary" disabled>
-            New lesson (soon)
-          </Button>
-        </CardHeader>
-        <CardContent>
-          <table className="w-full table-auto border-collapse text-sm">
-            <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id} className="border-b border-border/60 text-left">
-                  {headerGroup.headers.map((header) => (
-                    <th key={header.id} className="px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table.getRowModel().rows.map((row) => (
-                <tr key={row.id} className="border-b border-border/40 last:border-0">
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="px-3 py-3">
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </CardContent>
+            <Button variant="secondary" disabled>
+              New lesson (soon)
+            </Button>
+          </CardHeader>
+          <CardContent>
+            <table className="w-full table-auto border-collapse text-sm">
+              <thead>
+                {table.getHeaderGroups().map((headerGroup) => (
+                  <tr key={headerGroup.id} className="border-b border-border/60 text-left">
+                    {headerGroup.headers.map((header) => (
+                      <th
+                        key={header.id}
+                        className="px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+                      >
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(header.column.columnDef.header, header.getContext())}
+                      </th>
+                    ))}
+                  </tr>
+                ))}
+              </thead>
+              <tbody>
+                {table.getRowModel().rows.map((row) => (
+                  <tr key={row.id} className="border-b border-border/40 last:border-0">
+                    {row.getVisibleCells().map((cell) => (
+                      <td key={cell.id} className="px-3 py-3">
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </CardContent>
         </Card>
 
-        {activeLessonId ? <LessonEditor lessonId={activeLessonId} onClose={() => setActiveLessonId(null)} /> : null}
+        {activeLessonId ? (
+          <LessonEditor lessonId={activeLessonId} onClose={() => setActiveLessonId(null)} />
+        ) : null}
       </div>
     </AdminShell>
   )

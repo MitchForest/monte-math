@@ -1,24 +1,35 @@
 import { createHash } from 'crypto'
-import { generateIdFromEntropySize } from 'oslo/crypto'
+import { alphabet, generateRandomString } from 'oslo/crypto'
+
+const ID_ALPHABET = alphabet('a-z', 'A-Z', '0-9')
+const TOKEN_ALPHABET = alphabet('a-z', 'A-Z', '0-9', '-', '_')
+
+function randomId(length: number): string {
+  return generateRandomString(length, ID_ALPHABET)
+}
+
+function randomToken(length: number): string {
+  return generateRandomString(length, TOKEN_ALPHABET)
+}
 
 export function generateUserId() {
-  return `usr_${generateIdFromEntropySize(16)}`
+  return `usr_${randomId(24)}`
 }
 
 export function generateSessionId() {
-  return `ses_${generateIdFromEntropySize(16)}`
+  return `ses_${randomId(24)}`
 }
 
 export function generateSessionToken() {
-  return generateIdFromEntropySize(32)
+  return randomToken(48)
 }
 
 export function generateIdentityId() {
-  return `idn_${generateIdFromEntropySize(16)}`
+  return `idn_${randomId(24)}`
 }
 
 export function generateAvatarSeed() {
-  return generateIdFromEntropySize(12)
+  return randomId(16)
 }
 
 export function hashSessionToken(token: string) {
@@ -26,9 +37,9 @@ export function hashSessionToken(token: string) {
 }
 
 export function generateOAuthState() {
-  return generateIdFromEntropySize(16)
+  return randomId(24)
 }
 
 export function generateCodeVerifier() {
-  return generateIdFromEntropySize(32)
+  return randomToken(64)
 }

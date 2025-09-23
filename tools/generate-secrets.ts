@@ -10,10 +10,6 @@ function generateSecret(length: number = 32): string {
   return randomBytes(length).toString('base64url')
 }
 
-function generateHexSecret(length: number = 32): string {
-  return randomBytes(length).toString('hex')
-}
-
 console.log('🔐 Monte Math Auth Secret Generator\n')
 console.log('Copy these values to your .env file:\n')
 console.log('----------------------------------------')
@@ -22,7 +18,7 @@ console.log('----------------------------------------')
 const jwtSecret = generateSecret(32)
 console.log(`JWT_SECRET=${jwtSecret}`)
 
-// Generate Session Secret (256-bit / 32 bytes minimum)  
+// Generate Session Secret (256-bit / 32 bytes minimum)
 const sessionSecret = generateSecret(32)
 console.log(`SESSION_SECRET=${sessionSecret}`)
 
@@ -40,6 +36,6 @@ console.log('----------------------------------------')
 console.log('Using OpenSSL:')
 console.log('  openssl rand -base64 32')
 console.log('\nUsing Node.js:')
-console.log('  node -e "console.log(require(\'crypto\').randomBytes(32).toString(\'base64url\'))"')
+console.log("  node -e \"console.log(require('crypto').randomBytes(32).toString('base64url'))\"")
 console.log('\nUsing Web Crypto API (in browser console):')
 console.log('  btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(32))))')

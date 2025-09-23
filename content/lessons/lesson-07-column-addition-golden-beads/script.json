@@ -16,7 +16,10 @@
           "id": "introduce",
           "label": "Problem Setup",
           "actions": [
-            { "kind": "prompt", "text": "We will add 1,824 + 2,832 using golden beads and number cards." },
+            {
+              "kind": "prompt",
+              "text": "We will add 1,824 + 2,832 using golden beads and number cards."
+            },
             { "kind": "spawn", "thing": "card", "qty": 1, "to": "card.addend1.thousands" },
             { "kind": "spawn", "thing": "card", "qty": 8, "to": "card.addend1.hundreds" },
             { "kind": "spawn", "thing": "card", "qty": 2, "to": "card.addend1.tens" },
@@ -31,7 +34,10 @@
           "id": "compose-addends",
           "label": "Compose Numbers",
           "actions": [
-            { "kind": "prompt", "text": "Build each number on the mat: beads align with their place-value columns." },
+            {
+              "kind": "prompt",
+              "text": "Build each number on the mat: beads align with their place-value columns."
+            },
             { "kind": "spawn", "thing": "thousand", "qty": 1, "to": "addend1.thousands" },
             { "kind": "spawn", "thing": "hundred", "qty": 8, "to": "addend1.hundreds" },
             { "kind": "spawn", "thing": "ten", "qty": 2, "to": "addend1.tens" },
@@ -47,10 +53,16 @@
           "label": "Add Ones",
           "actions": [
             { "kind": "highlight", "target": "addend1.ones" },
-            { "kind": "prompt", "text": "Start with the ones column: move all unit beads to the workspace." },
+            {
+              "kind": "prompt",
+              "text": "Start with the ones column: move all unit beads to the workspace."
+            },
             { "kind": "move", "target": "addend1.ones", "to": "workspace.ones", "qty": 4 },
             { "kind": "move", "target": "addend2.ones", "to": "workspace.ones", "qty": 2 },
-            { "kind": "prompt", "text": "There are 6 unit beads. Slide them into the result column." },
+            {
+              "kind": "prompt",
+              "text": "There are 6 unit beads. Slide them into the result column."
+            },
             { "kind": "move", "target": "workspace.ones", "to": "result.ones", "qty": 6 },
             { "kind": "spawn", "thing": "card", "qty": 6, "to": "card.result.ones" }
           ]
@@ -73,11 +85,17 @@
           "label": "Regroup Hundreds",
           "actions": [
             { "kind": "highlight", "target": "addend1.hundreds" },
-            { "kind": "prompt", "text": "Hundreds combine to 16 blocks. Ten hundreds regroup as 1 thousand." },
+            {
+              "kind": "prompt",
+              "text": "Hundreds combine to 16 blocks. Ten hundreds regroup as 1 thousand."
+            },
             { "kind": "move", "target": "addend1.hundreds", "to": "workspace.hundreds", "qty": 8 },
             { "kind": "move", "target": "addend2.hundreds", "to": "workspace.hundreds", "qty": 8 },
             { "kind": "exchange", "column": "hundreds" },
-            { "kind": "prompt", "text": "Six hundreds stay. The exchanged thousand moves above the thousands column." },
+            {
+              "kind": "prompt",
+              "text": "Six hundreds stay. The exchanged thousand moves above the thousands column."
+            },
             { "kind": "move", "target": "workspace.hundreds", "to": "result.hundreds", "qty": 6 },
             { "kind": "spawn", "thing": "card", "qty": 6, "to": "card.result.hundreds" }
           ]
@@ -89,8 +107,18 @@
             { "kind": "highlight", "target": "addend1.thousands" },
             { "kind": "prompt", "text": "Bring down the thousands, including the carry." },
             { "kind": "move", "target": "carry.thousands", "to": "workspace.thousands", "qty": 1 },
-            { "kind": "move", "target": "addend1.thousands", "to": "workspace.thousands", "qty": 1 },
-            { "kind": "move", "target": "addend2.thousands", "to": "workspace.thousands", "qty": 2 },
+            {
+              "kind": "move",
+              "target": "addend1.thousands",
+              "to": "workspace.thousands",
+              "qty": 1
+            },
+            {
+              "kind": "move",
+              "target": "addend2.thousands",
+              "to": "workspace.thousands",
+              "qty": 2
+            },
             { "kind": "move", "target": "workspace.thousands", "to": "result.thousands", "qty": 4 },
             { "kind": "spawn", "thing": "card", "qty": 4, "to": "card.result.thousands" },
             { "kind": "prompt", "text": "Our sum is 4,656. Read it with the number cards." }
@@ -112,10 +140,17 @@
         {
           "id": "worked-intro",
           "actions": [
-            { "kind": "prompt", "text": "Now add 1,859 + 2,452. The mat starts with both numbers built." },
+            {
+              "kind": "prompt",
+              "text": "Now add 1,859 + 2,452. The mat starts with both numbers built."
+            },
             { "kind": "highlight", "target": "addend1.ones" },
             { "kind": "prompt", "text": "Move ones to the result. Type the digit when ready." },
-            { "kind": "gate-do", "expect": "ones-1", "hint": "There are 11 unit beads → 1 carry, 1 in ones place." }
+            {
+              "kind": "gate-do",
+              "expect": "ones-1",
+              "hint": "There are 11 unit beads → 1 carry, 1 in ones place."
+            }
           ]
         },
         {
@@ -123,7 +158,11 @@
           "actions": [
             { "kind": "highlight", "target": "addend1.tens" },
             { "kind": "prompt", "text": "Tens column next. Remember the carry from ones." },
-            { "kind": "gate-do", "expect": "tens-1", "hint": "5 + 5 + carry 1 = 11 tens → 1 carry, 1 ten." }
+            {
+              "kind": "gate-do",
+              "expect": "tens-1",
+              "hint": "5 + 5 + carry 1 = 11 tens → 1 carry, 1 ten."
+            }
           ]
         },
         {
@@ -131,7 +170,11 @@
           "actions": [
             { "kind": "highlight", "target": "addend1.hundreds" },
             { "kind": "prompt", "text": "Hundreds combine to 13. What digit lands here?" },
-            { "kind": "gate-do", "expect": "hundreds-3", "hint": "8 + 4 + carry 1 = 13 → 1 carry, 3 hundreds." }
+            {
+              "kind": "gate-do",
+              "expect": "hundreds-3",
+              "hint": "8 + 4 + carry 1 = 13 → 1 carry, 3 hundreds."
+            }
           ]
         },
         {
@@ -139,7 +182,11 @@
           "actions": [
             { "kind": "highlight", "target": "addend1.thousands" },
             { "kind": "prompt", "text": "Finally thousands. Include the carry." },
-            { "kind": "gate-do", "expect": "thousands-4", "hint": "1 + 2 + carry 1 = 4 thousands." },
+            {
+              "kind": "gate-do",
+              "expect": "thousands-4",
+              "hint": "1 + 2 + carry 1 = 4 thousands."
+            },
             { "kind": "prompt", "text": "Great! 1,859 + 2,452 = 4,311." }
           ]
         }

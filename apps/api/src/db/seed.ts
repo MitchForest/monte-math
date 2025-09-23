@@ -23,38 +23,32 @@ async function seed() {
     const skillsToInsert: NewSkill[] = skillsData.skills.map((skill) => ({
       id: skill.id,
       name: skill.name,
-      description: null
+      description: null,
     }))
 
-    await db
-      .insertInto('skills')
-      .values(skillsToInsert)
-      .execute()
-    
+    await db.insertInto('skills').values(skillsToInsert).execute()
+
     console.log(`✅ Inserted ${skillsToInsert.length} skills`)
 
     // Insert prerequisites
     if (skillsData.prerequisites) {
       const prerequisitesToInsert: NewSkillPrerequisite[] = []
-      
+
       // Prerequisites is an object where key is skill_id and value is array of prereq_ids
       for (const [skillId, prereqIds] of Object.entries(skillsData.prerequisites)) {
         if (Array.isArray(prereqIds)) {
           for (const prereqId of prereqIds) {
             prerequisitesToInsert.push({
               skill_id: skillId,
-              prereq_id: prereqId as string
+              prereq_id: prereqId as string,
             })
           }
         }
       }
 
       if (prerequisitesToInsert.length > 0) {
-        await db
-          .insertInto('skill_prerequisites')
-          .values(prerequisitesToInsert)
-          .execute()
-        
+        await db.insertInto('skill_prerequisites').values(prerequisitesToInsert).execute()
+
         console.log(`✅ Inserted ${prerequisitesToInsert.length} prerequisites`)
       }
     }
@@ -64,7 +58,7 @@ async function seed() {
       .selectFrom('skills')
       .select(db.fn.countAll().as('count'))
       .executeTakeFirst()
-    
+
     const prereqCount = await db
       .selectFrom('skill_prerequisites')
       .select(db.fn.countAll().as('count'))
@@ -92,7 +86,6 @@ async function seed() {
     console.log(`   Prerequisites: ${prereqCount?.count || 0}`)
     console.log(`   Lessons: ${lessonTotal}`)
     console.log('\n✨ Seeding completed successfully!')
-
   } catch (error) {
     console.error('❌ Seeding failed:', error)
     process.exit(1)

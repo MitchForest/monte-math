@@ -4,7 +4,13 @@ import { useForm } from '@tanstack/react-form'
 import { z } from 'zod'
 import { zodValidator } from '@/lib/zod-validator'
 
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet'
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/ui/sheet'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,21 +21,21 @@ import { useSessionStore } from '@/stores/session-store'
 import { apiClient } from '@/lib/orpc-client'
 
 const profileSchema = z.object({
-  displayName: z.string().min(1, 'Pick a nickname to show your friends')
+  displayName: z.string().min(1, 'Pick a nickname to show your friends'),
 })
 
 const passwordSchema = z
   .object({
     currentPassword: z.string().min(8, 'Your password should be at least 8 characters'),
     newPassword: z.string().min(8, 'Make your new password at least 8 characters'),
-    confirmPassword: z.string().min(8, 'Confirm your new password')
+    confirmPassword: z.string().min(8, 'Confirm your new password'),
   })
   .superRefine((value, ctx) => {
     if (value.newPassword !== value.confirmPassword) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: 'Passwords need to match',
-        path: ['confirmPassword']
+        path: ['confirmPassword'],
       })
     }
   })
@@ -57,11 +63,11 @@ export function SettingsSheet({ open, onOpenChange }: SettingsSheetProps) {
         if (!current || typeof current !== 'object') return current
         return {
           ...(current as Record<string, unknown>),
-          user: updated
+          user: updated,
         }
       })
       return updated
-    }
+    },
   })
 
   const avatarMutation = useMutation({
@@ -70,41 +76,47 @@ export function SettingsSheet({ open, onOpenChange }: SettingsSheetProps) {
       setUser(updated)
       queryClient.invalidateQueries({ queryKey: ['auth', 'me'] })
       return updated
-    }
+    },
   })
 
   const passwordMutation = useMutation({
-    mutationFn: async ({ currentPassword, newPassword }: { currentPassword: string; newPassword: string }) => {
+    mutationFn: async ({
+      currentPassword,
+      newPassword,
+    }: {
+      currentPassword: string
+      newPassword: string
+    }) => {
       await apiClient.profile.changePassword({ currentPassword, newPassword })
       return true
-    }
+    },
   })
 
   const profileForm = useForm({
     defaultValues: {
-      displayName: user?.displayName ?? ''
+      displayName: user?.displayName ?? '',
     },
     validators: {
-      onSubmit: zodValidator(profileSchema)
+      onSubmit: zodValidator(profileSchema),
     },
     onSubmit: async ({ value }) => {
       await profileMutation.mutateAsync({ displayName: value.displayName })
-    }
+    },
   })
 
   const displayNameField = profileForm.useField({
     name: 'displayName',
     validators: {
-      onChange: zodValidator(profileSchema.shape.displayName)
-    }
+      onChange: zodValidator(profileSchema.shape.displayName),
+    },
   })
 
   useEffect(() => {
     const nextName = user?.displayName ?? ''
     profileForm.update({
       defaultValues: {
-        displayName: nextName
-      }
+        displayName: nextName,
+      },
     })
     displayNameField.setValue(nextName)
   }, [user?.displayName, profileForm, displayNameField])
@@ -113,28 +125,31 @@ export function SettingsSheet({ open, onOpenChange }: SettingsSheetProps) {
     defaultValues: {
       currentPassword: '',
       newPassword: '',
-      confirmPassword: ''
+      confirmPassword: '',
     },
     validators: {
-      onSubmit: zodValidator(passwordSchema)
+      onSubmit: zodValidator(passwordSchema),
     },
     onSubmit: async ({ value, formApi }) => {
-      await passwordMutation.mutateAsync({ currentPassword: value.currentPassword, newPassword: value.newPassword })
+      await passwordMutation.mutateAsync({
+        currentPassword: value.currentPassword,
+        newPassword: value.newPassword,
+      })
       formApi.reset()
-    }
+    },
   })
 
   const currentPasswordField = passwordForm.useField({
     name: 'currentPassword',
-    validators: { onChange: zodValidator(passwordSchema.shape.currentPassword) }
+    validators: { onChange: zodValidator(passwordSchema.shape.currentPassword) },
   })
   const newPasswordField = passwordForm.useField({
     name: 'newPassword',
-    validators: { onChange: zodValidator(passwordSchema.shape.newPassword) }
+    validators: { onChange: zodValidator(passwordSchema.shape.newPassword) },
   })
   const confirmPasswordField = passwordForm.useField({
     name: 'confirmPassword',
-    validators: { onChange: zodValidator(passwordSchema.shape.confirmPassword) }
+    validators: { onChange: zodValidator(passwordSchema.shape.confirmPassword) },
   })
 
   useEffect(() => {
@@ -157,7 +172,9 @@ export function SettingsSheet({ open, onOpenChange }: SettingsSheetProps) {
       <SheetContent side="right" className="max-w-lg">
         <SheetHeader>
           <SheetTitle>Your Explorer Settings</SheetTitle>
-          <SheetDescription>Keep your Monte Math profile fresh and ready for learning adventures.</SheetDescription>
+          <SheetDescription>
+            Keep your Monte Math profile fresh and ready for learning adventures.
+          </SheetDescription>
         </SheetHeader>
 
         <Tabs defaultValue="profile" className="mt-8">
@@ -195,7 +212,9 @@ export function SettingsSheet({ open, onOpenChange }: SettingsSheetProps) {
               <div className="flex items-center justify-between rounded-[calc(var(--radius)/1.3)] bg-muted/60 px-6 py-4">
                 <div>
                   <p className="text-sm font-semibold text-foreground">Email</p>
-                  <p className="text-sm text-muted-foreground">{user?.email ?? 'No email on file'}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {user?.email ?? 'No email on file'}
+                  </p>
                 </div>
               </div>
 
@@ -219,7 +238,11 @@ export function SettingsSheet({ open, onOpenChange }: SettingsSheetProps) {
                   </p>
                 </div>
               </div>
-              <Button type="button" onClick={() => avatarMutation.mutate()} disabled={avatarMutation.isPending}>
+              <Button
+                type="button"
+                onClick={() => avatarMutation.mutate()}
+                disabled={avatarMutation.isPending}
+              >
                 {avatarMutation.isPending ? 'Generating…' : 'Regenerate avatar'}
               </Button>
             </div>

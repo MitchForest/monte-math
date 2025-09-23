@@ -72,6 +72,7 @@ content/
 2. Run database migrations: `pnpm --filter @monte/api db:migrate`
 3. Seed skills (optional local): `pnpm --filter @monte/api db:seed`
 4. Start the stack:
+
    ```bash
    pnpm dev:api     # http://localhost:3001 (RPC under /rpc)
    pnpm dev:web     # http://localhost:5173
@@ -86,14 +87,14 @@ content/
 
 ## Packages & Applications Overview
 
-| Project                    | Purpose                                                                 | Key Tech                                                                  |
-|---------------------------|-------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| `apps/api`                | Implements oRPC contract; BFF for all clients                           | Bun, Hono, Kysely, oRPC server, Zod                                       |
-| `apps/web`                | Lesson/player prototype with golden beads flow                          | Vite, React, TanStack Router/Query, PixiJS, Tailwind v4, shadcn/ui        |
-| `apps/studio`             | Knowledge graph explorer & authoring playground                        | Vite, React, PixiJS, Zustand, Tailwind v4, shadcn/ui                      |
-| `packages/shared`         | Zod schemas, oRPC contract, shared types                                | Zod 4, TypeScript                                                         |
-| `packages/api-client`     | Typed client factory for oRPC calls                                     | @orpc/client, contract generated types                                   |
-| `packages/content-builder`| (Planned) CLI workflow for validating & publishing lesson artifacts     | Node/Bun scripts, Zod, shared schemas                                     |
+| Project                    | Purpose                                                             | Key Tech                                                           |
+| -------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `apps/api`                 | Implements oRPC contract; BFF for all clients                       | Bun, Hono, Kysely, oRPC server, Zod                                |
+| `apps/web`                 | Lesson/player prototype with golden beads flow                      | Vite, React, TanStack Router/Query, PixiJS, Tailwind v4, shadcn/ui |
+| `apps/studio`              | Knowledge graph explorer & authoring playground                     | Vite, React, PixiJS, Zustand, Tailwind v4, shadcn/ui               |
+| `packages/shared`          | Zod schemas, oRPC contract, shared types                            | Zod 4, TypeScript                                                  |
+| `packages/api-client`      | Typed client factory for oRPC calls                                 | @orpc/client, contract generated types                             |
+| `packages/content-builder` | (Planned) CLI workflow for validating & publishing lesson artifacts | Node/Bun scripts, Zod, shared schemas                              |
 
 ## Contributing Guidelines
 
@@ -103,4 +104,5 @@ content/
 - When adding an API endpoint, update the contract in `packages/shared`, regenerate the implementation in `apps/api`, and consume through `@monte/api-client`.
 
 ---
+
 Questions about the architecture or conventions? Reach out in the repo discussions or open an issue with `[docs]` in the title.

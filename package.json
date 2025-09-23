@@ -12,12 +12,24 @@
     "generate:secrets": "bun run tools/generate-secrets.ts",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
-    "lint": "pnpm -r lint",
+    "test:watch": "pnpm -r test:watch",
+    "test:coverage": "pnpm -r test:coverage",
+    "lint": "eslint . && pnpm -r lint",
+    "lint:fix": "eslint . --fix && pnpm -r lint:fix",
+    "format": "prettier --write . && pnpm -r format",
+    "format:check": "prettier --check . && pnpm -r format:check",
     "typecheck": "pnpm -r typecheck",
+    "check": "pnpm typecheck && pnpm lint && pnpm format:check",
     "clean": "pnpm -r clean && rm -rf node_modules"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^8.44.1",
+    "@typescript-eslint/parser": "^8.44.1",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2",
     "typescript": "^5.3.3"
   },
   "engines": {

@@ -13,19 +13,12 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('updated_at', 'text', (col) => col.notNull().defaultTo(sql`CURRENT_TIMESTAMP`))
     .execute()
 
-  await db.schema
-    .createIndex('idx_users_email')
-    .on('users')
-    .column('email')
-    .unique()
-    .execute()
+  await db.schema.createIndex('idx_users_email').on('users').column('email').unique().execute()
 
   await db.schema
     .createTable('user_sessions')
     .addColumn('id', 'text', (col) => col.primaryKey())
-    .addColumn('user_id', 'text', (col) =>
-      col.notNull().references('users.id').onDelete('cascade')
-    )
+    .addColumn('user_id', 'text', (col) => col.notNull().references('users.id').onDelete('cascade'))
     .addColumn('hashed_session_token', 'text', (col) => col.notNull())
     .addColumn('expires_at', 'text', (col) => col.notNull())
     .addColumn('created_at', 'text', (col) => col.notNull().defaultTo(sql`CURRENT_TIMESTAMP`))
@@ -48,9 +41,7 @@ export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
     .createTable('user_identities')
     .addColumn('id', 'text', (col) => col.primaryKey())
-    .addColumn('user_id', 'text', (col) =>
-      col.notNull().references('users.id').onDelete('cascade')
-    )
+    .addColumn('user_id', 'text', (col) => col.notNull().references('users.id').onDelete('cascade'))
     .addColumn('provider', 'text', (col) => col.notNull())
     .addColumn('provider_user_id', 'text', (col) => col.notNull())
     .addColumn('email', 'text')

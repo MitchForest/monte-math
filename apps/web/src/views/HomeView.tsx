@@ -7,7 +7,7 @@ import { apiClient } from '@/lib/orpc-client'
 export function HomeView() {
   const { data } = useQuery({
     queryKey: ['skills', 'list'],
-    queryFn: () => apiClient.skills.list()
+    queryFn: () => apiClient.skills.list(),
   })
 
   const featureCards = useMemo(() => {
@@ -19,20 +19,21 @@ export function HomeView() {
         title: 'Knowledge Graph Editor',
         description: 'Inspect the current skill dependencies sourced from the API-backed graph.',
         to: '/knowledge-graph',
-        meta: `${skills} skills · ${edges} prerequisites`
+        meta: `${skills} skills · ${edges} prerequisites`,
       },
       {
         title: 'Golden Beads Material',
-        description: 'Programmatic PixiJS scene for composing four-digit numbers with beads and number cards.',
+        description:
+          'Programmatic PixiJS scene for composing four-digit numbers with beads and number cards.',
         to: '/materials/golden-beads',
-        meta: 'Interactive place-value mat'
+        meta: 'Interactive place-value mat',
       },
       {
         title: 'Addition Lesson Flow',
         description: 'Tutorial → worked examples → practice for 4-digit addition with regrouping.',
         to: '/lessons/golden-beads-addition',
-        meta: 'Lesson 07 · Column Addition (with regroup)'
-      }
+        meta: 'Lesson 07 · Column Addition (with regroup)',
+      },
     ]
   }, [data])
 
@@ -41,8 +42,8 @@ export function HomeView() {
       <section className="space-y-4">
         <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Prototype Overview</h2>
         <p className="max-w-3xl text-base text-slate-600">
-          Preview the shared architecture: the knowledge graph and lesson player now read from the oRPC API so we can
-          validate data flow end-to-end while iterating on interactive materials.
+          Preview the shared architecture: the knowledge graph and lesson player now read from the
+          oRPC API so we can validate data flow end-to-end while iterating on interactive materials.
         </p>
       </section>
 
@@ -58,7 +59,9 @@ export function HomeView() {
                 <span>Prototype</span>
                 <span>{card.meta}</span>
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 group-hover:text-slate-700">{card.title}</h3>
+              <h3 className="text-xl font-semibold text-slate-900 group-hover:text-slate-700">
+                {card.title}
+              </h3>
               <p className="text-sm text-slate-600">{card.description}</p>
             </div>
             <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-slate-600 group-hover:text-slate-900">
