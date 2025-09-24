@@ -1,75 +1,66 @@
-import { useMemo } from 'react'
 import { Link } from '@tanstack/react-router'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
+import { Button } from '@/components/ui/button'
 import { apiClient } from '@/lib/orpc-client'
+import { useSessionStore } from '@/stores/session-store'
 
 export function HomeView() {
-  const { data } = useQuery({
-    queryKey: ['skills', 'list'],
-    queryFn: () => apiClient.skills.list(),
+  const status = useSessionStore((state) => state.status)
+  const clearSession = useSessionStore((state) => state.clear)
+  const queryClient = useQueryClient()
+
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      await apiClient.auth.logout()
+    },
+    onSuccess: () => {
+      clearSession()
+      queryClient.clear()
+    },
   })
 
-  const featureCards = useMemo(() => {
-    const skills = data?.skills.length ?? 0
-    const edges = data?.prerequisites.length ?? 0
-
-    return [
-      {
-        title: 'Knowledge Graph Editor',
-        description: 'Inspect the current skill dependencies sourced from the API-backed graph.',
-        to: '/knowledge-graph',
-        meta: `${skills} skills · ${edges} prerequisites`,
-      },
-      {
-        title: 'Golden Beads Material',
-        description:
-          'Programmatic PixiJS scene for composing four-digit numbers with beads and number cards.',
-        to: '/materials/golden-beads',
-        meta: 'Interactive place-value mat',
-      },
-      {
-        title: 'Addition Lesson Flow',
-        description: 'Tutorial → worked examples → practice for 4-digit addition with regrouping.',
-        to: '/lessons/golden-beads-addition',
-        meta: 'Lesson 07 · Column Addition (with regroup)',
-      },
-    ]
-  }, [data])
+  const isAuthenticated = status === 'authenticated'
 
   return (
-    <div className="space-y-8">
-      <section className="space-y-4">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Prototype Overview</h2>
-        <p className="max-w-3xl text-base text-slate-600">
-          Preview the shared architecture: the knowledge graph and lesson player now read from the
-          oRPC API so we can validate data flow end-to-end while iterating on interactive materials.
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6">
+      <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 rounded-3xl border border-white/10 bg-white/10 px-8 py-12 text-center backdrop-blur">
+        <span className="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white/80">
+          Monte Math Preview
+        </span>
+        <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+          Concrete math lessons, ready for the web.
+        </h1>
+        <p className="max-w-xl text-base text-white/80 sm:text-lg">
+          Sign in to explore the student experience or create an account to start testing the latest
+          Montessori-inspired flows.
         </p>
-      </section>
-
-      <section className="grid gap-6 md:grid-cols-3">
-        {featureCards.map((card) => (
-          <Link
-            key={card.to}
-            to={card.to}
-            className="group flex h-full flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-md"
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          {isAuthenticated ? (
+            <Button asChild size="lg" variant="secondary">
+              <Link to="/app">Go to dashboard</Link>
+            </Button>
+          ) : (
+            <>
+              <Button asChild size="lg">
+                <Link to="/login">Sign in</Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <Link to="/signup">Sign up</Link>
+              </Button>
+            </>
+          )}
+        </div>
+        {isAuthenticated ? (
+          <button
+            onClick={() => logoutMutation.mutate()}
+            disabled={logoutMutation.isPending}
+            className="text-sm font-semibold text-white/70 underline-offset-4 hover:text-white hover:underline"
           >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between text-xs uppercase tracking-wide text-slate-400">
-                <span>Prototype</span>
-                <span>{card.meta}</span>
-              </div>
-              <h3 className="text-xl font-semibold text-slate-900 group-hover:text-slate-700">
-                {card.title}
-              </h3>
-              <p className="text-sm text-slate-600">{card.description}</p>
-            </div>
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-slate-600 group-hover:text-slate-900">
-              View prototype →
-            </span>
-          </Link>
-        ))}
-      </section>
+            {logoutMutation.isPending ? 'Signing out…' : 'Sign out'}
+          </button>
+        ) : null}
+      </div>
     </div>
   )
 }

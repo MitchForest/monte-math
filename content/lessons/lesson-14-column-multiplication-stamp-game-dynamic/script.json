@@ -1,0 +1,328 @@
+{
+  "lessonId": "lesson-14-column-multiplication-stamp-game-dynamic",
+  "version": "0.1.0",
+  "topicId": "topic-column-multiplication",
+  "stages": [
+    {
+      "id": "tutorial-build",
+      "mode": "tutorial",
+      "heading": "Tutorial · Dynamic regrouping with 2,732 × 3",
+      "materialSlug": "stamp-game",
+      "materialConfig": {
+        "multiplicand": 2732,
+        "multiplier": 3,
+        "startEmpty": true
+      },
+      "steps": [
+        {
+          "id": "introduce-problem",
+          "label": "Problem Setup",
+          "actions": [
+            {
+              "kind": "prompt",
+              "text": "We will multiply 2,732 × 3 using the stamp game and align it with pen & paper."
+            },
+            {
+              "kind": "spawn",
+              "thing": "card",
+              "qty": 2,
+              "to": "card.paper.multiplicand.thousands"
+            },
+            {
+              "kind": "spawn",
+              "thing": "card",
+              "qty": 7,
+              "to": "card.paper.multiplicand.hundreds"
+            },
+            { "kind": "spawn", "thing": "card", "qty": 3, "to": "card.paper.multiplicand.tens" },
+            { "kind": "spawn", "thing": "card", "qty": 2, "to": "card.paper.multiplicand.ones" },
+            { "kind": "spawn", "thing": "card", "qty": 3, "to": "card.paper.multiplier.ones" }
+          ]
+        },
+        {
+          "id": "lay-multiplicand",
+          "label": "Lay out multiplicand",
+          "actions": [
+            {
+              "kind": "prompt",
+              "text": "Build 2,732 on the upper tray so we can copy it for each group."
+            },
+            { "kind": "highlight", "target": "multiplicand.thousands" },
+            { "kind": "spawn", "thing": "thousand", "qty": 2, "to": "multiplicand.thousands" },
+            { "kind": "highlight", "target": "multiplicand.hundreds" },
+            { "kind": "spawn", "thing": "hundred", "qty": 7, "to": "multiplicand.hundreds" },
+            { "kind": "highlight", "target": "multiplicand.tens" },
+            { "kind": "spawn", "thing": "ten", "qty": 3, "to": "multiplicand.tens" },
+            { "kind": "highlight", "target": "multiplicand.ones" },
+            { "kind": "spawn", "thing": "unit", "qty": 2, "to": "multiplicand.ones" }
+          ]
+        },
+        {
+          "id": "copy-groups",
+          "label": "Copy three groups",
+          "actions": [
+            {
+              "kind": "prompt",
+              "text": "Make three matching groups — one for each time we take 2,732."
+            },
+            { "kind": "highlight", "target": "copy1.thousands" },
+            { "kind": "spawn", "thing": "thousand", "qty": 2, "to": "copy1.thousands" },
+            { "kind": "spawn", "thing": "hundred", "qty": 7, "to": "copy1.hundreds" },
+            { "kind": "spawn", "thing": "ten", "qty": 3, "to": "copy1.tens" },
+            { "kind": "spawn", "thing": "unit", "qty": 2, "to": "copy1.ones" },
+            { "kind": "highlight", "target": "copy2.thousands" },
+            { "kind": "spawn", "thing": "thousand", "qty": 2, "to": "copy2.thousands" },
+            { "kind": "spawn", "thing": "hundred", "qty": 7, "to": "copy2.hundreds" },
+            { "kind": "spawn", "thing": "ten", "qty": 3, "to": "copy2.tens" },
+            { "kind": "spawn", "thing": "unit", "qty": 2, "to": "copy2.ones" },
+            { "kind": "highlight", "target": "copy3.thousands" },
+            { "kind": "spawn", "thing": "thousand", "qty": 2, "to": "copy3.thousands" },
+            { "kind": "spawn", "thing": "hundred", "qty": 7, "to": "copy3.hundreds" },
+            { "kind": "spawn", "thing": "ten", "qty": 3, "to": "copy3.tens" },
+            { "kind": "spawn", "thing": "unit", "qty": 2, "to": "copy3.ones" }
+          ]
+        },
+        {
+          "id": "combine-ones",
+          "label": "Combine ones",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.ones" },
+            {
+              "kind": "prompt",
+              "text": "Move all ones to the workspace and count them."
+            },
+            { "kind": "move", "target": "copy1.ones", "to": "workspace.ones", "qty": 2 },
+            { "kind": "move", "target": "copy2.ones", "to": "workspace.ones", "qty": 2 },
+            { "kind": "move", "target": "copy3.ones", "to": "workspace.ones", "qty": 2 },
+            {
+              "kind": "prompt",
+              "text": "Six ones stay in the ones column. Drop them to the product row."
+            },
+            { "kind": "move", "target": "workspace.ones", "to": "result.ones", "qty": 6 },
+            { "kind": "spawn", "thing": "card", "qty": 6, "to": "card.paper.result.ones" }
+          ]
+        },
+        {
+          "id": "combine-tens",
+          "label": "Combine tens",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.tens" },
+            {
+              "kind": "prompt",
+              "text": "Move each set of three ten-stamps and total them."
+            },
+            { "kind": "move", "target": "copy1.tens", "to": "workspace.tens", "qty": 3 },
+            { "kind": "move", "target": "copy2.tens", "to": "workspace.tens", "qty": 3 },
+            { "kind": "move", "target": "copy3.tens", "to": "workspace.tens", "qty": 3 },
+            {
+              "kind": "prompt",
+              "text": "Nine tens make 90. Slide them into the tens place of the product."
+            },
+            { "kind": "move", "target": "workspace.tens", "to": "result.tens", "qty": 9 },
+            { "kind": "spawn", "thing": "card", "qty": 9, "to": "card.paper.result.tens" }
+          ]
+        },
+        {
+          "id": "combine-hundreds",
+          "label": "Regroup hundreds",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.hundreds" },
+            {
+              "kind": "prompt",
+              "text": "There are twenty-one hundreds. Trade as many tens of hundreds as you can."
+            },
+            { "kind": "move", "target": "copy1.hundreds", "to": "workspace.hundreds", "qty": 7 },
+            { "kind": "move", "target": "copy2.hundreds", "to": "workspace.hundreds", "qty": 7 },
+            { "kind": "move", "target": "copy3.hundreds", "to": "workspace.hundreds", "qty": 7 },
+            { "kind": "exchange", "column": "hundreds" },
+            { "kind": "exchange", "column": "hundreds" },
+            {
+              "kind": "prompt",
+              "text": "Two trades give us 2 thousands to carry. One hundred stays in the product."
+            },
+            { "kind": "move", "target": "workspace.hundreds", "to": "result.hundreds", "qty": 1 },
+            { "kind": "spawn", "thing": "card", "qty": 1, "to": "card.paper.result.hundreds" }
+          ]
+        },
+        {
+          "id": "combine-thousands",
+          "label": "Finish thousands",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.thousands" },
+            {
+              "kind": "prompt",
+              "text": "Bring down the carried thousands and add the rest."
+            },
+            { "kind": "move", "target": "carry.thousands", "to": "workspace.thousands", "qty": 2 },
+            { "kind": "move", "target": "copy1.thousands", "to": "workspace.thousands", "qty": 2 },
+            { "kind": "move", "target": "copy2.thousands", "to": "workspace.thousands", "qty": 2 },
+            { "kind": "move", "target": "copy3.thousands", "to": "workspace.thousands", "qty": 2 },
+            { "kind": "move", "target": "workspace.thousands", "to": "result.thousands", "qty": 8 },
+            { "kind": "spawn", "thing": "card", "qty": 8, "to": "card.paper.result.thousands" },
+            {
+              "kind": "prompt",
+              "text": "Read the product: 8,196. The tiles match our written method."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "worked-example-guided",
+      "mode": "worked",
+      "heading": "Worked Example · Regroup tens and hundreds",
+      "materialSlug": "stamp-game",
+      "materialConfig": {
+        "multiplicand": 2468,
+        "multiplier": 3,
+        "prepopulateMultiplicand": true,
+        "prepopulateCopies": true
+      },
+      "steps": [
+        {
+          "id": "worked-ones",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.ones" },
+            {
+              "kind": "prompt",
+              "text": "Ones: 8 tiles in each group. What digit lands in ones after multiplying by 3?"
+            },
+            {
+              "kind": "gate-do",
+              "expect": "ones-4",
+              "hint": "8 × 3 = 24 → write 4 ones, carry 2 tens."
+            }
+          ]
+        },
+        {
+          "id": "worked-tens",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.tens" },
+            {
+              "kind": "prompt",
+              "text": "Tens: 6 tens in each group plus the carried 2 tens."
+            },
+            {
+              "kind": "gate-do",
+              "expect": "tens-0",
+              "hint": "6 × 3 + carry 2 = 20 tens → 0 tens, carry 2 hundreds."
+            }
+          ]
+        },
+        {
+          "id": "worked-hundreds",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.hundreds" },
+            {
+              "kind": "prompt",
+              "text": "Hundreds: combine 4 hundreds per group with the carry."
+            },
+            {
+              "kind": "gate-do",
+              "expect": "hundreds-4",
+              "hint": "4 × 3 + carry 2 = 14 → write 4, carry 1 thousand."
+            }
+          ]
+        },
+        {
+          "id": "worked-thousands",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.thousands" },
+            {
+              "kind": "prompt",
+              "text": "Thousands: 2 thousands per group plus the carried thousand."
+            },
+            {
+              "kind": "gate-do",
+              "expect": "thousands-7",
+              "hint": "2 × 3 + carry 1 = 7 thousands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "worked-example-independent",
+      "mode": "worked",
+      "heading": "Worked Example · Your turn",
+      "materialSlug": "stamp-game",
+      "materialConfig": {
+        "multiplicand": 1937,
+        "multiplier": 4,
+        "prepopulateMultiplicand": true,
+        "prepopulateCopies": true
+      },
+      "steps": [
+        {
+          "id": "independent-ones",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.ones" },
+            {
+              "kind": "prompt",
+              "text": "Ones column: move tiles, regroup if needed, then record the ones digit."
+            },
+            { "kind": "gate-do", "expect": "ones-8", "hint": "7 × 4 = 28 → carry 2 tens." }
+          ]
+        },
+        {
+          "id": "independent-tens",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.tens" },
+            {
+              "kind": "prompt",
+              "text": "Tens column next. Remember any carry from ones."
+            },
+            { "kind": "gate-do", "expect": "tens-7", "hint": "3 × 4 + carry 2 = 14 tens." }
+          ]
+        },
+        {
+          "id": "independent-hundreds",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.hundreds" },
+            {
+              "kind": "prompt",
+              "text": "Hundreds: exchange whenever you reach 10 hundreds."
+            },
+            { "kind": "gate-do", "expect": "hundreds-7", "hint": "9 × 4 + carry 1 = 37 hundreds." }
+          ]
+        },
+        {
+          "id": "independent-thousands",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.thousands" },
+            {
+              "kind": "prompt",
+              "text": "Finish with thousands and include the carried value."
+            },
+            { "kind": "gate-do", "expect": "thousands-7", "hint": "1 × 4 + carry 3 = 7 thousands." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practice-set",
+      "mode": "practice",
+      "heading": "Practice · Independent problems",
+      "materialSlug": "stamp-game",
+      "practiceTemplateId": "stamp-game:multiplication-dynamic"
+    }
+  ],
+  "practiceTemplates": [
+    {
+      "id": "stamp-game:multiplication-dynamic",
+      "prompt": "Multiply the numbers. Use the stamp game or pen & paper, then enter the product.",
+      "inputs": {
+        "problems": [
+          { "a": 2436, "b": 3, "focus": "stamp game regroup hundreds" },
+          { "a": 1875, "b": 4, "focus": "stamp game regroup tens & hundreds" },
+          { "a": 2264, "b": 3, "focus": "pen & paper only" },
+          { "a": 3128, "b": 2, "focus": "pen & paper only" }
+        ]
+      },
+      "answer": null,
+      "meta": {
+        "skillIds": ["S051"]
+      }
+    }
+  ]
+}

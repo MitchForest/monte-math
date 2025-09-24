@@ -26,12 +26,14 @@ interface SkillsState {
 
   // UI State
   selectedSkillId: string | null
+  focusedSkillId: string | null
   highlightedSkills: Set<string>
   editingSkillId: string | null
 
   // Actions
   loadSkills: () => Promise<void>
   selectSkill: (id: string | null) => void
+  setFocusedSkill: (id: string | null) => void
   updateSkill: (id: string, updates: Partial<Skill>) => Promise<void>
   addPrerequisite: (fromId: string, toId: string) => Promise<void>
   removePrerequisite: (fromId: string, toId: string) => Promise<void>
@@ -48,6 +50,7 @@ export const useSkillsStore = create<SkillsState>()(
       prerequisites: [],
       stats: { numSkills: 0, numEdges: 0 },
       selectedSkillId: null,
+      focusedSkillId: null,
       highlightedSkills: new Set(),
       editingSkillId: null,
 
@@ -81,12 +84,18 @@ export const useSkillsStore = create<SkillsState>()(
 
       // Select a skill
       selectSkill: (id) => {
-        set({ selectedSkillId: id })
-        if (id) {
-          get().highlightPrerequisites(id)
-        } else {
+        if (!id) {
+          set({ selectedSkillId: null, focusedSkillId: null })
           get().clearHighlights()
+          return
         }
+
+        set({ selectedSkillId: id, focusedSkillId: id })
+        get().highlightPrerequisites(id)
+      },
+
+      setFocusedSkill: (id) => {
+        set({ focusedSkillId: id })
       },
 
       // Update skill details

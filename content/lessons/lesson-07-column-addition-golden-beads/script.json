@@ -1,6 +1,7 @@
 {
   "lessonId": "lesson-07-column-addition-golden-beads",
   "version": "0.1.0",
+  "topicId": "topic-column-addition",
   "stages": [
     {
       "id": "tutorial-build",

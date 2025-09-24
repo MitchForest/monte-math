@@ -10,4 +10,12 @@
 - create 2 or 3 worked examples with progressively more student input needed (in worked examples), have pen and paper version in canvas that shows how beads relate to number symbols
 - have practice problems (a few with golden beads only and the last few with pen/paper only)
 
-(3) think about engine and quizzes; if mastery is the issue, need to re-present a full lesson. if fluency is the issue, need to do speed drills (perhaps we add another primitive called drills for fast-math type drilling). Quizzes and drills are separate from lessons -- they are periodically presented between lessons as the next task by our engine. Quizzes test mastery/fluency. Drills improve fluency (and mastery to an extent) but if they dont understand a concept we need to re-introduce lesson.
+(3) Stamp game multiplication:
+
+- new material (stamp game): square scrabble tiles with numbers of them (green = 1, blue = 10, red = 100, green = 1000)
+  -be presented a math problem like 2732 \* 3 =
+- put out tiles for first number one place at a time (2 one tiles, 3 ten tiles, 7 hundreds tiles, 2 thousand tiles)
+- repeat 3 times for the 2nd number
+- then add ones, then tens, then hundreds, then thousands (with cconverting 10 ones for 1 ten, etc)
+
+(4) think about engine and quizzes; if mastery is the issue, need to re-present a full lesson. if fluency is the issue, need to do speed drills (perhaps we add another primitive called drills for fast-math type drilling). Quizzes and drills are separate from lessons -- they are periodically presented between lessons as the next task by our engine. Quizzes test mastery/fluency. Drills improve fluency (and mastery to an extent) but if they dont understand a concept we need to re-introduce lesson.

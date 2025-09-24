@@ -1,0 +1,320 @@
+{
+  "lessonId": "lesson-11-column-multiplication-golden-beads-static",
+  "version": "0.1.0",
+  "topicId": "topic-column-multiplication",
+  "stages": [
+    {
+      "id": "tutorial-build",
+      "mode": "tutorial",
+      "heading": "Tutorial · Golden beads static 2,132 × 3",
+      "materialSlug": "golden-beads-multiplication",
+      "materialConfig": {
+        "multiplicand": 2132,
+        "multiplier": 3,
+        "startEmpty": true
+      },
+      "steps": [
+        {
+          "id": "introduce-problem",
+          "label": "Problem Setup",
+          "actions": [
+            {
+              "kind": "prompt",
+              "text": "We will multiply 2,132 × 3 using golden beads. Static multiplication means each place stays under ten."
+            },
+            {
+              "kind": "spawn",
+              "thing": "card",
+              "qty": 2,
+              "to": "card.paper.multiplicand.thousands"
+            },
+            {
+              "kind": "spawn",
+              "thing": "card",
+              "qty": 1,
+              "to": "card.paper.multiplicand.hundreds"
+            },
+            { "kind": "spawn", "thing": "card", "qty": 3, "to": "card.paper.multiplicand.tens" },
+            { "kind": "spawn", "thing": "card", "qty": 2, "to": "card.paper.multiplicand.ones" },
+            { "kind": "spawn", "thing": "card", "qty": 3, "to": "card.paper.multiplier.ones" }
+          ]
+        },
+        {
+          "id": "lay-multiplicand",
+          "label": "Lay out multiplicand",
+          "actions": [
+            {
+              "kind": "prompt",
+              "text": "First build 2,132 with golden beads on the mat."
+            },
+            { "kind": "highlight", "target": "multiplicand.thousands" },
+            { "kind": "spawn", "thing": "thousand", "qty": 2, "to": "multiplicand.thousands" },
+            { "kind": "highlight", "target": "multiplicand.hundreds" },
+            { "kind": "spawn", "thing": "hundred", "qty": 1, "to": "multiplicand.hundreds" },
+            { "kind": "highlight", "target": "multiplicand.tens" },
+            { "kind": "spawn", "thing": "ten", "qty": 3, "to": "multiplicand.tens" },
+            { "kind": "highlight", "target": "multiplicand.ones" },
+            { "kind": "spawn", "thing": "unit", "qty": 2, "to": "multiplicand.ones" }
+          ]
+        },
+        {
+          "id": "copy-groups",
+          "label": "Copy three groups",
+          "actions": [
+            {
+              "kind": "prompt",
+              "text": "Set up three identical bead groups — one for each time we take 2,132."
+            },
+            { "kind": "highlight", "target": "copy1.thousands" },
+            { "kind": "spawn", "thing": "thousand", "qty": 2, "to": "copy1.thousands" },
+            { "kind": "spawn", "thing": "hundred", "qty": 1, "to": "copy1.hundreds" },
+            { "kind": "spawn", "thing": "ten", "qty": 3, "to": "copy1.tens" },
+            { "kind": "spawn", "thing": "unit", "qty": 2, "to": "copy1.ones" },
+            { "kind": "highlight", "target": "copy2.thousands" },
+            { "kind": "spawn", "thing": "thousand", "qty": 2, "to": "copy2.thousands" },
+            { "kind": "spawn", "thing": "hundred", "qty": 1, "to": "copy2.hundreds" },
+            { "kind": "spawn", "thing": "ten", "qty": 3, "to": "copy2.tens" },
+            { "kind": "spawn", "thing": "unit", "qty": 2, "to": "copy2.ones" },
+            { "kind": "highlight", "target": "copy3.thousands" },
+            { "kind": "spawn", "thing": "thousand", "qty": 2, "to": "copy3.thousands" },
+            { "kind": "spawn", "thing": "hundred", "qty": 1, "to": "copy3.hundreds" },
+            { "kind": "spawn", "thing": "ten", "qty": 3, "to": "copy3.tens" },
+            { "kind": "spawn", "thing": "unit", "qty": 2, "to": "copy3.ones" }
+          ]
+        },
+        {
+          "id": "combine-ones",
+          "label": "Combine ones",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.ones" },
+            {
+              "kind": "prompt",
+              "text": "Sweep all single beads to the workspace and count them."
+            },
+            { "kind": "move", "target": "copy1.ones", "to": "workspace.ones", "qty": 2 },
+            { "kind": "move", "target": "copy2.ones", "to": "workspace.ones", "qty": 2 },
+            { "kind": "move", "target": "copy3.ones", "to": "workspace.ones", "qty": 2 },
+            {
+              "kind": "prompt",
+              "text": "Six unit beads stay in the ones column. Slide them down."
+            },
+            { "kind": "move", "target": "workspace.ones", "to": "result.ones", "qty": 6 },
+            { "kind": "spawn", "thing": "card", "qty": 6, "to": "card.paper.result.ones" }
+          ]
+        },
+        {
+          "id": "combine-tens",
+          "label": "Combine tens",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.tens" },
+            {
+              "kind": "prompt",
+              "text": "Gather the ten-bars from each group and add them."
+            },
+            { "kind": "move", "target": "copy1.tens", "to": "workspace.tens", "qty": 3 },
+            { "kind": "move", "target": "copy2.tens", "to": "workspace.tens", "qty": 3 },
+            { "kind": "move", "target": "copy3.tens", "to": "workspace.tens", "qty": 3 },
+            {
+              "kind": "prompt",
+              "text": "Nine ten-bars make 90. Drop them into the tens result."
+            },
+            { "kind": "move", "target": "workspace.tens", "to": "result.tens", "qty": 9 },
+            { "kind": "spawn", "thing": "card", "qty": 9, "to": "card.paper.result.tens" }
+          ]
+        },
+        {
+          "id": "combine-hundreds",
+          "label": "Combine hundreds",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.hundreds" },
+            {
+              "kind": "prompt",
+              "text": "Count the hundred squares — still fewer than ten, so no trades."
+            },
+            { "kind": "move", "target": "copy1.hundreds", "to": "workspace.hundreds", "qty": 1 },
+            { "kind": "move", "target": "copy2.hundreds", "to": "workspace.hundreds", "qty": 1 },
+            { "kind": "move", "target": "copy3.hundreds", "to": "workspace.hundreds", "qty": 1 },
+            { "kind": "move", "target": "workspace.hundreds", "to": "result.hundreds", "qty": 3 },
+            { "kind": "spawn", "thing": "card", "qty": 3, "to": "card.paper.result.hundreds" }
+          ]
+        },
+        {
+          "id": "combine-thousands",
+          "label": "Finish thousands",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.thousands" },
+            {
+              "kind": "prompt",
+              "text": "Bring together the thousand cubes; there is no carrying to worry about."
+            },
+            { "kind": "move", "target": "copy1.thousands", "to": "workspace.thousands", "qty": 2 },
+            { "kind": "move", "target": "copy2.thousands", "to": "workspace.thousands", "qty": 2 },
+            { "kind": "move", "target": "copy3.thousands", "to": "workspace.thousands", "qty": 2 },
+            { "kind": "move", "target": "workspace.thousands", "to": "result.thousands", "qty": 6 },
+            { "kind": "spawn", "thing": "card", "qty": 6, "to": "card.paper.result.thousands" },
+            {
+              "kind": "prompt",
+              "text": "Read the product: 6,396. The bead work matches the pen-and-paper digits."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "worked-example-guided",
+      "mode": "worked",
+      "heading": "Worked Example · Static regrouping check",
+      "materialSlug": "golden-beads-multiplication",
+      "materialConfig": {
+        "multiplicand": 2312,
+        "multiplier": 2,
+        "prepopulateMultiplicand": true,
+        "prepopulateCopies": true
+      },
+      "steps": [
+        {
+          "id": "worked-ones",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.ones" },
+            {
+              "kind": "prompt",
+              "text": "Ones: 2 beads per group. Where does the ones digit land?"
+            },
+            {
+              "kind": "gate-do",
+              "expect": "ones-4",
+              "hint": "2 × 2 = 4 ones; no exchange."
+            }
+          ]
+        },
+        {
+          "id": "worked-tens",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.tens" },
+            {
+              "kind": "prompt",
+              "text": "Tens: there is 1 ten-bar in each copy. Multiply and record the digit."
+            },
+            {
+              "kind": "gate-do",
+              "expect": "tens-2",
+              "hint": "1 × 2 = 2 tens."
+            }
+          ]
+        },
+        {
+          "id": "worked-hundreds",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.hundreds" },
+            {
+              "kind": "prompt",
+              "text": "Hundreds: gather the bead squares and count."
+            },
+            {
+              "kind": "gate-do",
+              "expect": "hundreds-6",
+              "hint": "3 × 2 = 6 hundreds."
+            }
+          ]
+        },
+        {
+          "id": "worked-thousands",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.thousands" },
+            {
+              "kind": "prompt",
+              "text": "Thousands: finish the problem by placing the cubes."
+            },
+            {
+              "kind": "gate-do",
+              "expect": "thousands-4",
+              "hint": "2 × 2 = 4 thousands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "worked-example-independent",
+      "mode": "worked",
+      "heading": "Worked Example · Your turn",
+      "materialSlug": "golden-beads-multiplication",
+      "materialConfig": {
+        "multiplicand": 3123,
+        "multiplier": 3,
+        "prepopulateMultiplicand": true,
+        "prepopulateCopies": true
+      },
+      "steps": [
+        {
+          "id": "independent-ones",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.ones" },
+            {
+              "kind": "prompt",
+              "text": "Ones column: move the beads and type the digit."
+            },
+            { "kind": "gate-do", "expect": "ones-9", "hint": "3 × 3 = 9 ones." }
+          ]
+        },
+        {
+          "id": "independent-tens",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.tens" },
+            {
+              "kind": "prompt",
+              "text": "Tens column next. Static means no exchanging."
+            },
+            { "kind": "gate-do", "expect": "tens-6", "hint": "2 × 3 = 6 tens." }
+          ]
+        },
+        {
+          "id": "independent-hundreds",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.hundreds" },
+            {
+              "kind": "prompt",
+              "text": "Hundreds: count and place the bead squares."
+            },
+            { "kind": "gate-do", "expect": "hundreds-3", "hint": "1 × 3 = 3 hundreds." }
+          ]
+        },
+        {
+          "id": "independent-thousands",
+          "actions": [
+            { "kind": "highlight", "target": "workspace.thousands" },
+            {
+              "kind": "prompt",
+              "text": "Finish with the thousands column and read the final product."
+            },
+            { "kind": "gate-do", "expect": "thousands-9", "hint": "3 × 3 = 9 thousands." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practice-set",
+      "mode": "practice",
+      "heading": "Practice · Independent problems",
+      "materialSlug": "golden-beads-multiplication",
+      "practiceTemplateId": "golden-beads-multiplication:static"
+    }
+  ],
+  "practiceTemplates": [
+    {
+      "id": "golden-beads-multiplication:static",
+      "prompt": "Multiply the numbers. Use golden beads or pen & paper, then enter the product.",
+      "inputs": {
+        "problems": [
+          { "a": 2132, "b": 3, "focus": "golden beads model" },
+          { "a": 2312, "b": 2, "focus": "golden beads fluent" },
+          { "a": 3023, "b": 3, "focus": "pen & paper only" }
+        ]
+      },
+      "answer": null,
+      "meta": {
+        "skillIds": ["S050"]
+      }
+    }
+  ]
+}

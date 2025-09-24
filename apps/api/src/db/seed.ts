@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
-import path from 'path'
+import path, { dirname, resolve } from 'path'
 import { promises as fs } from 'fs'
+import { fileURLToPath } from 'url'
 
 import { lessonScriptSchema } from '@monte/shared'
 
@@ -8,6 +9,16 @@ import { db } from './client'
 import skillsData from '../../../../content/skills/graph.json'
 import type { NewSkill, NewSkillPrerequisite } from './schema'
 import { saveLessonScript } from '../services/lessons'
+
+interface SkillsJson {
+  skills: Array<{ id: string; name: string }>
+  prerequisites?: Record<string, string[]>
+}
+
+const moduleDir = dirname(fileURLToPath(import.meta.url))
+const repoRoot = resolve(moduleDir, '../../../..')
+const contentDir = resolve(repoRoot, 'content')
+const skillsJson = skillsData as SkillsJson
 
 async function seed() {
   console.log('🌱 Seeding database...')
@@ -20,22 +31,25 @@ async function seed() {
     console.log('✅ Cleared existing data')
 
     // Insert skills
-    const skillsToInsert: NewSkill[] = skillsData.skills.map((skill) => ({
+    const skillsToInsert: NewSkill[] = skillsJson.skills.map((skill) => ({
       id: skill.id,
       name: skill.name,
       description: null,
     }))
 
-    await db.insertInto('skills').values(skillsToInsert).execute()
-
-    console.log(`✅ Inserted ${skillsToInsert.length} skills`)
+    if (skillsToInsert.length > 0) {
+      await db.insertInto('skills').values(skillsToInsert).execute()
+      console.log(`✅ Inserted ${skillsToInsert.length} skills`)
+    } else {
+      console.log('ℹ️ No skills to insert')
+    }
 
     // Insert prerequisites
-    if (skillsData.prerequisites) {
+    if (skillsJson.prerequisites) {
       const prerequisitesToInsert: NewSkillPrerequisite[] = []
 
       // Prerequisites is an object where key is skill_id and value is array of prereq_ids
-      for (const [skillId, prereqIds] of Object.entries(skillsData.prerequisites)) {
+      for (const [skillId, prereqIds] of Object.entries(skillsJson.prerequisites)) {
         if (Array.isArray(prereqIds)) {
           for (const prereqId of prereqIds) {
             prerequisitesToInsert.push({
@@ -65,7 +79,7 @@ async function seed() {
       .executeTakeFirst()
 
     // Seed lessons
-    const lessonsDir = path.resolve(process.cwd(), '../../content/lessons')
+    const lessonsDir = resolve(contentDir, 'lessons')
     const lessonIds = await fs.readdir(lessonsDir)
 
     let lessonTotal = 0

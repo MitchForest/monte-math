@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { useForm } from '@tanstack/react-form'
+import type { FieldMeta } from '@tanstack/form-core'
 import { z } from 'zod'
-import { zodValidator } from '@/lib/zod-validator'
 
 import { AuthLayout } from '@/components/auth/AuthLayout'
 import { Button } from '@/components/ui/button'
@@ -16,6 +16,50 @@ const loginSchema = z.object({
   email: z.string().email('Enter a valid email'),
   password: z.string().min(1, 'Password required'),
 })
+
+const formatZodError =
+  (schema: z.ZodTypeAny) =>
+  ({ value }: { value: unknown }) => {
+    const result = schema.safeParse(value)
+    if (result.success) return undefined
+    return result.error.issues[0]?.message ?? 'Invalid value'
+  }
+
+const validateFormWithSchema =
+  <TSchema extends z.ZodTypeAny>(schema: TSchema) =>
+  ({ value }: { value: z.infer<TSchema> }) => {
+    const result = schema.safeParse(value)
+    if (result.success) return undefined
+
+    const fieldErrors: Record<string, string> = {}
+    for (const issue of result.error.issues) {
+      const path = issue.path.join('.')
+      if (!path) continue
+      if (typeof fieldErrors[path] === 'string') continue
+      fieldErrors[path] = issue.message
+    }
+
+    return {
+      form: result.error.formErrors.formErrors[0],
+      fields: fieldErrors,
+    }
+  }
+
+const getFieldError = (meta: FieldMeta, submissionAttempts: number) => {
+  const { errorMap, errors, isTouched } = meta
+
+  const message =
+    (typeof errorMap.onChange === 'string' && errorMap.onChange) ||
+    (typeof errorMap.onBlur === 'string' && errorMap.onBlur) ||
+    (typeof errorMap.onSubmit === 'string' && errorMap.onSubmit) ||
+    errors.find((error): error is string => typeof error === 'string')
+
+  if (!message) return undefined
+  if (isTouched || submissionAttempts > 0 || typeof errorMap.onSubmit === 'string') {
+    return message
+  }
+  return undefined
+}
 
 function FormError({ message }: { message?: string }) {
   if (!message) return null
@@ -38,7 +82,19 @@ export function LoginView() {
       return result
     },
     onSuccess: () => {
-      navigate({ to: '/' })
+      navigate({ to: '/app' })
+    },
+    onError: (error: unknown) => {
+      if (error instanceof Error) {
+        form.setFieldMeta('email', (prev) => ({
+          ...prev,
+          errorMap: {
+            ...prev.errorMap,
+            onSubmit: error.message,
+          },
+          errors: [error.message],
+        }))
+      }
     },
   })
 
@@ -48,22 +104,17 @@ export function LoginView() {
       password: '',
     },
     validators: {
-      onSubmit: zodValidator(loginSchema),
+      onSubmit: validateFormWithSchema(loginSchema),
     },
     onSubmit: async ({ value }) => {
       await loginMutation.mutateAsync(value)
     },
   })
 
-  const emailField = form.useField({
-    name: 'email',
-    validators: { onChange: zodValidator(loginSchema.shape.email) },
-  })
-
-  const passwordField = form.useField({
-    name: 'password',
-    validators: { onChange: zodValidator(loginSchema.shape.password) },
-  })
+  const formState = form.useStore((state) => ({
+    submissionAttempts: state.submissionAttempts,
+    formError: state.errorMap.onSubmit,
+  }))
 
   return (
     <AuthLayout
@@ -76,7 +127,7 @@ export function LoginView() {
             to="/signup"
             className="font-semibold text-primary underline-offset-4 hover:underline"
           >
-            Create an account
+            Sign up
           </Link>
         </span>
       }
@@ -88,7 +139,7 @@ export function LoginView() {
         }}
         className="space-y-6"
       >
-        <emailField.Field>
+        <form.Field name="email" validators={{ onBlur: formatZodError(loginSchema.shape.email) }}>
           {(field) => (
             <div className="space-y-2">
               <Label htmlFor={field.name}>Email</Label>
@@ -101,12 +152,15 @@ export function LoginView() {
                 placeholder="you@example.com"
                 disabled={loginMutation.isPending}
               />
-              <FormError message={field.state.meta.errors[0]} />
+              <FormError message={getFieldError(field.state.meta, formState.submissionAttempts)} />
             </div>
           )}
-        </emailField.Field>
+        </form.Field>
 
-        <passwordField.Field>
+        <form.Field
+          name="password"
+          validators={{ onChange: formatZodError(loginSchema.shape.password) }}
+        >
           {(field) => (
             <div className="space-y-2">
               <Label htmlFor={field.name}>Password</Label>
@@ -129,16 +183,21 @@ export function LoginView() {
                   {showPassword ? 'Hide' : 'Show'}
                 </Button>
               </div>
-              <FormError message={field.state.meta.errors[0]} />
+              <FormError message={getFieldError(field.state.meta, formState.submissionAttempts)} />
             </div>
           )}
-        </passwordField.Field>
+        </form.Field>
 
         <Button type="submit" size="lg" className="w-full" disabled={loginMutation.isPending}>
           {loginMutation.isPending ? 'Signing in…' : 'Sign in'}
         </Button>
 
-        <FormError message={(loginMutation.error as Error | undefined)?.message} />
+        <FormError
+          message={
+            (typeof formState.formError === 'string' ? formState.formError : undefined) ??
+            (loginMutation.error as Error | undefined)?.message
+          }
+        />
       </form>
     </AuthLayout>
   )

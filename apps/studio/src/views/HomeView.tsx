@@ -25,22 +25,16 @@ export function HomeView() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+        <h1 className="text-5xl font-semibold tracking-tight text-foreground sm:text-6xl">
           Monte Math
-        </p>
-        <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          Studio workspace for curriculum innovators
         </h1>
-        <p className="mt-5 max-w-2xl text-base text-muted-foreground sm:text-lg">
-          Design knowledge graphs, author lessons, and synchronize content with the Monte Math
-          platform. Sign in to continue your work or request access to join the team.
-        </p>
+        <p className="mt-4 text-xl text-muted-foreground sm:text-2xl">Learning Management System</p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Button asChild size="lg">
             <Link to="/login">Sign in</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link to="/signup">Request access</Link>
+            <Link to="/signup">Sign up</Link>
           </Button>
         </div>
         {isAuthenticated ? (
@@ -56,11 +50,7 @@ export function HomeView() {
               {logoutMutation.isPending ? 'Signing out…' : 'Sign out'}
             </Button>
           </div>
-        ) : (
-          <div className="mt-6 text-sm text-muted-foreground">
-            Need access? Click “Request access” to register your first account.
-          </div>
-        )}
+        ) : null}
       </div>
     </div>
   )

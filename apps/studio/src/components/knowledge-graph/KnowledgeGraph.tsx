@@ -56,8 +56,10 @@ export function KnowledgeGraph() {
     prerequisites,
     highlightedSkills,
     selectedSkillId,
+    focusedSkillId,
     loadSkills,
     selectSkill,
+    setFocusedSkill,
   } = useSkillsStore()
 
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 })
@@ -174,6 +176,31 @@ export function KnowledgeGraph() {
 
     return { nodes: layoutNodes, edges: layoutEdges, bounds: computedBounds }
   }, [skills, prerequisites])
+
+  const nodesById = useMemo(() => {
+    const map = new Map<string, LayoutNode>()
+    nodes.forEach((node) => {
+      map.set(node.id, node)
+    })
+    return map
+  }, [nodes])
+
+  const neighborSkillIds = useMemo(() => {
+    if (!selectedSkillId) return []
+
+    const prereqIds = prerequisites
+      .filter((edge) => edge.toId === selectedSkillId)
+      .map((edge) => edge.fromId)
+
+    const dependentIds = prerequisites
+      .filter((edge) => edge.fromId === selectedSkillId)
+      .map((edge) => edge.toId)
+
+    return [
+      ...prereqIds.map((id) => ({ id, relation: 'prerequisite' as const })),
+      ...dependentIds.map((id) => ({ id, relation: 'dependent' as const })),
+    ]
+  }, [prerequisites, selectedSkillId])
 
   useEffect(() => {
     hasInteractedRef.current = false
@@ -344,10 +371,91 @@ export function KnowledgeGraph() {
 
   const handleNodeClick = useCallback(
     (skillId: string) => {
-      selectSkill(skillId === selectedSkillId ? null : skillId)
+      if (skillId === selectedSkillId) {
+        selectSkill(null)
+        return
+      }
+
+      setFocusedSkill(skillId)
+      selectSkill(skillId)
     },
-    [selectSkill, selectedSkillId]
+    [selectSkill, selectedSkillId, setFocusedSkill]
   )
+
+  useEffect(() => {
+    if (!focusedSkillId) return
+    if (containerSize.width === 0 || containerSize.height === 0) return
+
+    const node = nodesById.get(focusedSkillId)
+    if (!node) return
+
+    const scale = scaleRef.current
+    const nextPan = {
+      x: containerSize.width / 2 - node.x * scale,
+      y: containerSize.height / 2 - node.y * scale,
+    }
+
+    const previousPan = panRef.current
+    if (Math.abs(previousPan.x - nextPan.x) < 0.5 && Math.abs(previousPan.y - nextPan.y) < 0.5) {
+      return
+    }
+
+    hasInteractedRef.current = true
+    panRef.current = nextPan
+    setTransform({ scale, pan: nextPan })
+  }, [focusedSkillId, containerSize.width, containerSize.height, nodesById])
+
+  useEffect(() => {
+    if (!selectedSkillId) return
+    if (neighborSkillIds.length === 0) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const activeElement = document.activeElement as HTMLElement | null
+      if (activeElement) {
+        const tagName = activeElement.tagName
+        if (
+          activeElement.isContentEditable ||
+          tagName === 'INPUT' ||
+          tagName === 'TEXTAREA' ||
+          tagName === 'SELECT'
+        ) {
+          return
+        }
+      }
+
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault()
+        const direction = event.key === 'ArrowDown' ? 1 : -1
+        const currentIndex = neighborSkillIds.findIndex((item) => item.id === focusedSkillId)
+
+        let nextIndex: number
+        if (currentIndex === -1) {
+          nextIndex = direction === 1 ? 0 : neighborSkillIds.length - 1
+        } else {
+          nextIndex = (currentIndex + direction + neighborSkillIds.length) % neighborSkillIds.length
+        }
+
+        const next = neighborSkillIds[nextIndex]
+        if (next) {
+          setFocusedSkill(next.id)
+        }
+      }
+
+      if (event.key === 'Enter') {
+        if (!focusedSkillId || focusedSkillId === selectedSkillId) {
+          return
+        }
+
+        event.preventDefault()
+        selectSkill(focusedSkillId)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [focusedSkillId, neighborSkillIds, selectedSkillId, selectSkill, setFocusedSkill])
 
   return (
     <div className="relative flex h-full w-full flex-col">
@@ -384,14 +492,7 @@ export function KnowledgeGraph() {
       >
         <svg className="h-full w-full" role="presentation">
           <defs>
-            <marker
-              id="arrow"
-              markerWidth="10"
-              markerHeight="10"
-              refX="8"
-              refY="5"
-              orient="auto"
-            >
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
             </marker>
             <marker
@@ -408,7 +509,9 @@ export function KnowledgeGraph() {
 
           <rect className="fill-slate-100" x={0} y={0} width="100%" height="100%" />
 
-          <g transform={`translate(${transform.pan.x}, ${transform.pan.y}) scale(${transform.scale})`}>
+          <g
+            transform={`translate(${transform.pan.x}, ${transform.pan.y}) scale(${transform.scale})`}
+          >
             {edges.map((edge) => {
               if (edge.points.length === 0) return null
               const highlighted =
@@ -437,6 +540,7 @@ export function KnowledgeGraph() {
             {nodes.map((node) => {
               const isSelected = node.id === selectedSkillId
               const isHighlighted = highlightedSkills.has(node.id)
+              const isFocused = node.id === focusedSkillId
 
               return (
                 <g
@@ -455,8 +559,9 @@ export function KnowledgeGraph() {
                     rx={18}
                     ry={18}
                     className={clsx('stroke-[1.5px] transition-colors duration-200', {
-                      'fill-white stroke-slate-200': !isSelected && !isHighlighted,
-                      'fill-sky-50 stroke-sky-300': !isSelected && isHighlighted,
+                      'fill-white stroke-slate-200': !isSelected && !isHighlighted && !isFocused,
+                      'fill-sky-50 stroke-sky-300': !isSelected && isHighlighted && !isFocused,
+                      'fill-sky-100 stroke-sky-500 stroke-[2px]': !isSelected && isFocused,
                       'fill-sky-500 stroke-sky-600': isSelected,
                     })}
                   />
@@ -464,8 +569,9 @@ export function KnowledgeGraph() {
                     x={node.width / 2}
                     y={34}
                     textAnchor="middle"
-                    className={clsx('font-semibold tracking-wide', {
-                      'fill-slate-700': !isSelected,
+                    className={clsx('font-semibold tracking-wide transition-colors', {
+                      'fill-slate-700': !isSelected && !isFocused,
+                      'fill-sky-700': !isSelected && isFocused,
                       'fill-white': isSelected,
                     })}
                   >
@@ -480,9 +586,10 @@ export function KnowledgeGraph() {
                     <div
                       xmlns="http://www.w3.org/1999/xhtml"
                       className={clsx(
-                        'flex h-full items-center justify-center px-2 text-center text-[11px] leading-5',
+                        'flex h-full items-center justify-center px-2 text-center text-[11px] leading-5 transition-colors',
                         {
-                          'text-slate-500': !isSelected,
+                          'text-slate-500': !isSelected && !isFocused,
+                          'text-sky-700': !isSelected && isFocused,
                           'text-blue-50': isSelected,
                         }
                       )}

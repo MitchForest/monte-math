@@ -127,7 +127,7 @@ export function LoginView() {
             to="/signup"
             className="font-semibold text-primary underline-offset-4 hover:underline"
           >
-            Request access
+            Sign up
           </Link>
         </span>
       }
@@ -139,7 +139,7 @@ export function LoginView() {
         }}
         className="space-y-5"
       >
-        <form.Field name="email" validators={{ onChange: formatZodError(loginSchema.shape.email) }}>
+        <form.Field name="email" validators={{ onBlur: formatZodError(loginSchema.shape.email) }}>
           {(field) => (
             <div className="space-y-1.5">
               <Label htmlFor={field.name}>Work email</Label>

@@ -32,6 +32,30 @@ export function LessonsView() {
         updatedAt: '2024-05-16',
       },
       {
+        lessonId: 'lesson-11-column-multiplication-golden-beads-static',
+        title: 'Golden Beads Multiplication · Static',
+        status: 'draft',
+        updatedAt: '2024-05-24',
+      },
+      {
+        lessonId: 'lesson-12-column-multiplication-golden-beads-dynamic',
+        title: 'Golden Beads Multiplication · Dynamic',
+        status: 'draft',
+        updatedAt: '2024-05-24',
+      },
+      {
+        lessonId: 'lesson-13-column-multiplication-stamp-game-static',
+        title: 'Stamp Game Multiplication · Static',
+        status: 'draft',
+        updatedAt: '2024-05-24',
+      },
+      {
+        lessonId: 'lesson-14-column-multiplication-stamp-game-dynamic',
+        title: 'Stamp Game Multiplication · Dynamic',
+        status: 'draft',
+        updatedAt: '2024-05-24',
+      },
+      {
         lessonId: 'lesson-08-column-subtraction-golden-beads',
         title: 'Golden Beads Subtraction',
         status: 'draft',
@@ -115,7 +139,10 @@ export function LessonsView() {
               </thead>
               <tbody>
                 {table.getRowModel().rows.map((row) => (
-                  <tr key={row.id} className="border-b border-border/40 last:border-0 hover:bg-muted/40">
+                  <tr
+                    key={row.id}
+                    className="border-b border-border/40 last:border-0 hover:bg-muted/40"
+                  >
                     {row.getVisibleCells().map((cell) => (
                       <td key={cell.id} className="px-3 py-3 align-top">
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}

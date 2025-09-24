@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import clsx from 'clsx'
 import { X, Edit2, Save, Plus, Trash2 } from 'lucide-react'
 import { useSkillsStore } from '@/stores/skills-store'
 import { Button } from '@/components/ui/button'
@@ -11,7 +12,9 @@ export function SkillDetailPanel() {
     skills,
     prerequisites,
     selectedSkillId,
+    focusedSkillId,
     selectSkill,
+    setFocusedSkill,
     updateSkill,
     addPrerequisite,
     removePrerequisite,
@@ -144,12 +147,25 @@ export function SkillDetailPanel() {
             ) : (
               skillPrereqs.map((prereq) => {
                 const prereqSkill = skills.get(prereq.fromId)
+                const isActive = focusedSkillId === prereq.fromId
                 return (
                   <div
                     key={prereq.fromId}
-                    className="flex items-center justify-between p-2 bg-slate-50 rounded text-xs hover:bg-slate-100 transition-colors"
+                    className={clsx(
+                      'flex items-center justify-between rounded p-2 text-xs transition-colors',
+                      {
+                        'bg-slate-50 hover:bg-slate-100': !isActive,
+                        'bg-sky-100 ring-1 ring-sky-300': isActive,
+                      }
+                    )}
                   >
-                    <button onClick={() => selectSkill(prereq.fromId)} className="flex-1 text-left">
+                    <button
+                      type="button"
+                      onClick={() => setFocusedSkill(prereq.fromId)}
+                      className={clsx('flex-1 text-left', {
+                        'font-semibold text-sky-700': isActive,
+                      })}
+                    >
                       <span className="font-medium">{prereq.fromId}</span>
                       <span className="text-muted-foreground ml-2">{prereqSkill?.name}</span>
                     </button>
@@ -181,11 +197,19 @@ export function SkillDetailPanel() {
             ) : (
               skillDependents.map((dep) => {
                 const depSkill = skills.get(dep.toId)
+                const isActive = focusedSkillId === dep.toId
                 return (
                   <button
                     key={dep.toId}
-                    onClick={() => selectSkill(dep.toId)}
-                    className="w-full flex items-center p-2 bg-blue-50 rounded text-xs hover:bg-blue-100 transition-colors text-left"
+                    type="button"
+                    onClick={() => setFocusedSkill(dep.toId)}
+                    className={clsx(
+                      'flex w-full items-center rounded p-2 text-left text-xs transition-colors',
+                      {
+                        'bg-blue-50 hover:bg-blue-100': !isActive,
+                        'bg-sky-100 ring-1 ring-sky-300 text-sky-700 font-semibold': isActive,
+                      }
+                    )}
                   >
                     <span className="font-medium">{dep.toId}</span>
                     <span className="text-muted-foreground ml-2">{depSkill?.name}</span>

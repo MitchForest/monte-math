@@ -6,6 +6,14 @@ const goldenBeadsConfigSchema = z.object({
   prepopulateAddends: z.boolean().optional(),
 })
 
+const stampGameConfigSchema = z.object({
+  multiplicand: z.number().int(),
+  multiplier: z.number().int(),
+  startEmpty: z.boolean().optional(),
+  prepopulateMultiplicand: z.boolean().optional(),
+  prepopulateCopies: z.boolean().optional(),
+})
+
 const practiceProblemSchema = z.object({
   a: z.number().int(),
   b: z.number().int(),
@@ -55,7 +63,7 @@ export const stageSchema = z.object({
   mode: z.enum(['tutorial', 'worked', 'practice']),
   heading: z.string().optional(),
   materialSlug: z.string(),
-  materialConfig: goldenBeadsConfigSchema.optional(),
+  materialConfig: z.union([goldenBeadsConfigSchema, stampGameConfigSchema]).optional(),
   steps: z.array(stepSchema).optional(),
   practiceTemplateId: z.string().optional(),
 })
@@ -73,6 +81,7 @@ export const practiceTemplateSchema = z.object({
 export const lessonScriptSchema = z.object({
   lessonId: z.string(),
   version: z.string(),
+  topicId: z.string().optional(),
   stages: z.array(stageSchema),
   practiceTemplates: z.array(practiceTemplateSchema).optional(),
 })
@@ -82,3 +91,5 @@ export type Step = z.infer<typeof stepSchema>
 export type Stage = z.infer<typeof stageSchema>
 export type PracticeTemplate = z.infer<typeof practiceTemplateSchema>
 export type LessonScript = z.infer<typeof lessonScriptSchema>
+export type GoldenBeadsConfig = z.infer<typeof goldenBeadsConfigSchema>
+export type StampGameConfig = z.infer<typeof stampGameConfigSchema>

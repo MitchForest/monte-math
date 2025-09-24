@@ -839,6 +839,7 @@ console.log(error, data)
 }
 
 return (
+
 <form onSubmit={handleSubmit}>
 <input value={name} onChange={e => setName(e.target.value)} />
 <button type="submit">Submit</button>
@@ -907,6 +908,7 @@ execute({ name })
 }
 
 return (
+
 <form action={action}>
 <input type="text" name="name" required />
 <button type="submit">Submit</button>
@@ -938,6 +940,7 @@ execute({ todo })
 }
 
 return (
+
 <div>
 <ul>
 {optimisticState.map(todo => (
@@ -984,6 +987,7 @@ redirect('/some-where')
 
 export function MyComponent() {
 return (
+
 <form action={redirectSomeWhereForm}>
 <input type="text" name="user[name]" required />
 <input type="number" name="user[age]" required />
@@ -1006,6 +1010,7 @@ export function MyComponent() {
 const { execute, data, error, status } = useServerAction(someAction)
 
 return (
+
 <form action={(form) => { execute(parseFormData(form)) }}>
 <label>
 Name:

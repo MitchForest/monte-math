@@ -311,7 +311,7 @@ const engineImplementation = implement(appContract.engine)
       .$context<RequestContext>()
       .handler(async () => ({
         kind: 'lesson',
-        lessonId: 'lesson-07-column-addition-golden-beads',
+        lessonId: 'lesson-11-column-multiplication-golden-beads-static',
         version: '0.1.0',
         estimatedXP: 12,
       })),
