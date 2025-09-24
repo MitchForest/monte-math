@@ -17,11 +17,11 @@
   },
   "dependencies": {
     "@monte/shared": "workspace:*",
-    "zod": "^4.1.7"
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.22",
-    "@types/node": "^20.11.0",
-    "typescript": "^5.3.3"
+    "@types/bun": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
   }
 }

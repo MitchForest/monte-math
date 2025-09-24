@@ -17,11 +17,11 @@
   },
   "dependencies": {
     "@monte/shared": "workspace:*",
-    "@orpc/client": "^1.0.0",
-    "@orpc/server": "^1.0.0"
+    "@orpc/client": "catalog:",
+    "@orpc/server": "catalog:"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.22",
-    "typescript": "^5.3.3"
+    "@types/bun": "catalog:",
+    "typescript": "catalog:"
   }
 }

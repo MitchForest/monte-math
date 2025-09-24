@@ -4,12 +4,144 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@orpc/client':
+      specifier: ^1.0.0
+      version: 1.9.0
+    '@orpc/react':
+      specifier: ^1.0.0
+      version: 1.9.0
+    '@orpc/server':
+      specifier: ^1.0.0
+      version: 1.9.0
+    '@radix-ui/react-avatar':
+      specifier: ^1.1.0
+      version: 1.1.10
+    '@radix-ui/react-dialog':
+      specifier: ^1.0.5
+      version: 1.1.15
+    '@radix-ui/react-dropdown-menu':
+      specifier: ^2.0.6
+      version: 2.1.16
+    '@radix-ui/react-label':
+      specifier: ^2.1.7
+      version: 2.1.7
+    '@radix-ui/react-slot':
+      specifier: ^1.2.3
+      version: 1.2.3
+    '@tailwindcss/vite':
+      specifier: ^4.0.7
+      version: 4.1.13
+    '@tanstack/react-form':
+      specifier: ^0.20.0
+      version: 0.20.3
+    '@tanstack/react-query':
+      specifier: ^5.18.0
+      version: 5.90.2
+    '@tanstack/react-router':
+      specifier: ^1.15.0
+      version: 1.131.50
+    '@tanstack/react-table':
+      specifier: ^8.11.0
+      version: 8.21.3
+    '@testing-library/jest-dom':
+      specifier: ^6.8.0
+      version: 6.8.0
+    '@testing-library/react':
+      specifier: ^16.3.0
+      version: 16.3.0
+    '@testing-library/user-event':
+      specifier: ^14.6.1
+      version: 14.6.1
+    '@types/bun':
+      specifier: ^1.2.22
+      version: 1.2.22
+    '@types/node':
+      specifier: ^20.14.10
+      version: 20.19.17
+    '@types/react':
+      specifier: ^18.2.48
+      version: 18.3.24
+    '@types/react-dom':
+      specifier: ^18.2.18
+      version: 18.3.7
+    '@vitejs/plugin-react':
+      specifier: ^4.2.1
+      version: 4.7.0
+    '@vitest/ui':
+      specifier: ^3.2.4
+      version: 3.2.4
+    class-variance-authority:
+      specifier: ^0.7.1
+      version: 0.7.1
+    clsx:
+      specifier: ^2.1.1
+      version: 2.1.1
+    date-fns:
+      specifier: ^3.6.0
+      version: 3.6.0
+    eslint-plugin-react:
+      specifier: ^7.37.5
+      version: 7.37.5
+    eslint-plugin-react-hooks:
+      specifier: ^5.2.0
+      version: 5.2.0
+    framer-motion:
+      specifier: ^11.3.12
+      version: 11.18.2
+    jsdom:
+      specifier: ^27.0.0
+      version: 27.0.0
+    lucide-react:
+      specifier: ^0.344.0
+      version: 0.344.0
+    pixi.js:
+      specifier: ^8.0.0
+      version: 8.13.2
+    react:
+      specifier: ^18.2.0
+      version: 18.3.1
+    react-dom:
+      specifier: ^18.2.0
+      version: 18.3.1
+    recharts:
+      specifier: ^2.10.0
+      version: 2.15.4
+    tailwind-merge:
+      specifier: ^2.6.0
+      version: 2.6.0
+    tailwindcss:
+      specifier: ^4.0.7
+      version: 4.1.13
+    tailwindcss-animate:
+      specifier: ^1.0.7
+      version: 1.0.7
+    tw-animate-css:
+      specifier: ^1.3.8
+      version: 1.3.8
+    typescript:
+      specifier: ^5.3.3
+      version: 5.9.2
+    vite:
+      specifier: ^5.0.12
+      version: 5.4.20
+    vitest:
+      specifier: ^3.2.4
+      version: 3.2.4
+    zod:
+      specifier: ^4.1.11
+      version: 4.1.11
+    zustand:
+      specifier: ^4.5.0
+      version: 4.5.7
+
 importers:
 
   .:
     devDependencies:
       '@types/node':
-        specifier: ^20.11.0
+        specifier: 'catalog:'
         version: 20.19.17
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.44.1
@@ -30,7 +162,7 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2
       typescript:
-        specifier: ^5.3.3
+        specifier: 'catalog:'
         version: 5.9.2
 
   apps/api:
@@ -45,7 +177,7 @@ importers:
         specifier: ^1.0.0
         version: 1.9.0(ws@8.18.3)
       '@orpc/server':
-        specifier: ^1.0.0
+        specifier: 'catalog:'
         version: 1.9.0(ws@8.18.3)
       arctic:
         specifier: ^1.6.0
@@ -69,20 +201,20 @@ importers:
         specifier: ^1.1.0
         version: 1.2.1
       zod:
-        specifier: ^4.1.7
+        specifier: 'catalog:'
         version: 4.1.11
     devDependencies:
       '@types/bun':
-        specifier: latest
+        specifier: 'catalog:'
         version: 1.2.22(@types/react@18.3.24)
       '@types/cookie':
         specifier: ^1.0.0
         version: 1.0.0
       '@types/node':
-        specifier: ^20.11.0
+        specifier: 'catalog:'
         version: 20.19.17
       typescript:
-        specifier: ^5.3.3
+        specifier: 'catalog:'
         version: 5.9.2
 
   apps/studio:
@@ -100,143 +232,143 @@ importers:
         specifier: workspace:*
         version: link:../../packages/shared
       '@orpc/client':
-        specifier: ^1.0.0
+        specifier: 'catalog:'
         version: 1.9.0
       '@orpc/react':
-        specifier: ^1.0.0
+        specifier: 'catalog:'
         version: 1.9.0(react@18.3.1)(ws@8.18.3)
       '@pixi/react':
         specifier: ^7.1.2
         version: 7.1.2(05078e3f1293810c4826381f9b912484)
       '@radix-ui/react-avatar':
-        specifier: ^1.1.0
+        specifier: 'catalog:'
         version: 1.1.10(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-dialog':
-        specifier: ^1.0.5
+        specifier: 'catalog:'
         version: 1.1.15(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-dropdown-menu':
-        specifier: ^2.0.6
+        specifier: 'catalog:'
         version: 2.1.16(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-label':
-        specifier: ^2.1.7
+        specifier: 'catalog:'
         version: 2.1.7(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-select':
         specifier: ^2.0.0
         version: 2.2.6(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot':
-        specifier: ^1.2.3
+        specifier: 'catalog:'
         version: 1.2.3(@types/react@18.3.24)(react@18.3.1)
       '@tanstack/react-form':
-        specifier: ^0.20.0
+        specifier: 'catalog:'
         version: 0.20.3(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-query':
-        specifier: ^5.18.0
+        specifier: 'catalog:'
         version: 5.90.2(react@18.3.1)
       '@tanstack/react-router':
-        specifier: ^1.15.0
+        specifier: 'catalog:'
         version: 1.131.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-table':
-        specifier: ^8.11.0
+        specifier: 'catalog:'
         version: 8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       class-variance-authority:
-        specifier: ^0.7.1
+        specifier: 'catalog:'
         version: 0.7.1
       clsx:
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1
       dagre:
         specifier: ^0.8.5
         version: 0.8.5
       date-fns:
-        specifier: ^3.6.0
+        specifier: 'catalog:'
         version: 3.6.0
       framer-motion:
-        specifier: ^11.3.12
+        specifier: 'catalog:'
         version: 11.18.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       lucide-react:
-        specifier: ^0.344.0
+        specifier: 'catalog:'
         version: 0.344.0(react@18.3.1)
       pixi.js:
-        specifier: ^8.0.0
+        specifier: 'catalog:'
         version: 8.13.2
       react:
-        specifier: ^18.2.0
+        specifier: 'catalog:'
         version: 18.3.1
       react-dom:
-        specifier: ^18.2.0
+        specifier: 'catalog:'
         version: 18.3.1(react@18.3.1)
       react-dropzone:
         specifier: ^14.2.3
         version: 14.3.8(react@18.3.1)
       recharts:
-        specifier: ^2.10.0
+        specifier: 'catalog:'
         version: 2.15.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwind-merge:
-        specifier: ^2.6.0
+        specifier: 'catalog:'
         version: 2.6.0
       tailwindcss-animate:
-        specifier: ^1.0.7
+        specifier: 'catalog:'
         version: 1.0.7(tailwindcss@4.1.13)
       tw-animate-css:
-        specifier: ^1.3.8
+        specifier: 'catalog:'
         version: 1.3.8
       zod:
-        specifier: ^4.1.7
+        specifier: 'catalog:'
         version: 4.1.11
       zustand:
-        specifier: ^4.5.0
+        specifier: 'catalog:'
         version: 4.5.7(@types/react@18.3.24)(react@18.3.1)
     devDependencies:
       '@tailwindcss/vite':
-        specifier: ^4.0.7
+        specifier: 'catalog:'
         version: 4.1.13(vite@5.4.20(@types/node@20.19.17)(lightningcss@1.30.1))
       '@testing-library/jest-dom':
-        specifier: ^6.8.0
+        specifier: 'catalog:'
         version: 6.8.0
       '@testing-library/react':
-        specifier: ^16.3.0
+        specifier: 'catalog:'
         version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/user-event':
-        specifier: ^14.6.1
+        specifier: 'catalog:'
         version: 14.6.1(@testing-library/dom@10.4.1)
       '@types/cytoscape':
         specifier: ^3.19.16
         version: 3.21.9
       '@types/node':
-        specifier: ^20.14.10
+        specifier: 'catalog:'
         version: 20.19.17
       '@types/react':
-        specifier: ^18.2.48
+        specifier: 'catalog:'
         version: 18.3.24
       '@types/react-dom':
-        specifier: ^18.2.18
+        specifier: 'catalog:'
         version: 18.3.7(@types/react@18.3.24)
       '@vitejs/plugin-react':
-        specifier: ^4.2.1
+        specifier: 'catalog:'
         version: 4.7.0(vite@5.4.20(@types/node@20.19.17)(lightningcss@1.30.1))
       '@vitest/ui':
-        specifier: ^3.2.4
+        specifier: 'catalog:'
         version: 3.2.4(vitest@3.2.4)
       eslint-plugin-react:
-        specifier: ^7.37.5
+        specifier: 'catalog:'
         version: 7.37.5(eslint@9.36.0(jiti@2.6.0))
       eslint-plugin-react-hooks:
-        specifier: ^5.2.0
+        specifier: 'catalog:'
         version: 5.2.0(eslint@9.36.0(jiti@2.6.0))
       jsdom:
-        specifier: ^27.0.0
+        specifier: 'catalog:'
         version: 27.0.0(postcss@8.5.6)
       tailwindcss:
-        specifier: ^4.0.7
+        specifier: 'catalog:'
         version: 4.1.13
       typescript:
-        specifier: ^5.3.3
+        specifier: 'catalog:'
         version: 5.9.2
       vite:
-        specifier: ^5.0.12
+        specifier: 'catalog:'
         version: 5.4.20(@types/node@20.19.17)(lightningcss@1.30.1)
       vitest:
-        specifier: ^3.2.4
+        specifier: 'catalog:'
         version: 3.2.4(@types/node@20.19.17)(@vitest/ui@3.2.4)(jsdom@27.0.0(postcss@8.5.6))(lightningcss@1.30.1)
 
   apps/web:
@@ -248,134 +380,134 @@ importers:
         specifier: workspace:*
         version: link:../../packages/shared
       '@orpc/client':
-        specifier: ^1.0.0
+        specifier: 'catalog:'
         version: 1.9.0
       '@orpc/react':
-        specifier: ^1.0.0
+        specifier: 'catalog:'
         version: 1.9.0(react@18.3.1)(ws@8.18.3)
       '@radix-ui/react-avatar':
-        specifier: ^1.1.0
+        specifier: 'catalog:'
         version: 1.1.10(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-dialog':
-        specifier: ^1.0.5
+        specifier: 'catalog:'
         version: 1.1.15(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-dropdown-menu':
-        specifier: ^2.0.6
+        specifier: 'catalog:'
         version: 2.1.16(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-label':
-        specifier: ^2.1.7
+        specifier: 'catalog:'
         version: 2.1.7(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-separator':
         specifier: ^1.0.3
         version: 1.1.7(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot':
-        specifier: ^1.2.3
+        specifier: 'catalog:'
         version: 1.2.3(@types/react@18.3.24)(react@18.3.1)
       '@radix-ui/react-tabs':
         specifier: ^1.0.4
         version: 1.1.13(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-form':
-        specifier: ^0.20.0
+        specifier: 'catalog:'
         version: 0.20.3(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-query':
-        specifier: ^5.18.0
+        specifier: 'catalog:'
         version: 5.90.2(react@18.3.1)
       '@tanstack/react-router':
-        specifier: ^1.15.0
+        specifier: 'catalog:'
         version: 1.131.50(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-table':
-        specifier: ^8.11.0
+        specifier: 'catalog:'
         version: 8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       class-variance-authority:
-        specifier: ^0.7.0
+        specifier: 'catalog:'
         version: 0.7.1
       clsx:
-        specifier: ^2.1.0
+        specifier: 'catalog:'
         version: 2.1.1
       date-fns:
-        specifier: ^3.6.0
+        specifier: 'catalog:'
         version: 3.6.0
       framer-motion:
-        specifier: ^11.3.12
+        specifier: 'catalog:'
         version: 11.18.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gsap:
         specifier: ^3.12.5
         version: 3.13.0
       lucide-react:
-        specifier: ^0.344.0
+        specifier: 'catalog:'
         version: 0.344.0(react@18.3.1)
       pixi.js:
-        specifier: ^8.0.0
+        specifier: 'catalog:'
         version: 8.13.2
       react:
-        specifier: ^18.2.0
+        specifier: 'catalog:'
         version: 18.3.1
       react-dom:
-        specifier: ^18.2.0
+        specifier: 'catalog:'
         version: 18.3.1(react@18.3.1)
       recharts:
-        specifier: ^2.10.0
+        specifier: 'catalog:'
         version: 2.15.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwind-merge:
-        specifier: ^2.2.0
+        specifier: 'catalog:'
         version: 2.6.0
       tailwindcss-animate:
-        specifier: ^1.0.7
+        specifier: 'catalog:'
         version: 1.0.7(tailwindcss@4.1.13)
       tw-animate-css:
-        specifier: ^1.3.8
+        specifier: 'catalog:'
         version: 1.3.8
       zod:
-        specifier: ^4.1.11
+        specifier: 'catalog:'
         version: 4.1.11
       zustand:
-        specifier: ^4.5.0
+        specifier: 'catalog:'
         version: 4.5.7(@types/react@18.3.24)(react@18.3.1)
     devDependencies:
       '@tailwindcss/vite':
-        specifier: ^4.0.7
+        specifier: 'catalog:'
         version: 4.1.13(vite@5.4.20(@types/node@20.19.17)(lightningcss@1.30.1))
       '@testing-library/jest-dom':
-        specifier: ^6.8.0
+        specifier: 'catalog:'
         version: 6.8.0
       '@testing-library/react':
-        specifier: ^16.3.0
+        specifier: 'catalog:'
         version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/user-event':
-        specifier: ^14.6.1
+        specifier: 'catalog:'
         version: 14.6.1(@testing-library/dom@10.4.1)
       '@types/node':
-        specifier: ^20.14.10
+        specifier: 'catalog:'
         version: 20.19.17
       '@types/react':
-        specifier: ^18.2.48
+        specifier: 'catalog:'
         version: 18.3.24
       '@types/react-dom':
-        specifier: ^18.2.18
+        specifier: 'catalog:'
         version: 18.3.7(@types/react@18.3.24)
       '@vitejs/plugin-react':
-        specifier: ^4.2.1
+        specifier: 'catalog:'
         version: 4.7.0(vite@5.4.20(@types/node@20.19.17)(lightningcss@1.30.1))
       '@vitest/ui':
-        specifier: ^3.2.4
+        specifier: 'catalog:'
         version: 3.2.4(vitest@3.2.4)
       eslint-plugin-react:
-        specifier: ^7.37.5
+        specifier: 'catalog:'
         version: 7.37.5(eslint@9.36.0(jiti@2.6.0))
       eslint-plugin-react-hooks:
-        specifier: ^5.2.0
+        specifier: 'catalog:'
         version: 5.2.0(eslint@9.36.0(jiti@2.6.0))
       jsdom:
-        specifier: ^27.0.0
+        specifier: 'catalog:'
         version: 27.0.0(postcss@8.5.6)
       tailwindcss:
-        specifier: ^4.0.7
+        specifier: 'catalog:'
         version: 4.1.13
       vite:
-        specifier: ^5.0.12
+        specifier: 'catalog:'
         version: 5.4.20(@types/node@20.19.17)(lightningcss@1.30.1)
       vitest:
-        specifier: ^3.2.4
+        specifier: 'catalog:'
         version: 3.2.4(@types/node@20.19.17)(@vitest/ui@3.2.4)(jsdom@27.0.0(postcss@8.5.6))(lightningcss@1.30.1)
 
   packages/api-client:
@@ -384,17 +516,17 @@ importers:
         specifier: workspace:*
         version: link:../shared
       '@orpc/client':
-        specifier: ^1.0.0
+        specifier: 'catalog:'
         version: 1.9.0
       '@orpc/server':
-        specifier: ^1.0.0
+        specifier: 'catalog:'
         version: 1.9.0(ws@8.18.3)
     devDependencies:
       '@types/bun':
-        specifier: ^1.2.22
+        specifier: 'catalog:'
         version: 1.2.22(@types/react@18.3.24)
       typescript:
-        specifier: ^5.3.3
+        specifier: 'catalog:'
         version: 5.9.2
 
   packages/content-builder:
@@ -403,17 +535,17 @@ importers:
         specifier: workspace:*
         version: link:../shared
       zod:
-        specifier: ^4.1.7
+        specifier: 'catalog:'
         version: 4.1.11
     devDependencies:
       '@types/bun':
-        specifier: ^1.2.22
+        specifier: 'catalog:'
         version: 1.2.22(@types/react@18.3.24)
       '@types/node':
-        specifier: ^20.11.0
+        specifier: 'catalog:'
         version: 20.19.17
       typescript:
-        specifier: ^5.3.3
+        specifier: 'catalog:'
         version: 5.9.2
 
   packages/shared:
@@ -422,14 +554,14 @@ importers:
         specifier: ^1.0.0
         version: 1.9.0
       zod:
-        specifier: ^4.1.7
+        specifier: 'catalog:'
         version: 4.1.11
     devDependencies:
       '@types/bun':
-        specifier: ^1.2.22
+        specifier: 'catalog:'
         version: 1.2.22(@types/react@18.3.24)
       typescript:
-        specifier: ^5.3.3
+        specifier: 'catalog:'
         version: 5.9.2
 
 packages:
