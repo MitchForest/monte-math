@@ -1,0 +1,443 @@
+{
+  "10": {
+    "grade": "3",
+    "id": "10",
+    "name": "Geometry",
+    "ordering": "5",
+    "ordinal": "G"
+  },
+  "100": {
+    "grade": "HS",
+    "id": "100",
+    "name": "Arithmetic With Polynomials And Rational Expressions",
+    "ordering": "1",
+    "ordinal": "A-APR"
+  },
+  "101": {
+    "grade": "HS",
+    "id": "101",
+    "name": "Building Functions",
+    "ordering": "1",
+    "ordinal": "F-BF"
+  },
+  "102": {
+    "grade": "HS",
+    "id": "102",
+    "name": "Circles",
+    "ordering": "2",
+    "ordinal": "G-C"
+  },
+  "103": {
+    "grade": "HS",
+    "id": "103",
+    "name": "Conditional Probability And The Rules Of Probability",
+    "ordering": "2",
+    "ordinal": "S-CP"
+  },
+  "104": {
+    "grade": "HS",
+    "id": "104",
+    "name": "Congruence",
+    "ordering": "0",
+    "ordinal": "G-CO"
+  },
+  "105": {
+    "grade": "HS",
+    "id": "105",
+    "name": "Creating Equations",
+    "ordering": "2",
+    "ordinal": "A-CED"
+  },
+  "106": {
+    "grade": "HS",
+    "id": "106",
+    "name": "Expressing Geometric Properties With Equations",
+    "ordering": "3",
+    "ordinal": "G-GPE"
+  },
+  "107": {
+    "grade": "HS",
+    "id": "107",
+    "name": "Geometric Measurement And Dimension",
+    "ordering": "4",
+    "ordinal": "G-GMD"
+  },
+  "108": {
+    "grade": "HS",
+    "id": "108",
+    "name": "Interpreting Categorical And Quantitative Data",
+    "ordering": "0",
+    "ordinal": "S-ID"
+  },
+  "109": {
+    "grade": "HS",
+    "id": "109",
+    "name": "Interpreting Functions",
+    "ordering": "0",
+    "ordinal": "F-IF"
+  },
+  "11": {
+    "grade": "3",
+    "id": "11",
+    "name": "Measurement And Data",
+    "ordering": "4",
+    "ordinal": "MD"
+  },
+  "110": {
+    "grade": "HS",
+    "id": "110",
+    "name": "Linear, Quadratic, And Exponential Models",
+    "ordering": "2",
+    "ordinal": "F-LE"
+  },
+  "111": {
+    "grade": "HS",
+    "id": "111",
+    "name": "Making Inferences And Justifying Conclusions",
+    "ordering": "1",
+    "ordinal": "S-IC"
+  },
+  "112": {
+    "grade": "HS",
+    "id": "112",
+    "name": "Modeling With Geometry",
+    "ordering": "5",
+    "ordinal": "G-MG"
+  },
+  "113": {
+    "grade": "HS",
+    "id": "113",
+    "name": "Quantities",
+    "ordering": "1",
+    "ordinal": "N-Q"
+  },
+  "114": {
+    "grade": "HS",
+    "id": "114",
+    "name": "Reasoning With Equations And Inequalities",
+    "ordering": "3",
+    "ordinal": "A-REI"
+  },
+  "115": {
+    "grade": "HS",
+    "id": "115",
+    "name": "Seeing Structure In Expressions",
+    "ordering": "0",
+    "ordinal": "A-SSE"
+  },
+  "116": {
+    "grade": "HS",
+    "id": "116",
+    "name": "Similarity, Right Triangles, And Trigonometry",
+    "ordering": "1",
+    "ordinal": "G-SRT"
+  },
+  "117": {
+    "grade": "HS",
+    "id": "117",
+    "name": "The Complex Number System",
+    "ordering": "2",
+    "ordinal": "N-CN"
+  },
+  "118": {
+    "grade": "HS",
+    "id": "118",
+    "name": "The Real Number System",
+    "ordering": "0",
+    "ordinal": "N-RN"
+  },
+  "119": {
+    "grade": "HS",
+    "id": "119",
+    "name": "Trigonometric Functions",
+    "ordering": "3",
+    "ordinal": "F-TF"
+  },
+  "12": {
+    "grade": "3",
+    "id": "12",
+    "name": "Number And Operations In Base Ten",
+    "ordering": "2",
+    "ordinal": "NBT"
+  },
+  "13": {
+    "grade": "3",
+    "id": "13",
+    "name": "Number And Operations-Fractions*",
+    "ordering": "3",
+    "ordinal": "NF"
+  },
+  "14": {
+    "grade": "3",
+    "id": "14",
+    "name": "Operations And Algebraic Thinking",
+    "ordering": "1",
+    "ordinal": "OA"
+  },
+  "15": {
+    "grade": "4",
+    "id": "15",
+    "name": "Geometry",
+    "ordering": "5",
+    "ordinal": "G"
+  },
+  "16": {
+    "grade": "4",
+    "id": "16",
+    "name": "Measurement And Data",
+    "ordering": "4",
+    "ordinal": "MD"
+  },
+  "17": {
+    "grade": "4",
+    "id": "17",
+    "name": "Number And Operations In Base Ten*",
+    "ordering": "2",
+    "ordinal": "NBT"
+  },
+  "18": {
+    "grade": "4",
+    "id": "18",
+    "name": "Number And Operations-Fractions*",
+    "ordering": "3",
+    "ordinal": "NF"
+  },
+  "19": {
+    "grade": "4",
+    "id": "19",
+    "name": "Operations And Algebraic Thinking",
+    "ordering": "1",
+    "ordinal": "OA"
+  },
+  "2": {
+    "grade": "1",
+    "id": "2",
+    "name": "Geometry",
+    "ordering": "5",
+    "ordinal": "G"
+  },
+  "20": {
+    "grade": "5",
+    "id": "20",
+    "name": "Geometry",
+    "ordering": "5",
+    "ordinal": "G"
+  },
+  "21": {
+    "grade": "5",
+    "id": "21",
+    "name": "Measurement And Data",
+    "ordering": "4",
+    "ordinal": "MD"
+  },
+  "22": {
+    "grade": "5",
+    "id": "22",
+    "name": "Number And Operations In Base Ten",
+    "ordering": "2",
+    "ordinal": "NBT"
+  },
+  "23": {
+    "grade": "5",
+    "id": "23",
+    "name": "Number And Operations-Fractions",
+    "ordering": "3",
+    "ordinal": "NF"
+  },
+  "24": {
+    "grade": "5",
+    "id": "24",
+    "name": "Operations And Algebraic Thinking",
+    "ordering": "1",
+    "ordinal": "OA"
+  },
+  "25": {
+    "grade": "6",
+    "id": "25",
+    "name": "Expressions And Equations",
+    "ordering": "2",
+    "ordinal": "EE"
+  },
+  "26": {
+    "grade": "6",
+    "id": "26",
+    "name": "Geometry",
+    "ordering": "5",
+    "ordinal": "G"
+  },
+  "27": {
+    "grade": "6",
+    "id": "27",
+    "name": "The Number System",
+    "ordering": "1",
+    "ordinal": "NS"
+  },
+  "28": {
+    "grade": "6",
+    "id": "28",
+    "name": "Ratios And Proportional Relationships",
+    "ordering": "0",
+    "ordinal": "RP"
+  },
+  "29": {
+    "grade": "6",
+    "id": "29",
+    "name": "Statistics And Probability",
+    "ordering": "6",
+    "ordinal": "SP"
+  },
+  "3": {
+    "grade": "1",
+    "id": "3",
+    "name": "Measurement And Data",
+    "ordering": "4",
+    "ordinal": "MD"
+  },
+  "30": {
+    "grade": "7",
+    "id": "30",
+    "name": "Expressions And Equations",
+    "ordering": "2",
+    "ordinal": "EE"
+  },
+  "31": {
+    "grade": "7",
+    "id": "31",
+    "name": "Geometry",
+    "ordering": "5",
+    "ordinal": "G"
+  },
+  "32": {
+    "grade": "7",
+    "id": "32",
+    "name": "The Number System",
+    "ordering": "1",
+    "ordinal": "NS"
+  },
+  "33": {
+    "grade": "7",
+    "id": "33",
+    "name": "Ratios And Proportional Relationships",
+    "ordering": "0",
+    "ordinal": "RP"
+  },
+  "34": {
+    "grade": "7",
+    "id": "34",
+    "name": "Statistics And Probability",
+    "ordering": "6",
+    "ordinal": "SP"
+  },
+  "35": {
+    "grade": "8",
+    "id": "35",
+    "name": "Expressions And Equations",
+    "ordering": "2",
+    "ordinal": "EE"
+  },
+  "36": {
+    "grade": "8",
+    "id": "36",
+    "name": "Functions",
+    "ordering": "3",
+    "ordinal": "F"
+  },
+  "37": {
+    "grade": "8",
+    "id": "37",
+    "name": "Geometry",
+    "ordering": "5",
+    "ordinal": "G"
+  },
+  "38": {
+    "grade": "8",
+    "id": "38",
+    "name": "The Number System",
+    "ordering": "1",
+    "ordinal": "NS"
+  },
+  "39": {
+    "grade": "8",
+    "id": "39",
+    "name": "Statistics And Probability",
+    "ordering": "6",
+    "ordinal": "SP"
+  },
+  "4": {
+    "grade": "1",
+    "id": "4",
+    "name": "Number And Operations In Base Ten",
+    "ordering": "2",
+    "ordinal": "NBT"
+  },
+  "40": {
+    "grade": "K",
+    "id": "40",
+    "name": "Counting And Cardinality",
+    "ordering": "0",
+    "ordinal": "CC"
+  },
+  "41": {
+    "grade": "K",
+    "id": "41",
+    "name": "Geometry",
+    "ordering": "5",
+    "ordinal": "G"
+  },
+  "42": {
+    "grade": "K",
+    "id": "42",
+    "name": "Measurement And Data",
+    "ordering": "4",
+    "ordinal": "MD"
+  },
+  "43": {
+    "grade": "K",
+    "id": "43",
+    "name": "Number And Operations In Base Ten",
+    "ordering": "2",
+    "ordinal": "NBT"
+  },
+  "44": {
+    "grade": "K",
+    "id": "44",
+    "name": "Operations And Algebraic Thinking",
+    "ordering": "1",
+    "ordinal": "OA"
+  },
+  "5": {
+    "grade": "1",
+    "id": "5",
+    "name": "Operations And Algebraic Thinking",
+    "ordering": "1",
+    "ordinal": "OA"
+  },
+  "6": {
+    "grade": "2",
+    "id": "6",
+    "name": "Geometry",
+    "ordering": "5",
+    "ordinal": "G"
+  },
+  "7": {
+    "grade": "2",
+    "id": "7",
+    "name": "Measurement And Data",
+    "ordering": "4",
+    "ordinal": "MD"
+  },
+  "8": {
+    "grade": "2",
+    "id": "8",
+    "name": "Number And Operations In Base Ten",
+    "ordering": "2",
+    "ordinal": "NBT"
+  },
+  "9": {
+    "grade": "2",
+    "id": "9",
+    "name": "Operations And Algebraic Thinking",
+    "ordering": "1",
+    "ordinal": "OA"
+  }
+}

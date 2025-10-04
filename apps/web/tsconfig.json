@@ -19,11 +19,18 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "@monte-math/*": [
+        "../../../packages/*/src"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "vite.config.ts"
+    "vite.config.ts",
+    "src/**/*.d.ts",
+    "src/types/*.d.ts"
   ]
 }

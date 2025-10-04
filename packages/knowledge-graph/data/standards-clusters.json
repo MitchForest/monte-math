@@ -1,0 +1,1186 @@
+{
+  "10": {
+    "ccmathdomain_id": "5",
+    "id": "10",
+    "msa": "0",
+    "name": "<p>Understand And Apply <a id=\"[3]\" name=\"[3]\">Properties Of Operations</a> And The Relationship Between Addition And Subtraction.</p>\r\n",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "100": {
+    "ccmathdomain_id": "120",
+    "id": "100",
+    "msa": "0",
+    "name": "All Five Questions Of A Multiple-Choice Test Where Each Question Has Four Choices, And Find The Expected Grade Under Various Grading Schemes.",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "101": {
+    "ccmathdomain_id": "109",
+    "id": "101",
+    "msa": "0",
+    "name": "Analyze Functions Using Different Representations",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "102": {
+    "ccmathdomain_id": "112",
+    "id": "102",
+    "msa": "0",
+    "name": "Apply Geometric Concepts In Modeling Situations",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "103": {
+    "ccmathdomain_id": "116",
+    "id": "103",
+    "msa": "0",
+    "name": "Apply Trigonometry To General Triangles",
+    "ordinal": "D",
+    "wap": "1"
+  },
+  "104": {
+    "ccmathdomain_id": "101",
+    "id": "104",
+    "msa": "0",
+    "name": "Build A Function That Models A Relationship Between Two Quantities",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "105": {
+    "ccmathdomain_id": "101",
+    "id": "105",
+    "msa": "0",
+    "name": "Build New Functions From Existing Functions",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "106": {
+    "ccmathdomain_id": "120",
+    "id": "106",
+    "msa": "0",
+    "name": "Calculate Expected Values And Use Them To Solve Problems",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "107": {
+    "ccmathdomain_id": "110",
+    "id": "107",
+    "msa": "0",
+    "name": "Construct And Compare Linear, Quadratic, And Exponential Models And Solve Problems",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "108": {
+    "ccmathdomain_id": "105",
+    "id": "108",
+    "msa": "0",
+    "name": "Create Equations That Describe Numbers Or Relationships",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "109": {
+    "ccmathdomain_id": "116",
+    "id": "109",
+    "msa": "0",
+    "name": "Define Trigonometric Ratios And Solve Problems Involving Right Triangles",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "11": {
+    "ccmathdomain_id": "5",
+    "id": "11",
+    "msa": "0",
+    "name": "Add And Subtract Within 20.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "110": {
+    "ccmathdomain_id": "104",
+    "id": "110",
+    "msa": "0",
+    "name": "Experiment With Transformations In The Plane",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "111": {
+    "ccmathdomain_id": "107",
+    "id": "111",
+    "msa": "0",
+    "name": "Explain Volume Formulas And Use Them To Solve Problems",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "112": {
+    "ccmathdomain_id": "119",
+    "id": "112",
+    "msa": "0",
+    "name": "Extend The Domain Of Trigonometric Functions Using The Unit Circle",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "113": {
+    "ccmathdomain_id": "118",
+    "id": "113",
+    "msa": "0",
+    "name": "Extend The Properties Of Exponents To Rational Exponents.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "114": {
+    "ccmathdomain_id": "102",
+    "id": "114",
+    "msa": "0",
+    "name": "Find Arc Lengths And Areas Of Sectors Of Circles",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "115": {
+    "ccmathdomain_id": "110",
+    "id": "115",
+    "msa": "0",
+    "name": "Interpret Expressions For Functions In Terms Of The Situation They Model",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "116": {
+    "ccmathdomain_id": "109",
+    "id": "116",
+    "msa": "0",
+    "name": "Interpret Functions That Arise In Applications In Terms Of The Context",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "117": {
+    "ccmathdomain_id": "108",
+    "id": "117",
+    "msa": "0",
+    "name": "Interpret Linear Models",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "118": {
+    "ccmathdomain_id": "115",
+    "id": "118",
+    "msa": "0",
+    "name": "Interpret The Structure Of Expressions",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "119": {
+    "ccmathdomain_id": "104",
+    "id": "119",
+    "msa": "0",
+    "name": "Make Geometric Constructions",
+    "ordinal": "D",
+    "wap": "1"
+  },
+  "12": {
+    "ccmathdomain_id": "5",
+    "id": "12",
+    "msa": "0",
+    "name": "Work With Addition And Subtraction Equations.",
+    "ordinal": "D",
+    "wap": "0"
+  },
+  "120": {
+    "ccmathdomain_id": "111",
+    "id": "120",
+    "msa": "0",
+    "name": "Make Inferences And Justify Conclusions From Sample Surveys, Experiments, And Observational Studies",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "121": {
+    "ccmathdomain_id": "119",
+    "id": "121",
+    "msa": "0",
+    "name": "Model Periodic Phenomena With Trigonometric Functions",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "122": {
+    "ccmathdomain_id": "100",
+    "id": "122",
+    "msa": "0",
+    "name": "Perform Arithmetic Operations On Polynomials",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "123": {
+    "ccmathdomain_id": "117",
+    "id": "123",
+    "msa": "0",
+    "name": "Perform Arithmetic Operations With Complex Numbers.",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "124": {
+    "ccmathdomain_id": "121",
+    "id": "124",
+    "msa": "0",
+    "name": "Perform Operations On Matrices And Use Matrices In Applications.",
+    "ordinal": "C",
+    "wap": "1"
+  },
+  "125": {
+    "ccmathdomain_id": "121",
+    "id": "125",
+    "msa": "0",
+    "name": "Perform Operations On Vectors.",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "126": {
+    "ccmathdomain_id": "119",
+    "id": "126",
+    "msa": "0",
+    "name": "Prove And Apply Trigonometric Identities",
+    "ordinal": "C",
+    "wap": "1"
+  },
+  "127": {
+    "ccmathdomain_id": "104",
+    "id": "127",
+    "msa": "0",
+    "name": "Prove Geometric Theorems",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "128": {
+    "ccmathdomain_id": "116",
+    "id": "128",
+    "msa": "0",
+    "name": "Prove Theorems Involving Similarity",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "129": {
+    "ccmathdomain_id": "113",
+    "id": "129",
+    "msa": "0",
+    "name": "Reason Quantitatively And Use Units To Solve Problems.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "13": {
+    "ccmathdomain_id": "6",
+    "id": "13",
+    "msa": "2",
+    "name": "Reason With Shapes And Their Attributes.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "130": {
+    "ccmathdomain_id": "121",
+    "id": "130",
+    "msa": "0",
+    "name": "Represent And Model With Vector Quantities.",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "131": {
+    "ccmathdomain_id": "114",
+    "id": "131",
+    "msa": "0",
+    "name": "Represent And Solve Equations And Inequalities Graphically",
+    "ordinal": "D",
+    "wap": "0"
+  },
+  "132": {
+    "ccmathdomain_id": "117",
+    "id": "132",
+    "msa": "0",
+    "name": "Represent Complex Numbers And Their Operations On The Complex Plane.",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "133": {
+    "ccmathdomain_id": "100",
+    "id": "133",
+    "msa": "0",
+    "name": "Rewrite Rational Expressions",
+    "ordinal": "D",
+    "wap": "0"
+  },
+  "134": {
+    "ccmathdomain_id": "114",
+    "id": "134",
+    "msa": "0",
+    "name": "Solve Equations And Inequalities In One Variable",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "135": {
+    "ccmathdomain_id": "114",
+    "id": "135",
+    "msa": "0",
+    "name": "Solve Systems Of Equations",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "136": {
+    "ccmathdomain_id": "108",
+    "id": "136",
+    "msa": "0",
+    "name": "Summarize, Represent, And Interpret Data On A Single Count Or Measurement Variable",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "137": {
+    "ccmathdomain_id": "108",
+    "id": "137",
+    "msa": "0",
+    "name": "Summarize, Represent, And Interpret Data On Two Categorical And Quantitative Variables",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "138": {
+    "ccmathdomain_id": "106",
+    "id": "138",
+    "msa": "0",
+    "name": "Translate Between The Geometric Description And The Equation For A Conic Section",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "139": {
+    "ccmathdomain_id": "102",
+    "id": "139",
+    "msa": "0",
+    "name": "Understand And Apply Theorems About Circles",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "14": {
+    "ccmathdomain_id": "7",
+    "id": "14",
+    "msa": "0",
+    "name": "Measure And Estimate Lengths In Standard Units.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "140": {
+    "ccmathdomain_id": "111",
+    "id": "140",
+    "msa": "0",
+    "name": "Understand And Evaluate Random Processes Underlying Statistical Experiments",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "141": {
+    "ccmathdomain_id": "104",
+    "id": "141",
+    "msa": "0",
+    "name": "Understand Congruence In Terms Of Rigid Motions",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "142": {
+    "ccmathdomain_id": "103",
+    "id": "142",
+    "msa": "0",
+    "name": "Understand Independence And Conditional Probability And Use Them To Interpret Data",
+    "ordinal": "A",
+    "wap": "1"
+  },
+  "143": {
+    "ccmathdomain_id": "116",
+    "id": "143",
+    "msa": "0",
+    "name": "Understand Similarity In Terms Of Similarity Transformations",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "144": {
+    "ccmathdomain_id": "114",
+    "id": "144",
+    "msa": "0",
+    "name": "Understand Solving Equations As A Process Of Reasoning And Explain The Reasoning",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "145": {
+    "ccmathdomain_id": "109",
+    "id": "145",
+    "msa": "0",
+    "name": "Understand The Concept Of A Function And Use Function Notation",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "146": {
+    "ccmathdomain_id": "100",
+    "id": "146",
+    "msa": "0",
+    "name": "Understand The Relationship Between Zeros And Factors Of Polynomials",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "147": {
+    "ccmathdomain_id": "117",
+    "id": "147",
+    "msa": "0",
+    "name": "Use Complex Numbers In Polynomial Identities And Equations.",
+    "ordinal": "C",
+    "wap": "1"
+  },
+  "148": {
+    "ccmathdomain_id": "106",
+    "id": "148",
+    "msa": "0",
+    "name": "Use Coordinates To Prove Simple Geometric Theorems Algebraically",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "149": {
+    "ccmathdomain_id": "100",
+    "id": "149",
+    "msa": "0",
+    "name": "Use Polynomial Identities To Solve Problems",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "15": {
+    "ccmathdomain_id": "7",
+    "id": "15",
+    "msa": "0",
+    "name": "Relate Addition And Subtraction To Length.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "150": {
+    "ccmathdomain_id": "120",
+    "id": "150",
+    "msa": "0",
+    "name": "Use Probability To Evaluate Outcomes Of Decisions",
+    "ordinal": "C",
+    "wap": "1"
+  },
+  "151": {
+    "ccmathdomain_id": "118",
+    "id": "151",
+    "msa": "0",
+    "name": "Use Properties Of Rational And Irrational Numbers.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "152": {
+    "ccmathdomain_id": "103",
+    "id": "152",
+    "msa": "0",
+    "name": "Use The Rules Of Probability To Compute Probabilities Of Compound Events In A Uniform Probability Model",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "153": {
+    "ccmathdomain_id": "107",
+    "id": "153",
+    "msa": "0",
+    "name": "Visualize Relationships Between Two-Dimensional And Three- Dimensional Objects",
+    "ordinal": "B",
+    "wap": "1"
+  },
+  "154": {
+    "ccmathdomain_id": "115",
+    "id": "154",
+    "msa": "0",
+    "name": "Write Expressions In Equivalent Forms To Solve Problems",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "16": {
+    "ccmathdomain_id": "7",
+    "id": "16",
+    "msa": "1",
+    "name": "Work With Time And Money.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "17": {
+    "ccmathdomain_id": "7",
+    "id": "17",
+    "msa": "1",
+    "name": "Represent And Interpret Data.",
+    "ordinal": "D",
+    "wap": "0"
+  },
+  "18": {
+    "ccmathdomain_id": "8",
+    "id": "18",
+    "msa": "0",
+    "name": "Understand Place Value.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "19": {
+    "ccmathdomain_id": "8",
+    "id": "19",
+    "msa": "0",
+    "name": "<p>Use Place Value Understanding And <a id=\"[3]\" name=\"[3]\">Properties Of Operations</a> To Add And Subtract.</p>\r\n",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "2": {
+    "ccmathdomain_id": "2",
+    "id": "2",
+    "msa": "2",
+    "name": "Reason With Shapes And Their Attributes.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "20": {
+    "ccmathdomain_id": "9",
+    "id": "20",
+    "msa": "0",
+    "name": "Represent And Solve Problems Involving Addition And Subtraction.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "21": {
+    "ccmathdomain_id": "9",
+    "id": "21",
+    "msa": "0",
+    "name": "Add And Subtract Within 20.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "22": {
+    "ccmathdomain_id": "9",
+    "id": "22",
+    "msa": "1",
+    "name": "Work With Equal Groups Of Objects To Gain Foundations For Multiplication.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "23": {
+    "ccmathdomain_id": "10",
+    "id": "23",
+    "msa": "1",
+    "name": "<p>Reason With Shapes And Their Attributes.</p>\r\n",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "24": {
+    "ccmathdomain_id": "11",
+    "id": "24",
+    "msa": "0",
+    "name": "Solve Problems Involving Measurement And Estimation Of Intervals Of Time, Liquid Volumes, And Masses Of Objects.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "25": {
+    "ccmathdomain_id": "11",
+    "id": "25",
+    "msa": "1",
+    "name": "Represent And Interpret Data.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "26": {
+    "ccmathdomain_id": "11",
+    "id": "26",
+    "msa": "0",
+    "name": "Geometric Measurement: Understand Concepts Of Area And Relate Area To Multiplication And To Addition.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "27": {
+    "ccmathdomain_id": "11",
+    "id": "27",
+    "msa": "2",
+    "name": "Geometric Measurement: Recognize Perimeter As An Attribute Of Plane Figures And Distinguish Between Linear And Area Measures.",
+    "ordinal": "D",
+    "wap": "0"
+  },
+  "28": {
+    "ccmathdomain_id": "12",
+    "id": "28",
+    "msa": "2",
+    "name": "<p>Use Place Value Understanding And <a id=\"[3]\" name=\"[3]\">Properties Of Operations</a> To Perform Multi-Digit Arithmetic.*</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><sup>*A range of algorithms may be used.</sup></p>\r\n",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "29": {
+    "ccmathdomain_id": "13",
+    "id": "29",
+    "msa": "0",
+    "name": "Develop Understanding Of Fractions As Numbers.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "3": {
+    "ccmathdomain_id": "3",
+    "id": "3",
+    "msa": "0",
+    "name": "Measure Lengths Indirectly And By Iterating Length Units.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "30": {
+    "ccmathdomain_id": "14",
+    "id": "30",
+    "msa": "0",
+    "name": "Represent And Solve Problems Involving Multiplication And Division.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "31": {
+    "ccmathdomain_id": "14",
+    "id": "31",
+    "msa": "0",
+    "name": "Understand Properties Of Multiplication And The Relationship Between Multiplication And Division.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "32": {
+    "ccmathdomain_id": "14",
+    "id": "32",
+    "msa": "0",
+    "name": "Multiply And Divide Within 100.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "33": {
+    "ccmathdomain_id": "14",
+    "id": "33",
+    "msa": "0",
+    "name": "Solve Problems Involving The Four Operations, And Identify And Explain Patterns In Arithmetic.",
+    "ordinal": "D",
+    "wap": "0"
+  },
+  "34": {
+    "ccmathdomain_id": "15",
+    "id": "34",
+    "msa": "2",
+    "name": "Draw And Identify Lines And Angles, And Classify Shapes By Properties Of Their Lines And Angles.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "35": {
+    "ccmathdomain_id": "16",
+    "id": "35",
+    "msa": "1",
+    "name": "Solve Problems Involving Measurement And Conversion Of Measurements From A Larger Unit To A Smaller Unit.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "36": {
+    "ccmathdomain_id": "16",
+    "id": "36",
+    "msa": "1",
+    "name": "Represent And Interpret Data.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "37": {
+    "ccmathdomain_id": "16",
+    "id": "37",
+    "msa": "2",
+    "name": "Geometric Measurement: Understand Concepts Of Angle And Measure Angles.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "38": {
+    "ccmathdomain_id": "17",
+    "id": "38",
+    "msa": "0",
+    "name": "<p>Generalize Place Value Understanding For Multi-Digit Whole Numbers.</p>\r\n",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "39": {
+    "ccmathdomain_id": "17",
+    "id": "39",
+    "msa": "0",
+    "name": "<p>Use Place Value Understanding And <a id=\"[3]\" name=\"[3]\">Properties Of Operations</a> To Perform Multi-Digit Arithmetic.</p>\r\n",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "4": {
+    "ccmathdomain_id": "3",
+    "id": "4",
+    "msa": "2",
+    "name": "Tell And Write Time.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "40": {
+    "ccmathdomain_id": "18",
+    "id": "40",
+    "msa": "0",
+    "name": "Extend Understanding Of Fraction Equivalence And Ordering.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "41": {
+    "ccmathdomain_id": "18",
+    "id": "41",
+    "msa": "0",
+    "name": "Build Fractions From Unit Fractions By Applying And Extending Previous Understandings Of Operations On Whole Numbers.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "42": {
+    "ccmathdomain_id": "18",
+    "id": "42",
+    "msa": "0",
+    "name": "Understand Decimal Notation For Fractions, And Compare Decimal Fractions.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "43": {
+    "ccmathdomain_id": "19",
+    "id": "43",
+    "msa": "0",
+    "name": "Use The Four Operations With Whole Numbers To Solve Problems.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "44": {
+    "ccmathdomain_id": "19",
+    "id": "44",
+    "msa": "1",
+    "name": "Gain Familiarity With Factors And Multiples.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "45": {
+    "ccmathdomain_id": "19",
+    "id": "45",
+    "msa": "2",
+    "name": "Generate And Analyze Patterns.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "46": {
+    "ccmathdomain_id": "20",
+    "id": "46",
+    "msa": "2",
+    "name": "Graph Points On The Coordinate Plane To Solve Real-World And Mathematical Problems.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "47": {
+    "ccmathdomain_id": "20",
+    "id": "47",
+    "msa": "2",
+    "name": "Classify Two-Dimensional Figures Into Categories Based On Their Properties.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "48": {
+    "ccmathdomain_id": "21",
+    "id": "48",
+    "msa": "1",
+    "name": "Convert Like Measurement Units Within A Given Measurement System.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "49": {
+    "ccmathdomain_id": "21",
+    "id": "49",
+    "msa": "1",
+    "name": "Represent And Interpret Data.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "5": {
+    "ccmathdomain_id": "3",
+    "id": "5",
+    "msa": "1",
+    "name": "Represent And Interpret Data.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "50": {
+    "ccmathdomain_id": "21",
+    "id": "50",
+    "msa": "0",
+    "name": "Geometric Measurement: Understand Concepts Of Volume And Relate Volume To Multiplication And To Addition.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "51": {
+    "ccmathdomain_id": "22",
+    "id": "51",
+    "msa": "0",
+    "name": "Understand The Place Value System.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "52": {
+    "ccmathdomain_id": "22",
+    "id": "52",
+    "msa": "0",
+    "name": "Perform Operations With Multi-Digit Whole Numbers And With Decimals To Hundredths.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "53": {
+    "ccmathdomain_id": "23",
+    "id": "53",
+    "msa": "0",
+    "name": "Use Equivalent Fractions As A Strategy To Add And Subtract Fractions.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "54": {
+    "ccmathdomain_id": "23",
+    "id": "54",
+    "msa": "0",
+    "name": "Apply And Extend Previous Understandings Of Multiplication And Division To Multiply And Divide Fractions.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "55": {
+    "ccmathdomain_id": "24",
+    "id": "55",
+    "msa": "2",
+    "name": "Write And Interpret Numerical Expressions.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "56": {
+    "ccmathdomain_id": "24",
+    "id": "56",
+    "msa": "2",
+    "name": "Analyze Patterns And Relationships.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "57": {
+    "ccmathdomain_id": "25",
+    "id": "57",
+    "msa": "0",
+    "name": "Apply And Extend Previous Understandings Of Arithmetic To Algebraic Expressions.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "58": {
+    "ccmathdomain_id": "25",
+    "id": "58",
+    "msa": "0",
+    "name": "Reason About And Solve One-Variable Equations And Inequalities.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "59": {
+    "ccmathdomain_id": "25",
+    "id": "59",
+    "msa": "0",
+    "name": "Represent And Analyze Quantitative Relationships Between Dependent And Independent Variables.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "6": {
+    "ccmathdomain_id": "4",
+    "id": "6",
+    "msa": "0",
+    "name": "Extend The Counting Sequence.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "60": {
+    "ccmathdomain_id": "26",
+    "id": "60",
+    "msa": "1",
+    "name": "Solve Real-World And Mathematical Problems Involving Area, Surface Area, And Volume.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "61": {
+    "ccmathdomain_id": "27",
+    "id": "61",
+    "msa": "0",
+    "name": "Apply And Extend Previous Understandings Of Multiplication And Division To Divide Fractions By Fractions.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "62": {
+    "ccmathdomain_id": "27",
+    "id": "62",
+    "msa": "2",
+    "name": "Compute Fluently With Multi-Digit Numbers And Find Common Factors And Multiples.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "63": {
+    "ccmathdomain_id": "27",
+    "id": "63",
+    "msa": "0",
+    "name": "Apply And Extend Previous Understandings Of Numbers To The System Of Rational Numbers.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "64": {
+    "ccmathdomain_id": "28",
+    "id": "64",
+    "msa": "0",
+    "name": "Understand Ratio Concepts And Use Ratio Reasoning To Solve Problems.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "65": {
+    "ccmathdomain_id": "29",
+    "id": "65",
+    "msa": "2",
+    "name": "Develop Understanding Of Statistical Variability.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "66": {
+    "ccmathdomain_id": "29",
+    "id": "66",
+    "msa": "2",
+    "name": "Summarize And Describe Distributions.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "67": {
+    "ccmathdomain_id": "30",
+    "id": "67",
+    "msa": "0",
+    "name": "<p>Use <a id=\"[3]\" name=\"[3]\">Properties Of Operations</a> To Generate Equivalent Expressions.</p>\r\n",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "68": {
+    "ccmathdomain_id": "30",
+    "id": "68",
+    "msa": "0",
+    "name": "Solve Real-Life And Mathematical Problems Using Numerical And Algebraic Expressions And Equations.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "69": {
+    "ccmathdomain_id": "31",
+    "id": "69",
+    "msa": "2",
+    "name": "Draw, Construct, And Describe Geometrical Figures And Describe The Relationships Between Them.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "7": {
+    "ccmathdomain_id": "4",
+    "id": "7",
+    "msa": "0",
+    "name": "Understand Place Value.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "70": {
+    "ccmathdomain_id": "31",
+    "id": "70",
+    "msa": "2",
+    "name": "Solve Real-Life And Mathematical Problems Involving Angle Measure, Area, Surface Area, And Volume.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "71": {
+    "ccmathdomain_id": "32",
+    "id": "71",
+    "msa": "0",
+    "name": "Apply And Extend Previous Understandings Of Operations With Fractions To Add, Subtract, Multiply, And Divide Rational Numbers.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "72": {
+    "ccmathdomain_id": "33",
+    "id": "72",
+    "msa": "0",
+    "name": "Analyze Proportional Relationships And Use Them To Solve Real-World And Mathematical Problems.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "73": {
+    "ccmathdomain_id": "34",
+    "id": "73",
+    "msa": "1",
+    "name": "Use Random Sampling To Draw Inferences About A Population.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "74": {
+    "ccmathdomain_id": "34",
+    "id": "74",
+    "msa": "2",
+    "name": "Draw Informal Comparative Inferences About Two Populations.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "75": {
+    "ccmathdomain_id": "34",
+    "id": "75",
+    "msa": "1",
+    "name": "Investigate Chance Processes And Develop, Use, And Evaluate Probability Models.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "76": {
+    "ccmathdomain_id": "35",
+    "id": "76",
+    "msa": "0",
+    "name": "Work With Radicals And Integer Exponents.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "77": {
+    "ccmathdomain_id": "35",
+    "id": "77",
+    "msa": "0",
+    "name": "Understand The Connections Between Proportional Relationships, Lines, And Linear Equations.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "78": {
+    "ccmathdomain_id": "35",
+    "id": "78",
+    "msa": "0",
+    "name": "Analyze And Solve Linear Equations And Pairs Of Simultaneous Linear Equations.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "79": {
+    "ccmathdomain_id": "36",
+    "id": "79",
+    "msa": "0",
+    "name": "Define, Evaluate, And Compare Functions.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "8": {
+    "ccmathdomain_id": "4",
+    "id": "8",
+    "msa": "0",
+    "name": "<p>Use Place Value Understanding And <a id=\"[3]\" name=\"[3]\">Properties Of Operations</a> To Add And Subtract.</p>\r\n",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "80": {
+    "ccmathdomain_id": "36",
+    "id": "80",
+    "msa": "0",
+    "name": "Use Functions To Model Relationships Between Quantities.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "81": {
+    "ccmathdomain_id": "37",
+    "id": "81",
+    "msa": "0",
+    "name": "Understand Congruence And Similarity Using Physical Models, Transparencies, Or Geometry Software.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "82": {
+    "ccmathdomain_id": "37",
+    "id": "82",
+    "msa": "0",
+    "name": "Understand And Apply The Pythagorean Theorem.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "83": {
+    "ccmathdomain_id": "37",
+    "id": "83",
+    "msa": "2",
+    "name": "Solve Real-World And Mathematical Problems Involving Volume Of Cylinders, Cones, And Spheres.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "84": {
+    "ccmathdomain_id": "38",
+    "id": "84",
+    "msa": "1",
+    "name": "Know That There Are Numbers That Are Not Rational, And Approximate Them By Rational Numbers.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "85": {
+    "ccmathdomain_id": "39",
+    "id": "85",
+    "msa": "1",
+    "name": "Investigate Patterns Of Association In Bivariate Data.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "86": {
+    "ccmathdomain_id": "40",
+    "id": "86",
+    "msa": "0",
+    "name": "Know Number Names And The Count Sequence.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "87": {
+    "ccmathdomain_id": "40",
+    "id": "87",
+    "msa": "0",
+    "name": "Count To Tell The Number Of Objects.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "88": {
+    "ccmathdomain_id": "40",
+    "id": "88",
+    "msa": "0",
+    "name": "Compare Numbers.",
+    "ordinal": "C",
+    "wap": "0"
+  },
+  "89": {
+    "ccmathdomain_id": "41",
+    "id": "89",
+    "msa": "2",
+    "name": "Identify And Describe Shapes (Squares, Circles, Triangles, Rectangles, Hexagons, Cubes, Cones, Cylinders, And Spheres).",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "9": {
+    "ccmathdomain_id": "5",
+    "id": "9",
+    "msa": "0",
+    "name": "Represent And Solve Problems Involving Addition And Subtraction.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "90": {
+    "ccmathdomain_id": "41",
+    "id": "90",
+    "msa": "1",
+    "name": "<p>Analyze, Compare, Create, And Compose Shapes.</p>\r\n",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "91": {
+    "ccmathdomain_id": "42",
+    "id": "91",
+    "msa": "2",
+    "name": "Describe And Compare Measurable Attributes.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "92": {
+    "ccmathdomain_id": "42",
+    "id": "92",
+    "msa": "1",
+    "name": "Classify Objects And Count The Number Of Objects In Each Category.",
+    "ordinal": "B",
+    "wap": "0"
+  },
+  "93": {
+    "ccmathdomain_id": "43",
+    "id": "93",
+    "msa": "0",
+    "name": "Work With Numbers 11\u201319 To Gain Foundations For Place Value.",
+    "ordinal": "A",
+    "wap": "0"
+  },
+  "94": {
+    "ccmathdomain_id": "44",
+    "id": "94",
+    "msa": "0",
+    "name": "Understand Addition As Putting Together And Adding To, And Under- Stand Subtraction As Taking Apart And Taking From.",
+    "ordinal": "A",
+    "wap": "0"
+  }
+}

@@ -1,7 +1,8 @@
 @import 'tailwindcss';
+@import 'reactflow/dist/style.css';
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -14,4 +15,12 @@ body {
     'Segoe UI',
     sans-serif;
   min-height: 100vh;
+}
+
+.react-flow__pane {
+  cursor: inherit !important;
+}
+
+.react-flow__pane.dragging {
+  cursor: grabbing !important;
 }

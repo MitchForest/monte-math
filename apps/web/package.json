@@ -11,11 +11,14 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@monte-math/knowledge-graph": "workspace:*",
     "@tanstack/react-router": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwindcss": "catalog:",
-    "@tailwindcss/vite": "catalog:"
+    "@tailwindcss/vite": "catalog:",
+    "dagre": "^0.8.5",
+    "reactflow": "^11.10.4"
   },
   "devDependencies": {
     "@types/node": "catalog:",
@@ -24,6 +27,8 @@
     "@vitejs/plugin-react": "^5.0.4",
     "typescript": "catalog:",
     "vite": "^7.1.7",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "@types/dagre": "catalog:",
+    "@types/graphlib": "catalog:"
   }
 }
